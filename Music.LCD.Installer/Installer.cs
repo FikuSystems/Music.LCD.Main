@@ -11,7 +11,8 @@ using System.Windows.Forms;
 
 namespace Music.LCD.Installer
 {
-    public partial class Installer : Form
+	//TEST
+	public partial class Installer : Form
     {
         public int PageNumber;
 

@@ -14,6 +14,7 @@ namespace Music.LCD
 {
     public partial class Form1 : Form
     {
+		//TEST
 
 		RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 		public bool pressed;
