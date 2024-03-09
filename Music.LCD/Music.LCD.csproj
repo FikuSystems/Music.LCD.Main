@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CB305323-FB07-424B-AAE6-7EDCFFBE9E1E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Music.LCD</RootNamespace>
+    <AssemblyName>Music.LCD</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>titlebastr.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="flashdonehappyyaynodie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="flashdonehappyyaynodie.Designer.cs">
+      <DependentUpon>flashdonehappyyaynodie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Flasher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Flasher.Designer.cs">
+      <DependentUpon>Flasher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="notisend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="notisend.Designer.cs">
+      <DependentUpon>notisend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OSL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OSL.Designer.cs">
+      <DependentUpon>OSL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\FlashCatcher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Properties\FlashCatcher.Designer.cs">
+      <DependentUpon>FlashCatcher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Senddata.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Senddata.Designer.cs">
+      <DependentUpon>Senddata.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="shit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="shit.Designer.cs">
+      <DependentUpon>shit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Welcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Welcome.Designer.cs">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="flashdonehappyyaynodie.resx">
+      <DependentUpon>flashdonehappyyaynodie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Flasher.resx">
+      <DependentUpon>Flasher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="notisend.resx">
+      <DependentUpon>notisend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OSL.resx">
+      <DependentUpon>OSL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\FlashCatcher.resx">
+      <DependentUpon>FlashCatcher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Senddata.resx">
+      <DependentUpon>Senddata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="shit.resx">
+      <DependentUpon>shit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Welcome.resx">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LCDOFF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LCDON.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ArduinoUploader" Version="3.2.0" />
+    <PackageReference Include="Dubya.WindowsMediaController">
+      <Version>2.5.3</Version>
+    </PackageReference>
+    <PackageReference Include="Dubya.WindowsMediaController" Version="2.5.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions">
+      <Version>8.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts">
+      <Version>10.0.22621.3233</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="System.Net.Http">
+      <Version>4.3.4</Version>
+    </PackageReference>
+    <PackageReference Include="System.Runtime.WindowsRuntime">
+      <Version>4.7.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Runtime.WindowsRuntime.UI.Xaml">
+      <Version>4.7.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jajo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jajo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jajo3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\confirmglass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\errorglass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\confirmglass - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\confirmglass1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\infoglass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Warningglass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LCDON1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Direct LCD.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I2C LCD.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Direct LCD 16.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\I2C LCD 16.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bez tytułu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shoot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\curves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\titlebastr.ico" />
+    <None Include="Resources\Untitled-2.png" />
+    <None Include="Resources\happyyay.png" />
+    <Content Include="titlebastr.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
