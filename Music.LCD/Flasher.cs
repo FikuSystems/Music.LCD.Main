@@ -9,7 +9,12 @@ using System.IO.Ports;
 using System.Net;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
-
+using HtmlAgilityPack;
+using System.Threading.Tasks;
+using System.Net.Http;
+using AngleSharp.Html.Parser;
+using System.Net.NetworkInformation;
+using AngleSharp.Html.Dom;
 
 
 
@@ -19,6 +24,7 @@ namespace Music.LCD
 	public partial class Flasher : Form
     {
 		public Senddata senddata = new Senddata();
+		private string debugString;
 		private String filePath;
 		private String fileNameChoosen;
 		private String selectedCOM;
@@ -34,7 +40,15 @@ namespace Music.LCD
         {
             this.Close();
         }
-        private void gradients()
+		private static HttpClient _client = new HttpClient();
+
+		private static async Task<string> GetHtmlAsync(string uri)
+		{
+			var response = await _client.GetAsync(uri);
+			response.EnsureSuccessStatusCode();
+			return await response.Content.ReadAsStringAsync();
+		}
+		private void gradients()
         {
             panel1.Paint += (sender, e) =>
             {
@@ -48,53 +62,26 @@ namespace Music.LCD
                 }
             };
         }
-        private void Flasher_Load(object sender, EventArgs e)
+        private async void Flasher_Load(object sender, EventArgs e)
 		{
 			gradients();
 			// Fetch data from PHP script
 			try
 			{
-				using (WebClient client = new WebClient())
-				{
-					string data = client.DownloadString("http://newestversion.xlx.pl/links.php");
-
-					using (StringReader reader = new StringReader(data))
-					{
-						string line;
-						while ((line = reader.ReadLine()) != null)
-						{
-							string[] parts = line.Split('|');
-							if (parts.Length >= 2)
-							{
-								string name = parts[0];
-								string value = parts[1];
-
-								if (name == "version")
-								{
-									NewestArduinoFirmwareVersion = value;
-								}
-								else
-								{
-									switch (name)
-									{
-										case "link1":
-											link1 = value;
-											break;
-										case "link2":
-											link2 = value;
-											break;
-										case "link3":
-											link3 = value;
-											break;
-										case "link4":
-											link4 = value;
-											break;
-									}
-								}
-							}
-						}
-					}
-				}
+				string htmlContent = await GetHtmlAsync("https://notsnorlax.github.io/jarek/test.html");
+				var parser = new HtmlParser();
+				var document = await parser.ParseDocumentAsync(htmlContent);
+				// Extract the links and version
+				var link1Node = document.QuerySelector("#link1");
+				link1 = link1Node != null ? link1Node.TextContent.Trim() : null;
+				var link2Node = document.QuerySelector("#link2");
+				link2 = link2Node != null ? link2Node.TextContent.Trim() : null;
+				var link3Node = document.QuerySelector("#link3");
+				link3 = link3Node != null ? link3Node.TextContent.Trim() : null;
+				var link4Node = document.QuerySelector("#link4");
+				link4 = link4Node != null ? link4Node.TextContent.Trim() : null;
+				var versionNode = document.QuerySelector("#version");
+				NewestArduinoFirmwareVersion = versionNode != null ? versionNode.TextContent.Trim() : null;
 			}
 			catch (Exception ex)
 			{
@@ -103,7 +90,8 @@ namespace Music.LCD
 			}
 		}
 
-			private void button7_Click(object sender, EventArgs e)
+
+		private void button7_Click(object sender, EventArgs e)
         {
             okunderstand.Visible = false;
             errico.Visible = false;
@@ -120,8 +108,7 @@ namespace Music.LCD
 
 		private void Flash_Click(object sender, EventArgs e)
 		{
-			ShoworHidesendData(false);
-			FlashProgress.Style = ProgressBarStyle.Blocks;
+			
 			FlashProgress.Value = 0;
 			FlashProgress.Style = ProgressBarStyle.Marquee;
 			selectedCOM = ArdCOM.Text;
@@ -135,6 +122,7 @@ namespace Music.LCD
 				if(File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRY-2004.hex"))
 				{
 					fileNameChoosen = "MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRY-2004.hex";
+					senddata.Show();
 					backgroundWorker1.RunWorkerAsync();
 				} else
 				{
@@ -148,6 +136,7 @@ namespace Music.LCD
 				if (File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRYI2C-2004.hex"))
 				{
 					fileNameChoosen = "MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRYI2C-2004.hex";
+					senddata.Show();
 					backgroundWorker1.RunWorkerAsync();
 				}
 				else
@@ -262,13 +251,13 @@ namespace Music.LCD
 				try
 				{
 					uploader.UploadSketch();
-					FlashProgress.Style = ProgressBarStyle.Blocks;
-					FlashProgress.Value = 100; this.Close(); 					
+					
+ 					
 					flashdonehappyyaynodie flashdone = new flashdonehappyyaynodie(); 
 					flashdone.Show();
 
 				}
-				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); ShoworHidesendData(true); }
+				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); }
 			}
 			else if (selectedModel == "Mega 1284 - ATMega1284")
 			{
@@ -281,13 +270,12 @@ namespace Music.LCD
 				});
 				try
 				{
-					ShoworHidesendData(false);
 					uploader.UploadSketch();
-                    ShoworHidesendData(true);
-					FlashProgress.Style = ProgressBarStyle.Blocks;
-					FlashProgress.Value = 100; this.Close(); 					flashdonehappyyaynodie flashdone = new flashdonehappyyaynodie(); flashdone.Show();
+					
+ 					
 
-				} catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); ShoworHidesendData(true); }
+
+				} catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); }
 			}
 			else if (selectedModel == "Mega 2560 - ATMega2560")
 			{
@@ -301,11 +289,11 @@ namespace Music.LCD
 				try
 				{
 					uploader.UploadSketch();
-                    ShoworHidesendData(true);
-					FlashProgress.Style = ProgressBarStyle.Blocks;
-					FlashProgress.Value = 100; this.Close(); 					flashdonehappyyaynodie flashdone = new flashdonehappyyaynodie(); flashdone.Show();
+					
+
+
 				}
-				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); ShoworHidesendData(true); }
+				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); }
 			}
 			else if (selectedModel == "Micro - ATMega32U4")
 			{
@@ -319,11 +307,11 @@ namespace Music.LCD
 				try
 				{
 					uploader.UploadSketch();
-                    ShoworHidesendData(true);
-					FlashProgress.Style = ProgressBarStyle.Blocks;
-					FlashProgress.Value = 100; this.Close(); 					flashdonehappyyaynodie flashdone = new flashdonehappyyaynodie(); flashdone.Show();
+					
+ 					
+
 				}
-				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); ShoworHidesendData(true); }
+				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); }
 			}
 			else if (selectedModel == "Nano (R2)    - ATMega168")
 			{
@@ -337,10 +325,8 @@ namespace Music.LCD
 				try
 				{
 					uploader.UploadSketch();
-					FlashProgress.Style = ProgressBarStyle.Blocks;
-					FlashProgress.Value = 100; this.Close(); 					flashdonehappyyaynodie flashdone = new flashdonehappyyaynodie(); flashdone.Show();
 				}
-				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); ShoworHidesendData(true); }
+				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); }
 			}
 			else if (selectedModel == "Nano (R3) (Ex) - ATMega328P")
 			{
@@ -353,15 +339,13 @@ namespace Music.LCD
 				});
 
 				try 
-				{
+				{	
 					uploader.UploadSketch();
+					
+
+
 				}
-				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); ShoworHidesendData(true); }
-				//FlashProgress.Style = ProgressBarStyle.Blocks;
-				//FlashProgress.Value = 100; this.Close();
-				ShoworHidesendData(true);
-				flashdonehappyyaynodie flashdone = new flashdonehappyyaynodie();
-				flashdone.Show();
+				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); }
 			}
 			else if (selectedModel == "Uno (R3) - ATMega328P")
 			{
@@ -375,11 +359,11 @@ namespace Music.LCD
 				try
 				{
 					uploader.UploadSketch();
-                    ShoworHidesendData(true);
-					FlashProgress.Style = ProgressBarStyle.Blocks;
-					FlashProgress.Value = 100; this.Close(); 					flashdonehappyyaynodie flashdone = new flashdonehappyyaynodie(); flashdone.Show();
+					
+ 					
+
 				}
-				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); ShoworHidesendData(true); }
+				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); }
 			}
 		}
 
@@ -442,6 +426,15 @@ namespace Music.LCD
 			DownloadProgress.Value = e.ProgressPercentage;
 			
 		}
+
+		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+		{
+			senddata.Hide();
+			FlashProgress.Style = ProgressBarStyle.Blocks;
+			FlashProgress.Value = 100; this.Close();
+			flashdonehappyyaynodie flashdone = new flashdonehappyyaynodie(); flashdone.Show();
+		}
+
 		private void Completed(object sender, AsyncCompletedEventArgs e)
 		{
             okunderstand.Visible = false;
@@ -453,11 +446,6 @@ namespace Music.LCD
             oktext.Text = "Download complete.";
         }
 
-		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-		{
-			ShoworHidesendData(true);
-		}
-
 		private void showFileDoesNotExist()
 		{
 			
@@ -465,7 +453,7 @@ namespace Music.LCD
 
 		private void CheckPorts_Tick(object sender, EventArgs e)
 		{
-			ShoworHidesendData(true);
+			label5.Text = debugString;
 			if (ArdCOM.Text.ToString() == "") 
 			{
 				try
@@ -786,22 +774,6 @@ namespace Music.LCD
 		private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
 		{
 			uploadToArduino();
-		}
-
-		private void ShoworHidesendData(bool hide)
-		{
-
-			if (hide)
-			{
-				if (!senddata.IsDisposed)
-				{
-					senddata.Close();
-				}
-			} else
-			{
-				
-				senddata.Show();
-			}
 		}
 	}
 }

@@ -212,11 +212,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AngleSharp">
+      <Version>1.1.2</Version>
+    </PackageReference>
     <PackageReference Include="ArduinoUploader" Version="3.2.0" />
     <PackageReference Include="Dubya.WindowsMediaController">
       <Version>2.5.3</Version>
     </PackageReference>
     <PackageReference Include="Dubya.WindowsMediaController" Version="2.5.3" />
+    <PackageReference Include="HtmlAgilityPack">
+      <Version>1.11.59</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions">
       <Version>8.0.0</Version>
     </PackageReference>
