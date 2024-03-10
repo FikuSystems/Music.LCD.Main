@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,21 @@ namespace Music.LCD
         }
         private void Senddata_Load(object sender, EventArgs e)
         {
-
+            gradients();
+        }
+        private void gradients()
+        {
+            panel1.Paint += (sender, e) =>
+            {
+                using (LinearGradientBrush brush = new LinearGradientBrush(
+                    panel1.ClientRectangle,
+                    Color.FromArgb(246, 174, 1),
+                    Color.FromArgb(246, 144, 1),
+                    LinearGradientMode.Vertical))
+                {
+                    e.Graphics.FillRectangle(brush, panel1.ClientRectangle); ;
+                }
+            };
         }
     }
 }

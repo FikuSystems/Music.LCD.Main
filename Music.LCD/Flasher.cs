@@ -435,7 +435,12 @@ namespace Music.LCD
 			flashdonehappyyaynodie flashdone = new flashdonehappyyaynodie(); flashdone.Show();
 		}
 
-		private void Completed(object sender, AsyncCompletedEventArgs e)
+        private void ArdSoftRep_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Completed(object sender, AsyncCompletedEventArgs e)
 		{
             okunderstand.Visible = false;
             errico.Visible = false;
