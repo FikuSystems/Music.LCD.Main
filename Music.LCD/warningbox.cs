@@ -35,8 +35,8 @@ namespace Music.LCD
             {
                 using (LinearGradientBrush brush = new LinearGradientBrush(
                     panel1.ClientRectangle,
-                    Color.FromArgb(255, 174, 0),
-                    Color.FromArgb(255, 145, 0),
+                    Color.FromArgb(246, 174, 1),
+                    Color.FromArgb(246, 144, 1),
                     LinearGradientMode.Vertical))
                 {
                     e.Graphics.FillRectangle(brush, panel1.ClientRectangle); ;
