@@ -1055,9 +1055,16 @@ namespace Music.LCD
                     L2 = "  Connection lost!  ";
                     L3 = "Disconnect request";
                     L4 = "Disconnect";
-                   
+					if (MusicLCDType == "BCS")
+					{
+                        L2 = "D*I^S$C)O%N#E%C&T";
+						finalData = L1 + ">1" + L2 + ">2" + "\n";
+					}
+					else
+					{
+						finalData = L1 + ">1" + L2 + ">2" + L3 + ">3" + L4 + ">4";
+					}
 
-                    finalData = L1 + ">1" + L2 + ">2" + L3 + ">3" + L4 + ">4";
                     Arduinosync.Stop();
                     serialPort.Write(finalData);
 
