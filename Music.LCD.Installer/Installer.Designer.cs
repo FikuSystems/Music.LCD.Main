@@ -32,59 +32,59 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.s8 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.s7 = new System.Windows.Forms.Label();
+            this.s6 = new System.Windows.Forms.Label();
+            this.s5 = new System.Windows.Forms.Label();
+            this.s4 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.s3 = new System.Windows.Forms.Label();
+            this.s2 = new System.Windows.Forms.Label();
+            this.s1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.backbtn = new System.Windows.Forms.Button();
             this.exitbtn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.preinstallinfo = new System.Windows.Forms.GroupBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.s1 = new System.Windows.Forms.Label();
-            this.s2 = new System.Windows.Forms.Label();
-            this.s3 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.s4 = new System.Windows.Forms.Label();
-            this.s5 = new System.Windows.Forms.Label();
-            this.s6 = new System.Windows.Forms.Label();
-            this.s7 = new System.Windows.Forms.Label();
-            this.s8 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.Selectinstalllocation = new System.Windows.Forms.GroupBox();
-            this.filepath = new System.Windows.Forms.TextBox();
-            this.openexplorer = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.openexplorer = new System.Windows.Forms.Button();
+            this.filepath = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.shortcuts = new System.Windows.Forms.GroupBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.cstartmenufolder = new System.Windows.Forms.CheckBox();
-            this.cstartmenupin = new System.Windows.Forms.CheckBox();
-            this.ctaskbarpin = new System.Windows.Forms.CheckBox();
-            this.cdesktopshortcut = new System.Windows.Forms.CheckBox();
             this.instruct = new System.Windows.Forms.GroupBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.cdesktopshortcut = new System.Windows.Forms.CheckBox();
+            this.ctaskbarpin = new System.Windows.Forms.CheckBox();
+            this.cstartmenupin = new System.Windows.Forms.CheckBox();
+            this.cstartmenufolder = new System.Windows.Forms.CheckBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.installation = new System.Windows.Forms.GroupBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.logs = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Complete = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.logs = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.instalprogress = new System.Windows.Forms.ProgressBar();
             this.nextbtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.preinstallinfo.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.preinstallinfo.SuspendLayout();
             this.Selectinstalllocation.SuspendLayout();
             this.shortcuts.SuspendLayout();
             this.instruct.SuspendLayout();
             this.installation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Complete.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -126,6 +126,22 @@
             this.panel1.Size = new System.Drawing.Size(246, 381);
             this.panel1.TabIndex = 4;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.LinkColor = System.Drawing.Color.White;
+            this.linkLabel1.Location = new System.Drawing.Point(13, 342);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(221, 27);
+            this.linkLabel1.TabIndex = 11;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "View Github Page";
+            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabel1.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(254)))), ((int)(((byte)(219)))));
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -139,6 +155,153 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(220, 266);
             this.panel2.TabIndex = 4;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.s8);
+            this.groupBox4.Location = new System.Drawing.Point(3, 212);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(214, 51);
+            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Installation Complete";
+            // 
+            // s8
+            // 
+            this.s8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.s8.BackColor = System.Drawing.Color.Transparent;
+            this.s8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.s8.Location = new System.Drawing.Point(7, 20);
+            this.s8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.s8.Name = "s8";
+            this.s8.Size = new System.Drawing.Size(200, 24);
+            this.s8.TabIndex = 14;
+            this.s8.Text = "Finished";
+            this.s8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.s7);
+            this.groupBox3.Controls.Add(this.s6);
+            this.groupBox3.Controls.Add(this.s5);
+            this.groupBox3.Controls.Add(this.s4);
+            this.groupBox3.Location = new System.Drawing.Point(3, 114);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(214, 92);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Installation";
+            // 
+            // s7
+            // 
+            this.s7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.s7.BackColor = System.Drawing.Color.Transparent;
+            this.s7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.s7.Location = new System.Drawing.Point(7, 69);
+            this.s7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.s7.Name = "s7";
+            this.s7.Size = new System.Drawing.Size(200, 17);
+            this.s7.TabIndex = 13;
+            this.s7.Text = "Creating Uninstaller";
+            this.s7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // s6
+            // 
+            this.s6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.s6.BackColor = System.Drawing.Color.Transparent;
+            this.s6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.s6.Location = new System.Drawing.Point(7, 52);
+            this.s6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.s6.Name = "s6";
+            this.s6.Size = new System.Drawing.Size(200, 17);
+            this.s6.TabIndex = 12;
+            this.s6.Text = "Creating Config Files";
+            this.s6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // s5
+            // 
+            this.s5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.s5.BackColor = System.Drawing.Color.Transparent;
+            this.s5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.s5.Location = new System.Drawing.Point(7, 35);
+            this.s5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.s5.Name = "s5";
+            this.s5.Size = new System.Drawing.Size(200, 17);
+            this.s5.TabIndex = 11;
+            this.s5.Text = "Creating Shortcuts";
+            this.s5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // s4
+            // 
+            this.s4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.s4.BackColor = System.Drawing.Color.Transparent;
+            this.s4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.s4.Location = new System.Drawing.Point(7, 18);
+            this.s4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.s4.Name = "s4";
+            this.s4.Size = new System.Drawing.Size(200, 17);
+            this.s4.TabIndex = 10;
+            this.s4.Text = "Copying Files";
+            this.s4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.s3);
+            this.groupBox2.Controls.Add(this.s2);
+            this.groupBox2.Controls.Add(this.s1);
+            this.groupBox2.Location = new System.Drawing.Point(3, 33);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(214, 75);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Preperation";
+            // 
+            // s3
+            // 
+            this.s3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.s3.BackColor = System.Drawing.Color.Transparent;
+            this.s3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.s3.Location = new System.Drawing.Point(7, 52);
+            this.s3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.s3.Name = "s3";
+            this.s3.Size = new System.Drawing.Size(200, 17);
+            this.s3.TabIndex = 9;
+            this.s3.Text = "Instructions";
+            this.s3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // s2
+            // 
+            this.s2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.s2.BackColor = System.Drawing.Color.Transparent;
+            this.s2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.s2.Location = new System.Drawing.Point(7, 35);
+            this.s2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.s2.Name = "s2";
+            this.s2.Size = new System.Drawing.Size(200, 17);
+            this.s2.TabIndex = 8;
+            this.s2.Text = "Shortcuts";
+            this.s2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // s1
+            // 
+            this.s1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.s1.BackColor = System.Drawing.Color.Transparent;
+            this.s1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.s1.Location = new System.Drawing.Point(7, 18);
+            this.s1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.s1.Name = "s1";
+            this.s1.Size = new System.Drawing.Size(200, 17);
+            this.s1.TabIndex = 7;
+            this.s1.Text = "Select install location";
+            this.s1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label3
             // 
@@ -202,191 +365,6 @@
             this.preinstallinfo.TabStop = false;
             this.preinstallinfo.Text = "Pre-Install Information";
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.LinkColor = System.Drawing.Color.White;
-            this.linkLabel1.Location = new System.Drawing.Point(13, 342);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(221, 27);
-            this.linkLabel1.TabIndex = 11;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "View Github Page";
-            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabel1.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(254)))), ((int)(((byte)(219)))));
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.s3);
-            this.groupBox2.Controls.Add(this.s2);
-            this.groupBox2.Controls.Add(this.s1);
-            this.groupBox2.Location = new System.Drawing.Point(3, 33);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(214, 75);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Preperation";
-            // 
-            // s1
-            // 
-            this.s1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.s1.BackColor = System.Drawing.Color.Transparent;
-            this.s1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.s1.Location = new System.Drawing.Point(7, 18);
-            this.s1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.s1.Name = "s1";
-            this.s1.Size = new System.Drawing.Size(200, 17);
-            this.s1.TabIndex = 7;
-            this.s1.Text = "Select install location";
-            this.s1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // s2
-            // 
-            this.s2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.s2.BackColor = System.Drawing.Color.Transparent;
-            this.s2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.s2.Location = new System.Drawing.Point(7, 35);
-            this.s2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.s2.Name = "s2";
-            this.s2.Size = new System.Drawing.Size(200, 17);
-            this.s2.TabIndex = 8;
-            this.s2.Text = "Shortcuts";
-            this.s2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // s3
-            // 
-            this.s3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.s3.BackColor = System.Drawing.Color.Transparent;
-            this.s3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.s3.Location = new System.Drawing.Point(7, 52);
-            this.s3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.s3.Name = "s3";
-            this.s3.Size = new System.Drawing.Size(200, 17);
-            this.s3.TabIndex = 9;
-            this.s3.Text = "Instructions";
-            this.s3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.s7);
-            this.groupBox3.Controls.Add(this.s6);
-            this.groupBox3.Controls.Add(this.s5);
-            this.groupBox3.Controls.Add(this.s4);
-            this.groupBox3.Location = new System.Drawing.Point(3, 114);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(214, 92);
-            this.groupBox3.TabIndex = 7;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Installation";
-            // 
-            // s4
-            // 
-            this.s4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.s4.BackColor = System.Drawing.Color.Transparent;
-            this.s4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.s4.Location = new System.Drawing.Point(7, 18);
-            this.s4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.s4.Name = "s4";
-            this.s4.Size = new System.Drawing.Size(200, 17);
-            this.s4.TabIndex = 10;
-            this.s4.Text = "Copying Files";
-            this.s4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // s5
-            // 
-            this.s5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.s5.BackColor = System.Drawing.Color.Transparent;
-            this.s5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.s5.Location = new System.Drawing.Point(7, 35);
-            this.s5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.s5.Name = "s5";
-            this.s5.Size = new System.Drawing.Size(200, 17);
-            this.s5.TabIndex = 11;
-            this.s5.Text = "Creating Shortcuts";
-            this.s5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // s6
-            // 
-            this.s6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.s6.BackColor = System.Drawing.Color.Transparent;
-            this.s6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.s6.Location = new System.Drawing.Point(7, 52);
-            this.s6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.s6.Name = "s6";
-            this.s6.Size = new System.Drawing.Size(200, 17);
-            this.s6.TabIndex = 12;
-            this.s6.Text = "Creating Config Files";
-            this.s6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // s7
-            // 
-            this.s7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.s7.BackColor = System.Drawing.Color.Transparent;
-            this.s7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.s7.Location = new System.Drawing.Point(7, 69);
-            this.s7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.s7.Name = "s7";
-            this.s7.Size = new System.Drawing.Size(200, 17);
-            this.s7.TabIndex = 13;
-            this.s7.Text = "Creating Uninstaller";
-            this.s7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // s8
-            // 
-            this.s8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.s8.BackColor = System.Drawing.Color.Transparent;
-            this.s8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.s8.Location = new System.Drawing.Point(7, 20);
-            this.s8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.s8.Name = "s8";
-            this.s8.Size = new System.Drawing.Size(200, 24);
-            this.s8.TabIndex = 14;
-            this.s8.Text = "Finished";
-            this.s8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.s8);
-            this.groupBox4.Location = new System.Drawing.Point(3, 212);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(214, 51);
-            this.groupBox4.TabIndex = 8;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Installation Complete";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 19);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(208, 15);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Please read the following information:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(6, 37);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(492, 248);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
-            // 
             // Selectinstalllocation
             // 
             this.Selectinstalllocation.Controls.Add(this.label15);
@@ -401,21 +379,14 @@
             this.Selectinstalllocation.TabStop = false;
             this.Selectinstalllocation.Text = "Select Install Location";
             // 
-            // filepath
+            // label15
             // 
-            this.filepath.Location = new System.Drawing.Point(6, 39);
-            this.filepath.Name = "filepath";
-            this.filepath.Size = new System.Drawing.Size(457, 23);
-            this.filepath.TabIndex = 0;
-            // 
-            // openexplorer
-            // 
-            this.openexplorer.Location = new System.Drawing.Point(469, 38);
-            this.openexplorer.Name = "openexplorer";
-            this.openexplorer.Size = new System.Drawing.Size(29, 25);
-            this.openexplorer.TabIndex = 1;
-            this.openexplorer.Text = "...";
-            this.openexplorer.UseVisualStyleBackColor = true;
+            this.label15.Location = new System.Drawing.Point(7, 69);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(491, 40);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "This is where Music LCD will store it\'s configuration information and temporary f" +
+    "iles, and required files.";
             // 
             // label14
             // 
@@ -426,14 +397,43 @@
             this.label14.TabIndex = 2;
             this.label14.Text = "File Path:";
             // 
-            // label15
+            // openexplorer
             // 
-            this.label15.Location = new System.Drawing.Point(7, 69);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(491, 40);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "This is where Music LCD will store it\'s configuration information and temporary f" +
-    "iles, and required files.";
+            this.openexplorer.Location = new System.Drawing.Point(469, 38);
+            this.openexplorer.Name = "openexplorer";
+            this.openexplorer.Size = new System.Drawing.Size(29, 25);
+            this.openexplorer.TabIndex = 1;
+            this.openexplorer.Text = "...";
+            this.openexplorer.UseVisualStyleBackColor = true;
+            // 
+            // filepath
+            // 
+            this.filepath.Location = new System.Drawing.Point(6, 39);
+            this.filepath.Name = "filepath";
+            this.filepath.Size = new System.Drawing.Size(457, 23);
+            this.filepath.TabIndex = 0;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(6, 37);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(492, 248);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Text = resources.GetString("textBox1.Text");
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 19);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(208, 15);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Please read the following information:";
             // 
             // shortcuts
             // 
@@ -450,55 +450,6 @@
             this.shortcuts.TabIndex = 12;
             this.shortcuts.TabStop = false;
             this.shortcuts.Text = "Shortcuts";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 19);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(217, 15);
-            this.label17.TabIndex = 2;
-            this.label17.Text = "Select shortcuts you want to be created.";
-            // 
-            // cstartmenufolder
-            // 
-            this.cstartmenufolder.AutoSize = true;
-            this.cstartmenufolder.Location = new System.Drawing.Point(9, 41);
-            this.cstartmenufolder.Name = "cstartmenufolder";
-            this.cstartmenufolder.Size = new System.Drawing.Size(154, 19);
-            this.cstartmenufolder.TabIndex = 3;
-            this.cstartmenufolder.Text = "Create start menu folder";
-            this.cstartmenufolder.UseVisualStyleBackColor = true;
-            // 
-            // cstartmenupin
-            // 
-            this.cstartmenupin.AutoSize = true;
-            this.cstartmenupin.Location = new System.Drawing.Point(9, 66);
-            this.cstartmenupin.Name = "cstartmenupin";
-            this.cstartmenupin.Size = new System.Drawing.Size(140, 19);
-            this.cstartmenupin.TabIndex = 4;
-            this.cstartmenupin.Text = "Create start menu pin";
-            this.cstartmenupin.UseVisualStyleBackColor = true;
-            // 
-            // ctaskbarpin
-            // 
-            this.ctaskbarpin.AutoSize = true;
-            this.ctaskbarpin.Location = new System.Drawing.Point(9, 91);
-            this.ctaskbarpin.Name = "ctaskbarpin";
-            this.ctaskbarpin.Size = new System.Drawing.Size(121, 19);
-            this.ctaskbarpin.TabIndex = 5;
-            this.ctaskbarpin.Text = "Create taskbar pin";
-            this.ctaskbarpin.UseVisualStyleBackColor = true;
-            // 
-            // cdesktopshortcut
-            // 
-            this.cdesktopshortcut.AutoSize = true;
-            this.cdesktopshortcut.Location = new System.Drawing.Point(9, 116);
-            this.cdesktopshortcut.Name = "cdesktopshortcut";
-            this.cdesktopshortcut.Size = new System.Drawing.Size(152, 19);
-            this.cdesktopshortcut.TabIndex = 6;
-            this.cdesktopshortcut.Text = "Create desktop shortcut";
-            this.cdesktopshortcut.UseVisualStyleBackColor = true;
             // 
             // instruct
             // 
@@ -523,6 +474,55 @@
             this.textBox3.TabIndex = 0;
             this.textBox3.Text = resources.GetString("textBox3.Text");
             // 
+            // cdesktopshortcut
+            // 
+            this.cdesktopshortcut.AutoSize = true;
+            this.cdesktopshortcut.Location = new System.Drawing.Point(9, 116);
+            this.cdesktopshortcut.Name = "cdesktopshortcut";
+            this.cdesktopshortcut.Size = new System.Drawing.Size(152, 19);
+            this.cdesktopshortcut.TabIndex = 6;
+            this.cdesktopshortcut.Text = "Create desktop shortcut";
+            this.cdesktopshortcut.UseVisualStyleBackColor = true;
+            // 
+            // ctaskbarpin
+            // 
+            this.ctaskbarpin.AutoSize = true;
+            this.ctaskbarpin.Location = new System.Drawing.Point(9, 91);
+            this.ctaskbarpin.Name = "ctaskbarpin";
+            this.ctaskbarpin.Size = new System.Drawing.Size(121, 19);
+            this.ctaskbarpin.TabIndex = 5;
+            this.ctaskbarpin.Text = "Create taskbar pin";
+            this.ctaskbarpin.UseVisualStyleBackColor = true;
+            // 
+            // cstartmenupin
+            // 
+            this.cstartmenupin.AutoSize = true;
+            this.cstartmenupin.Location = new System.Drawing.Point(9, 66);
+            this.cstartmenupin.Name = "cstartmenupin";
+            this.cstartmenupin.Size = new System.Drawing.Size(140, 19);
+            this.cstartmenupin.TabIndex = 4;
+            this.cstartmenupin.Text = "Create start menu pin";
+            this.cstartmenupin.UseVisualStyleBackColor = true;
+            // 
+            // cstartmenufolder
+            // 
+            this.cstartmenufolder.AutoSize = true;
+            this.cstartmenufolder.Location = new System.Drawing.Point(9, 41);
+            this.cstartmenufolder.Name = "cstartmenufolder";
+            this.cstartmenufolder.Size = new System.Drawing.Size(154, 19);
+            this.cstartmenufolder.TabIndex = 3;
+            this.cstartmenufolder.Text = "Create start menu folder";
+            this.cstartmenufolder.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 19);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(217, 15);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "Select shortcuts you want to be created.";
+            // 
             // installation
             // 
             this.installation.Controls.Add(this.Complete);
@@ -536,40 +536,6 @@
             this.installation.TabIndex = 14;
             this.installation.TabStop = false;
             this.installation.Text = "Installation";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 19);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(158, 15);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "Music LCD is being installed.";
-            // 
-            // logs
-            // 
-            this.logs.BackColor = System.Drawing.Color.Black;
-            this.logs.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logs.ForeColor = System.Drawing.Color.White;
-            this.logs.Location = new System.Drawing.Point(6, 236);
-            this.logs.Multiline = true;
-            this.logs.Name = "logs";
-            this.logs.ReadOnly = true;
-            this.logs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.logs.Size = new System.Drawing.Size(492, 49);
-            this.logs.TabIndex = 1;
-            this.logs.Text = "Music LCD Install Logs\r\n(c) FikuSystems 2024\r\n===================================" +
-    "===============================";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Music.LCD.Installer.Properties.Resources.INSTALLING;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 41);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(494, 189);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
             // 
             // Complete
             // 
@@ -590,6 +556,40 @@
             this.label18.TabIndex = 0;
             this.label18.Text = "Music LCD is installed!";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // logs
+            // 
+            this.logs.BackColor = System.Drawing.Color.Black;
+            this.logs.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logs.ForeColor = System.Drawing.Color.White;
+            this.logs.Location = new System.Drawing.Point(6, 236);
+            this.logs.Multiline = true;
+            this.logs.Name = "logs";
+            this.logs.ReadOnly = true;
+            this.logs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.logs.Size = new System.Drawing.Size(492, 49);
+            this.logs.TabIndex = 1;
+            this.logs.Text = "Music LCD Install Logs\r\n(c) FikuSystems 2024\r\n===================================" +
+    "===============================";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 19);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(158, 15);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "Music LCD is being installed.";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Music.LCD.Installer.Properties.Resources.INSTALLING;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 41);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(494, 189);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // instalprogress
             // 
@@ -637,11 +637,11 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.preinstallinfo.ResumeLayout(false);
             this.preinstallinfo.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
             this.Selectinstalllocation.ResumeLayout(false);
             this.Selectinstalllocation.PerformLayout();
             this.shortcuts.ResumeLayout(false);
@@ -650,8 +650,8 @@
             this.instruct.PerformLayout();
             this.installation.ResumeLayout(false);
             this.installation.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Complete.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
