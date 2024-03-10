@@ -22,7 +22,7 @@ namespace Music.LCD
 
         private void notisend_Load(object sender, EventArgs e)
         {
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Windows\Media\Windows Notify System Generic.wav");
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Windows\Media\windows foreground.wav");
             player.Play();
             jajo();
             int margin = 47;

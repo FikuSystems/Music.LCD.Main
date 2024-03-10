@@ -21,7 +21,7 @@ namespace Music.LCD
         private void warningbox_Load(object sender, EventArgs e)
         {
             gradients();
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Windows\Media\Windows Notify System Generic.wav");
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Windows\Media\Windows background.wav");
             player.Play();
             int margin = 47;
             Screen screen = Screen.FromControl(this);

@@ -156,6 +156,7 @@
             this.Name = "notisend";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Music LCD | Error";
+            this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Magenta;
             this.Load += new System.EventHandler(this.notisend_Load);
             this.panel1.ResumeLayout(false);
