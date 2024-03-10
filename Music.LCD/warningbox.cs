@@ -11,34 +11,32 @@ using System.Windows.Forms;
 
 namespace Music.LCD
 {
-    public partial class notisend : Form
+    public partial class warningbox : Form
     {
-
-        public notisend()
+        public warningbox()
         {
             InitializeComponent();
-
         }
 
-        private void notisend_Load(object sender, EventArgs e)
+        private void warningbox_Load(object sender, EventArgs e)
         {
+            gradients();
             System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Windows\Media\Windows Notify System Generic.wav");
             player.Play();
-            jajo();
             int margin = 47;
             Screen screen = Screen.FromControl(this);
             int newX = screen.WorkingArea.Right - this.Width;
             int newY = screen.WorkingArea.Bottom - this.Height - margin;
             this.Location = new Point(newX, newY);
         }
-        private void jajo()
+        private void gradients()
         {
             panel1.Paint += (sender, e) =>
             {
                 using (LinearGradientBrush brush = new LinearGradientBrush(
                     panel1.ClientRectangle,
-                    Color.FromArgb(254, 7, 7),
-                    Color.FromArgb(177, 4, 4),
+                    Color.FromArgb(255, 174, 0),
+                    Color.FromArgb(255, 145, 0),
                     LinearGradientMode.Vertical))
                 {
                     e.Graphics.FillRectangle(brush, panel1.ClientRectangle); ;
@@ -46,17 +44,12 @@ namespace Music.LCD
             };
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void kext_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
             this.Close();
         }

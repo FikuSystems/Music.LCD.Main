@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Security.Policy;
@@ -30,8 +31,23 @@ namespace Music.LCD
 
         private async void welcome_Load(object sender, EventArgs e)
         {
-            panel1.Size = new Size(825, 742);
+            panel2.Size = new Size(825, 742);
             await AnimateLabel();
+            gradients();
+        }
+        private void gradients()
+        {
+            panel1.Paint += (sender, e) =>
+            {
+                using (LinearGradientBrush brush = new LinearGradientBrush(
+                    panel1.ClientRectangle,
+                    Color.FromArgb(86, 165, 132),
+                    Color.FromArgb(62, 120, 96),
+                    LinearGradientMode.Vertical))
+                {
+                    e.Graphics.FillRectangle(brush, panel1.ClientRectangle); ;
+                }
+            };
         }
         private async Task AnimateLabel()
         {
@@ -54,23 +70,18 @@ namespace Music.LCD
             }
 
             // Wait for 5 seconds
-            await Task.Delay(5000);
-
-            // Fade out animation
-            for (int i = 100; i >= 0; i -= 5)
+            panel1.Invalidate();
+            panel1.Paint += (sender, e) =>
             {
-                int currentX = (int)Math.Round(EaseInOut(endX, startX, i / 100.0));
-                label4.Left = currentX;
-
-                float currentOpacity = (float)EaseInOut(startOpacity, endOpacity, i / 100.0);
-
-                label4.ForeColor = Color.FromArgb((int)(currentOpacity * 255), label4.ForeColor);
-                await Task.Delay(15);
-            }
-
-            // Reset position and hide label
-            label4.Left = startX;
-            label4.Visible = false;
+                using (LinearGradientBrush brush = new LinearGradientBrush(
+                    panel1.ClientRectangle,
+                    Color.FromArgb(86, 165, 132),
+                    Color.FromArgb(62, 120, 96),
+                    LinearGradientMode.Vertical))
+                {
+                    e.Graphics.FillRectangle(brush, panel1.ClientRectangle); ;
+                }
+            };
         }
 
         private double EaseInOut(double start, double end, double progress)
@@ -149,7 +160,7 @@ namespace Music.LCD
 
         private void AnimationTimer_Tick(object sender, EventArgs e)
         {
-            panel1.Visible = false;
+            panel2.Visible = false;
         }
 
         private void timer2_Tick(object sender, EventArgs e)

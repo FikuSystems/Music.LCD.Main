@@ -2,11 +2,15 @@
 using ArduinoUploader.Hardware;
 using Music.LCD.Properties;
 using System;
+using System.Drawing;
 using System.ComponentModel;
 using System.IO;
 using System.IO.Ports;
 using System.Net;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
+
+
 
 
 namespace Music.LCD
@@ -30,10 +34,23 @@ namespace Music.LCD
         {
             this.Close();
         }
-
-		private void Flasher_Load(object sender, EventArgs e)
+        private void gradients()
+        {
+            panel1.Paint += (sender, e) =>
+            {
+                using (LinearGradientBrush brush = new LinearGradientBrush(
+                    panel1.ClientRectangle,
+                    Color.FromArgb(86, 165, 132),
+                    Color.FromArgb(62, 120, 96),
+                    LinearGradientMode.Vertical))
+                {
+                    e.Graphics.FillRectangle(brush, panel1.ClientRectangle); ;
+                }
+            };
+        }
+        private void Flasher_Load(object sender, EventArgs e)
 		{
-
+			gradients();
 			// Fetch data from PHP script
 			try
 			{

@@ -9,6 +9,7 @@ using System.IO;
 using System.ComponentModel;
 using Microsoft.Win32;
 using System.Net.Http;
+using System.Drawing.Drawing2D;
 
 namespace Music.LCD
 {
@@ -86,9 +87,24 @@ namespace Music.LCD
             } catch {}
             
         }
-
+        private void gradients()
+        {
+            panel1.Paint += (sender, e) =>
+            {
+                using (LinearGradientBrush brush = new LinearGradientBrush(
+                    panel1.ClientRectangle,
+                    Color.FromArgb(86, 165, 132),
+                    Color.FromArgb(62, 120, 96),
+                    LinearGradientMode.Vertical))
+                {
+                    e.Graphics.FillRectangle(brush, panel1.ClientRectangle); ;
+                }
+            };
+        }
         private async void Form1_Load(object sender, EventArgs e)
+            
         {//Handles setting the settings group box to intended size
+            gradients();
 			string latestVersionUrl = "http://newestversion.xlx.pl/version.php";
 
 			try
@@ -232,7 +248,12 @@ namespace Music.LCD
                 }
             } else
             {
-                LogWrite("err", "Please select COM port", true);
+
+                warningbox warningbox = new warningbox();
+                warningbox.Show();
+                warningbox.warningtitle.Text = "COM port not selected.";
+                warningbox.warningtext.Text = "Please select a COM port from the dropdown before connecting.";
+                LogWrite("warn", "Please select COM port", false);
             }
 
            
