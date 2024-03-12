@@ -15,6 +15,7 @@ using System.Net.Http;
 using AngleSharp.Html.Parser;
 using System.Net.NetworkInformation;
 using AngleSharp.Html.Dom;
+using Windows.ApplicationModel.VoiceCommands;
 
 
 
@@ -68,7 +69,7 @@ namespace Music.LCD
 			// Fetch data from PHP script
 			try
 			{
-				string htmlContent = await GetHtmlAsync("https://notsnorlax.github.io/jarek/test.html");
+				string htmlContent = await GetHtmlAsync("https://fikusystems.github.io/Music.LCD.WebService/Music.LCD.WebService.Versions.html");
 				var parser = new HtmlParser();
 				var document = await parser.ParseDocumentAsync(htmlContent);
 				// Extract the links and version
@@ -233,6 +234,10 @@ namespace Music.LCD
 
 			
 		}
+		private void flasherror()
+		{
+            //Form1 form1 = new Form1(); form1.LogWrite("err", "Failed to flash", false);
+        }
 		private void uploadToArduino()
 		{
 
@@ -257,7 +262,7 @@ namespace Music.LCD
 					flashdone.Show();
 
 				}
-				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); }
+				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); flasherror(); }
 			}
 			else if (selectedModel == "Mega 1284 - ATMega1284")
 			{
@@ -275,7 +280,7 @@ namespace Music.LCD
  					
 
 
-				} catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); }
+				} catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); flasherror(); }
 			}
 			else if (selectedModel == "Mega 2560 - ATMega2560")
 			{
@@ -293,7 +298,7 @@ namespace Music.LCD
 
 
 				}
-				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); }
+				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); flasherror(); }
 			}
 			else if (selectedModel == "Micro - ATMega32U4")
 			{
@@ -311,7 +316,7 @@ namespace Music.LCD
  					
 
 				}
-				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); }
+				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); flasherror(); }
 			}
 			else if (selectedModel == "Nano (R2)    - ATMega168")
 			{
@@ -326,7 +331,7 @@ namespace Music.LCD
 				{
 					uploader.UploadSketch();
 				}
-				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); }
+				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); flasherror(); }
 			}
 			else if (selectedModel == "Nano (R3) (Ex) - ATMega328P")
 			{
@@ -345,7 +350,7 @@ namespace Music.LCD
 
 
 				}
-				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); }
+				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); flasherror();  }
 			}
 			else if (selectedModel == "Uno (R3) - ATMega328P")
 			{
@@ -363,15 +368,24 @@ namespace Music.LCD
  					
 
 				}
-				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); }
+				catch (Exception ex) { ShowErrorWhileFlashingArduino(ex.ToString()); flasherror(); }
 			}
 		}
 
 		//message box for File not found
 		private void ShowErrorWhileFlashingArduino(string error)
 		{
-			//FIKU ADD ERROR MSG
-		}
+            MessageBox.Show($"{error}");
+            try
+			{
+				//Form1 form1 = new Form1(); 
+				//form1.LogWrite("err", $"Failed to flash {error}", false);
+			}
+			catch
+			{
+				MessageBox.Show($"{error}");
+			}
+        }
 		private void ShowFileNotFoundErrorMessageBox()
 		{
 			// Create and show the MessageBox
@@ -402,7 +416,7 @@ namespace Music.LCD
 			{
 				//LIQCRYI2C-2004
 				Uri url = new Uri(link2);
-				webClient.DownloadFileAsync(url, @"Temp/MLCD-" + NewestArduinoFirmwareVersion + " - LIQCRYI2C-2004.hex");
+				webClient.DownloadFileAsync(url, @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRYI2C-2004.hex");
 			}
 			else if (LiqCry.Checked && LCD1602.Checked)
 			{
@@ -436,6 +450,16 @@ namespace Music.LCD
 		}
 
         private void ArdSoftRep_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LCD2004_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LiqCryI2C_CheckedChanged(object sender, EventArgs e)
         {
 
         }

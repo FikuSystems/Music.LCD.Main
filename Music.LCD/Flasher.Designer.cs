@@ -201,6 +201,7 @@
             this.toolTip1.SetToolTip(this.LiqCryI2C, "Requires download from github repository.\r\n\r\nArduino MusicLCD Project I2C Edition" +
         ".\r\nFor use with displays with the I2C module.");
             this.LiqCryI2C.UseVisualStyleBackColor = true;
+            this.LiqCryI2C.CheckedChanged += new System.EventHandler(this.LiqCryI2C_CheckedChanged);
             // 
             // DoneButton
             // 
@@ -397,6 +398,7 @@
             this.LCD2004.TabStop = true;
             this.LCD2004.Text = "20 x 04";
             this.LCD2004.UseVisualStyleBackColor = true;
+            this.LCD2004.CheckedChanged += new System.EventHandler(this.LCD2004_CheckedChanged);
             // 
             // ArdModel
             // 
