@@ -1,6 +1,6 @@
 ﻿namespace Music.LCD
 {
-    partial class notisend
+    partial class ErrorBox
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(notisend));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ErrorBox));
             this.panel1 = new System.Windows.Forms.Panel();
             this.kext = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);

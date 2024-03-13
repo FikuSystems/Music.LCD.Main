@@ -249,7 +249,7 @@ namespace Music.LCD
             } else
             {
 
-                warningbox warningbox = new warningbox();
+                WarningBox warningbox = new WarningBox();
                 warningbox.Show();
                 warningbox.warningtitle.Text = "COM port not selected.";
                 warningbox.warningtext.Text = "Please select a COM port from the dropdown before connecting.";
@@ -491,6 +491,9 @@ namespace Music.LCD
             this.WindowState = FormWindowState.Minimized;
             this.ShowInTaskbar = false;
             LogWrite("info", "Hidden to tray", false);
+            ConfirmBox confirmbox = new ConfirmBox();
+            confirmbox.Show();
+            confirmbox.notificationtext.Text = "MusicLCD is hidden to your system tray. If a problem is encountered, the application will show a notification. Double click the icon to open the main control panel.";
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -885,7 +888,7 @@ namespace Music.LCD
 			} else if (type == "err")
             {
                 Logbox.Text += Environment.NewLine + "X: " + text;
-                notisend notisend = new notisend();
+                ErrorBox notisend = new ErrorBox();
                 notisend.Show();
                 notisend.kext.Text = "An error has occured: " + text;
 			} else if (type == "deb")
