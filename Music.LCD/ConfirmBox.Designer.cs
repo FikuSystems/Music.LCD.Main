@@ -2,7 +2,7 @@
 
 namespace Music.LCD
 {
-    partial class WarningBox : Form
+    partial class ConfirmBox : Form
     {
         /// <summary>
         /// Required designer variable.
@@ -31,13 +31,12 @@ namespace Music.LCD
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WarningBox));
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.warningtitle = new System.Windows.Forms.Label();
-            this.warningtext = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.notificationtitle = new System.Windows.Forms.Label();
+            this.notificationtext = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
@@ -52,9 +51,9 @@ namespace Music.LCD
             this.label2.Location = new System.Drawing.Point(13, 41);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(213, 15);
+            this.label2.Size = new System.Drawing.Size(70, 15);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Music LCD has encountered a warning.";
+            this.label2.Text = "Notification";
             // 
             // label1
             // 
@@ -71,7 +70,7 @@ namespace Music.LCD
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(0)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(165)))), ((int)(((byte)(132)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.label2);
@@ -81,31 +80,10 @@ namespace Music.LCD
             this.panel1.Size = new System.Drawing.Size(489, 71);
             this.panel1.TabIndex = 10;
             // 
-            // warningtitle
-            // 
-            this.warningtitle.AutoSize = true;
-            this.warningtitle.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.warningtitle.ForeColor = System.Drawing.Color.White;
-            this.warningtitle.Location = new System.Drawing.Point(45, 77);
-            this.warningtitle.Name = "warningtitle";
-            this.warningtitle.Size = new System.Drawing.Size(84, 25);
-            this.warningtitle.TabIndex = 11;
-            this.warningtitle.Text = "Warning";
-            // 
-            // warningtext
-            // 
-            this.warningtext.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.warningtext.ForeColor = System.Drawing.Color.White;
-            this.warningtext.Location = new System.Drawing.Point(47, 102);
-            this.warningtext.Name = "warningtext";
-            this.warningtext.Size = new System.Drawing.Size(430, 90);
-            this.warningtext.TabIndex = 12;
-            this.warningtext.Text = "warningtext";
-            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(174)))), ((int)(((byte)(1)))));
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(165)))), ((int)(((byte)(132)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(260, 40);
@@ -116,6 +94,27 @@ namespace Music.LCD
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // notificationtitle
+            // 
+            this.notificationtitle.AutoSize = true;
+            this.notificationtitle.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.notificationtitle.ForeColor = System.Drawing.Color.White;
+            this.notificationtitle.Location = new System.Drawing.Point(45, 77);
+            this.notificationtitle.Name = "notificationtitle";
+            this.notificationtitle.Size = new System.Drawing.Size(115, 25);
+            this.notificationtitle.TabIndex = 11;
+            this.notificationtitle.Text = "Notification";
+            // 
+            // notificationtext
+            // 
+            this.notificationtext.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.notificationtext.ForeColor = System.Drawing.Color.White;
+            this.notificationtext.Location = new System.Drawing.Point(47, 102);
+            this.notificationtext.Name = "notificationtext";
+            this.notificationtext.Size = new System.Drawing.Size(430, 90);
+            this.notificationtext.TabIndex = 12;
+            this.notificationtext.Text = "warningtext";
+            // 
             // timer1
             // 
             this.timer1.Enabled = true;
@@ -125,7 +124,7 @@ namespace Music.LCD
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::Music.LCD.Properties.Resources.Warningglass;
+            this.pictureBox1.Image = global::Music.LCD.Properties.Resources.confirmglass___Copy;
             this.pictureBox1.Location = new System.Drawing.Point(12, 77);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(29, 115);
@@ -133,23 +132,22 @@ namespace Music.LCD
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
-            // warningbox
+            // ConfirmBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(489, 196);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.warningtext);
-            this.Controls.Add(this.warningtitle);
+            this.Controls.Add(this.notificationtext);
+            this.Controls.Add(this.notificationtitle);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "warningbox";
+            this.Name = "ConfirmBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Music LCD | Warning";
             this.TopMost = true;
@@ -167,8 +165,8 @@ namespace Music.LCD
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Panel panel1;
-        public System.Windows.Forms.Label warningtitle;
-        public System.Windows.Forms.Label warningtext;
+        public System.Windows.Forms.Label notificationtitle;
+        public System.Windows.Forms.Label notificationtext;
         public System.Windows.Forms.Button button2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;

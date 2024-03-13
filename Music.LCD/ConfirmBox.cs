@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Music.LCD
 {
-    public partial class WarningBox : Form
+    public partial class ConfirmBox : Form
     {
-        public WarningBox()
+        public ConfirmBox()
         {
             InitializeComponent();
         }
@@ -35,8 +35,8 @@ namespace Music.LCD
             {
                 using (LinearGradientBrush brush = new LinearGradientBrush(
                     panel1.ClientRectangle,
-                    Color.FromArgb(246, 174, 1),
-                    Color.FromArgb(246, 144, 1),
+                    Color.FromArgb(65, 167, 31),
+                    Color.FromArgb(35, 90, 16),
                     LinearGradientMode.Vertical))
                 {
                     e.Graphics.FillRectangle(brush, panel1.ClientRectangle); ;
