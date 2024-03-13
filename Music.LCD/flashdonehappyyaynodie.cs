@@ -35,6 +35,8 @@ namespace Music.LCD
         private void flashdonehappyyaynodie_Load(object sender, EventArgs e)
         {
 			gradients();
+			ConfirmBox confirmbox = new ConfirmBox();
+			confirmbox.Show();
         }
         private void gradients()
         {

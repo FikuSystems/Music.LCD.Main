@@ -11,32 +11,34 @@ using System.Windows.Forms;
 
 namespace Music.LCD
 {
-    public partial class WarningBox : Form
+    public partial class ErrorBox : Form
     {
-        public WarningBox()
+
+        public ErrorBox()
         {
             InitializeComponent();
+
         }
 
-        private void warningbox_Load(object sender, EventArgs e)
+        private void notisend_Load(object sender, EventArgs e)
         {
-            gradients();
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Windows\Media\Windows background.wav");
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Windows\Media\windows foreground.wav");
             player.Play();
+            jajo();
             int margin = 47;
             Screen screen = Screen.FromControl(this);
             int newX = screen.WorkingArea.Right - this.Width;
             int newY = screen.WorkingArea.Bottom - this.Height - margin;
             this.Location = new Point(newX, newY);
         }
-        private void gradients()
+        private void jajo()
         {
             panel1.Paint += (sender, e) =>
             {
                 using (LinearGradientBrush brush = new LinearGradientBrush(
                     panel1.ClientRectangle,
-                    Color.FromArgb(246, 174, 1),
-                    Color.FromArgb(246, 144, 1),
+                    Color.FromArgb(254, 7, 7),
+                    Color.FromArgb(177, 4, 4),
                     LinearGradientMode.Vertical))
                 {
                     e.Graphics.FillRectangle(brush, panel1.ClientRectangle); ;
@@ -44,12 +46,17 @@ namespace Music.LCD
             };
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void kext_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }

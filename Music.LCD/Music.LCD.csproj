@@ -74,6 +74,12 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfirmBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmBox.Designer.cs">
+      <DependentUpon>ConfirmBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="flashdonehappyyaynodie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,11 +98,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="notisend.cs">
+    <Compile Include="ErrorBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="notisend.Designer.cs">
-      <DependentUpon>notisend.cs</DependentUpon>
+    <Compile Include="ErrorBox.Designer.cs">
+      <DependentUpon>ErrorBox.cs</DependentUpon>
     </Compile>
     <Compile Include="OSL.cs">
       <SubType>Form</SubType>
@@ -125,11 +131,11 @@
     <Compile Include="shit.Designer.cs">
       <DependentUpon>shit.cs</DependentUpon>
     </Compile>
-    <Compile Include="warningbox.cs">
+    <Compile Include="WarningBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="warningbox.Designer.cs">
-      <DependentUpon>warningbox.cs</DependentUpon>
+    <Compile Include="WarningBox.Designer.cs">
+      <DependentUpon>WarningBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Welcome.cs">
       <SubType>Form</SubType>
@@ -140,6 +146,9 @@
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmBox.resx">
+      <DependentUpon>ConfirmBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="flashdonehappyyaynodie.resx">
       <DependentUpon>flashdonehappyyaynodie.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,8 +158,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="notisend.resx">
-      <DependentUpon>notisend.cs</DependentUpon>
+    <EmbeddedResource Include="ErrorBox.resx">
+      <DependentUpon>ErrorBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OSL.resx">
       <DependentUpon>OSL.cs</DependentUpon>
@@ -174,8 +183,8 @@
     <EmbeddedResource Include="shit.resx">
       <DependentUpon>shit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="warningbox.resx">
-      <DependentUpon>warningbox.cs</DependentUpon>
+    <EmbeddedResource Include="WarningBox.resx">
+      <DependentUpon>WarningBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Welcome.resx">
       <DependentUpon>Welcome.cs</DependentUpon>

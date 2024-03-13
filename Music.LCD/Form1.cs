@@ -146,34 +146,41 @@ namespace Music.LCD
             {
                 findComPorts();
 
-				string[] ports = SerialPort.GetPortNames();
-				ComSelec.Items.Clear();
-                foreach (string comport in ports)
+                try
                 {
-					ComSelec.Items.Add(comport);
-					if (comport == config[0])
+                    string[] ports = SerialPort.GetPortNames();
+
+
+                    ComSelec.Items.Clear();
+                    foreach (string comport in ports)
                     {
-                        ComSelec.Text = comport;
-                        button1.PerformClick();
-                        break;
+                        ComSelec.Items.Add(comport);
+                        if (comport == config[0])
+                        {
+                            ComSelec.Text = comport;
+                            button1.PerformClick();
+                            break;
+                        }
                     }
-                }
+                } catch (Exception ex) { LogWrite("err", "Cannot get COM ports: " + ex, true); }
 			} else if (config[3] == "1")
             {
 				findComPorts();
-
-				string[] ports = SerialPort.GetPortNames();
-				ComSelec.Items.Clear();
-				foreach (string comport in ports)
-				{
-					ComSelec.Items.Add(comport);
-					if (comport == config[0])
-					{
-						LogWrite("deb", "found", true);
-						ComSelec.Text = comport;
-						break;
-					}
-				}
+                try
+                {
+                    string[] ports = SerialPort.GetPortNames();
+                    ComSelec.Items.Clear();
+                    foreach (string comport in ports)
+                    {
+                        ComSelec.Items.Add(comport);
+                        if (comport == config[0])
+                        {
+                            LogWrite("deb", "found", true);
+                            ComSelec.Text = comport;
+                            break;
+                        }
+                    }
+                } catch (Exception ex) { LogWrite("err", "Cannot get COM ports: " + ex, true); }
 			}
             
 			LogWrite("info", "Logging started", true);
@@ -218,27 +225,30 @@ namespace Music.LCD
                 soundMute.Enabled = true;
                 ComSelec.Enabled = false;
                 LogWrite("info", "Connect attempt", false);
-                if (!serialPort.IsOpen && ComSelec.SelectedItem.ToString() != "")
+                try
                 {
-                    try
+                    if (!serialPort.IsOpen && ComSelec.SelectedItem.ToString() != "")
                     {
-                        serialPort.PortName = ComSelec.Text.ToString();
-                        serialPort.Open();
-                        config[0] = serialPort.PortName.ToString();
-                        Arduinosync.Start();
-
-                        if (config[6] == "1")
+                        try
                         {
-                            this.WindowState = FormWindowState.Minimized;
-                            this.ShowInTaskbar = false;
-                            LogWrite("info", "Hidden to tray", false);
+                            serialPort.PortName = ComSelec.Text.ToString();
+                            serialPort.Open();
+                            config[0] = serialPort.PortName.ToString();
+                            Arduinosync.Start();
+
+                            if (config[6] == "1")
+                            {
+                                this.WindowState = FormWindowState.Minimized;
+                                this.ShowInTaskbar = false;
+                                LogWrite("info", "Hidden to tray", false);
+                            }
+                        }
+                        catch
+                        {
+                            LogWrite("err", "Connection fail", false);
                         }
                     }
-                    catch
-                    {
-                        LogWrite("err", "Connection fail", false);
-                    }
-                }
+                } catch (Exception ex) { LogWrite("err", "Cannot use serialPort: " + ex, true); }
 
                 pressed = true;
                 LogWrite("info", "Connection success", false);
@@ -249,7 +259,7 @@ namespace Music.LCD
             } else
             {
 
-                warningbox warningbox = new warningbox();
+                WarningBox warningbox = new WarningBox();
                 warningbox.Show();
                 warningbox.warningtitle.Text = "COM port not selected.";
                 warningbox.warningtext.Text = "Please select a COM port from the dropdown before connecting.";
@@ -491,6 +501,9 @@ namespace Music.LCD
             this.WindowState = FormWindowState.Minimized;
             this.ShowInTaskbar = false;
             LogWrite("info", "Hidden to tray", false);
+            ConfirmBox confirmbox = new ConfirmBox();
+            confirmbox.Show();
+            confirmbox.notificationtext.Text = "MusicLCD is hidden to your system tray. If a problem is encountered, the application will show a notification. Double click the icon to open the main control panel.";
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -640,28 +653,32 @@ namespace Music.LCD
 
 
 
-		private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
-		{
-            string tmp = serialPort.ReadLine();
-			if (!connected && tmp.Length > 4)
-			{
-				ArduinoHrdWareData = tmp;
+        private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            try
+            {
+                string tmp = serialPort.ReadLine();
+                if (!connected && tmp.Length > 4)
+                {
+                    ArduinoHrdWareData = tmp;
 
-				if (ArduinoHrdWareData.Contains("T:") && ArduinoHrdWareData.Contains("V:") && ArduinoHrdWareData.Substring(ArduinoHrdWareData.IndexOf("T:") + 2, ArduinoHrdWareData.IndexOf("V:") - ArduinoHrdWareData.IndexOf("T:") - 3) == "BCS 16x02" | ArduinoHrdWareData.Substring(ArduinoHrdWareData.IndexOf("T:") + 2, ArduinoHrdWareData.IndexOf("V:") - ArduinoHrdWareData.IndexOf("T:") - 3) == "BCS 20x4")
+                    if (ArduinoHrdWareData.Contains("T:") && ArduinoHrdWareData.Contains("V:") && ArduinoHrdWareData.Substring(ArduinoHrdWareData.IndexOf("T:") + 2, ArduinoHrdWareData.IndexOf("V:") - ArduinoHrdWareData.IndexOf("T:") - 3) == "BCS 16x02" | ArduinoHrdWareData.Substring(ArduinoHrdWareData.IndexOf("T:") + 2, ArduinoHrdWareData.IndexOf("V:") - ArduinoHrdWareData.IndexOf("T:") - 3) == "BCS 20x4")
+                    {
+                        MusicLCDType = "BCS";
+                    }
+                    else
+                    {
+                        MusicLCDType = ArduinoHrdWareData.Substring(ArduinoHrdWareData.IndexOf("T:") + 2, ArduinoHrdWareData.IndexOf("V:") - ArduinoHrdWareData.IndexOf("T:") - 3);
+                    }
+                    connected = true;
+                    ArduinoHrdWareData = ArduinoHrdWareData.Replace("T:", " ");
+                    ArduinoHrdWareData = ArduinoHrdWareData.Replace("V:", " ");
+                }
+                else
                 {
-                    MusicLCDType = "BCS";
-				} else
-                {
-                    MusicLCDType = ArduinoHrdWareData.Substring(ArduinoHrdWareData.IndexOf("T:") + 2, ArduinoHrdWareData.IndexOf("V:") - ArduinoHrdWareData.IndexOf("T:") - 3);
-				}
-				connected = true;
-                ArduinoHrdWareData = ArduinoHrdWareData.Replace("T:", " ");
-				ArduinoHrdWareData = ArduinoHrdWareData.Replace("V:", " ");
-			}
-			else
-			{
-				COMData = tmp;
-			}
+                    COMData = tmp;
+                }
+            } catch(Exception ex) { LogWrite("err", "Cannot read from COM port: " + ex, true); }
 
 		}
 
@@ -885,7 +902,7 @@ namespace Music.LCD
 			} else if (type == "err")
             {
                 Logbox.Text += Environment.NewLine + "X: " + text;
-                notisend notisend = new notisend();
+                ErrorBox notisend = new ErrorBox();
                 notisend.Show();
                 notisend.kext.Text = "An error has occured: " + text;
 			} else if (type == "deb")
