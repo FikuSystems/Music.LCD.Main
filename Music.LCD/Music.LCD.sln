@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Music.LCD", "Music.LCD.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Music.LCD.Installer", "..\Music.LCD.Installer\Music.LCD.Installer.csproj", "{8E1DD99C-064B-44DC-B4A7-A9FBCBFD8D21}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Music.LCD.Updater", "..\Music.LCD.Updater\Music.LCD.Updater.csproj", "{15E5BD9D-3AD2-4338-BB2B-C18A6F5E58C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8E1DD99C-064B-44DC-B4A7-A9FBCBFD8D21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E1DD99C-064B-44DC-B4A7-A9FBCBFD8D21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E1DD99C-064B-44DC-B4A7-A9FBCBFD8D21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15E5BD9D-3AD2-4338-BB2B-C18A6F5E58C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15E5BD9D-3AD2-4338-BB2B-C18A6F5E58C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15E5BD9D-3AD2-4338-BB2B-C18A6F5E58C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15E5BD9D-3AD2-4338-BB2B-C18A6F5E58C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
