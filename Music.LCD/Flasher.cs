@@ -8,14 +8,10 @@ using System.IO;
 using System.IO.Ports;
 using System.Net;
 using System.Windows.Forms;
-using System.Drawing.Drawing2D;
-using HtmlAgilityPack;
+using System.Drawing.Drawing2D; 
 using System.Threading.Tasks;
 using System.Net.Http;
 using AngleSharp.Html.Parser;
-using System.Net.NetworkInformation;
-using AngleSharp.Html.Dom;
-using Windows.ApplicationModel.VoiceCommands;
 
 
 

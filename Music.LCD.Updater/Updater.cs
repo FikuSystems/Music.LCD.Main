@@ -9,14 +9,25 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.LinkLabel;
+using System.Net.Http;
+using System.IO;
+using System.IO.Ports;
+using System.Net;
+using HtmlAgilityPack;
+using AngleSharp.Html.Parser;
+using System.Net.NetworkInformation;
+using AngleSharp.Html.Dom;
 
 namespace Music.LCD.Updater
 {
 
     public partial class Updater : Form
     {
+        private string link1, newestVersion;
+		private String directory = AppDomain.CurrentDomain.BaseDirectory;
 
-        public Updater()
+		public Updater()
         {
             InitializeComponent();
         }
@@ -30,9 +41,33 @@ namespace Music.LCD.Updater
                 return Crp;
             }
         }
-        private void Updater_Load(object sender, EventArgs e)
+        private static HttpClient _client = new HttpClient();
+
+        private static async Task<string> GetHtmlAsync(string uri)
+        {
+            var response = await _client.GetAsync(uri);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+        private async void Updater_Load(object sender, EventArgs e)
         {
             gradients();
+            try
+            {
+                string htmlContent = await GetHtmlAsync("https://fikusystems.github.io/Music.LCD.WebService/Music.LCD.WebService.appVersion.html");
+                var parser = new HtmlParser();
+                var document = await parser.ParseDocumentAsync(htmlContent);
+                // Extract the link and version
+                var link1Node = document.QuerySelector("#link1");
+                link1 = link1Node != null ? link1Node.TextContent.Trim() : null;
+                var versionNode = document.QuerySelector("#version");
+                newestVersion = versionNode != null ? versionNode.TextContent.Trim() : null;
+                label6.Text = "new version: " + newestVersion;
+
+            } catch (Exception ex)
+            {
+                displayError("Can't connect to the server: " + ex);
+            }
         }
 
         private void gradients()
@@ -77,8 +112,25 @@ namespace Music.LCD.Updater
             DownloadProgress.Value = 0;
             DownloadProgress.SetState(2);
         }
+        void downloadUpdate()
+        {
+            if (!Directory.Exists(directory + @"UpdateTemp"))
+            {
+				DirectoryInfo di = Directory.CreateDirectory(directory + @"UpdateTemp");
+				di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+			}
+			WebClient webClient = new WebClient();
+			webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
+			Uri url = new Uri(link1);
+			webClient.DownloadFileAsync(url, @"");
+			
+		}
+		private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+		{
+			DownloadProgress.Value = e.ProgressPercentage;
+		}
 
-        private void button1_Click(object sender, EventArgs e)
+		private void button1_Click(object sender, EventArgs e)
         {
             updatedone();
         }
@@ -102,6 +154,11 @@ namespace Music.LCD.Updater
                 timer2.Stop();
                 Application.Exit();
             }
+        }
+
+        void displayError(string message)
+        {
+
         }
     }
     public static class ModifyProgressBarColor
