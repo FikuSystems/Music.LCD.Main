@@ -37,8 +37,8 @@ namespace Music.LCD.Updater
             {
                 using (LinearGradientBrush brush = new LinearGradientBrush(
                     panel1.ClientRectangle,
-                    Color.FromArgb(82, 183, 0),
-                    Color.FromArgb(73, 116, 40),
+                    Color.FromArgb(86, 165, 132),
+                    Color.FromArgb(62, 120, 96),
                     LinearGradientMode.Vertical))
                 {
                     e.Graphics.FillRectangle(brush, panel1.ClientRectangle); ;
@@ -49,6 +49,17 @@ namespace Music.LCD.Updater
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.linkLabel1.LinkVisited = true;
+            System.Diagnostics.Process.Start("https://github.com/FikuSystems/MusicLCD");
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            OverallProgress.Value = DownloadProgress.Value + BackupProgress.Value + InstallProgress.Value;
         }
     }
 }
