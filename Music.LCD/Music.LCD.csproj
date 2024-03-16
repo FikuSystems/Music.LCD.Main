@@ -224,14 +224,24 @@
     <PackageReference Include="AngleSharp">
       <Version>1.1.2</Version>
     </PackageReference>
+    <PackageReference Include="AngleSharp" Version="1.1.2" />
+    <PackageReference Include="AngleSharp" Version="1.1.2" />
+    <PackageReference Include="AngleSharp" Version="1.1.2" />
+    <PackageReference Include="AngleSharp" Version="1.1.2" />
+    <PackageReference Include="AngleSharp" Version="1.1.2" />
+    <PackageReference Include="AngleSharp" Version="1.1.2" />
     <PackageReference Include="ArduinoUploader" Version="3.2.0" />
     <PackageReference Include="Dubya.WindowsMediaController">
       <Version>2.5.3</Version>
     </PackageReference>
     <PackageReference Include="Dubya.WindowsMediaController" Version="2.5.3" />
+    <PackageReference Include="Dubya.WindowsMediaController" Version="2.5.4" />
     <PackageReference Include="HtmlAgilityPack">
       <Version>1.11.59</Version>
     </PackageReference>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.59" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.59" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.59" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions">
       <Version>8.0.0</Version>
     </PackageReference>

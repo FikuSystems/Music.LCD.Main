@@ -51,6 +51,7 @@
             this.LCDLN2 = new System.Windows.Forms.Label();
             this.LCDLN3 = new System.Windows.Forms.Label();
             this.LCDLN4 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -68,13 +69,12 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.DisconnectDelay = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -134,7 +134,7 @@
             this.ComSelec.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ComSelec.Name = "ComSelec";
             this.ComSelec.Size = new System.Drawing.Size(189, 23);
-            this.ComSelec.TabIndex = 2;
+            this.ComSelec.TabIndex = 0;
             this.ComSelec.SelectedIndexChanged += new System.EventHandler(this.ComSelec_SelectedIndexChanged);
             // 
             // button2
@@ -145,7 +145,7 @@
             this.button2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(88, 27);
-            this.button2.TabIndex = 1;
+            this.button2.TabIndex = 2;
             this.button2.Text = "Disconnect";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -157,7 +157,7 @@
             this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 27);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 1;
             this.button1.Text = "Connect";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -188,7 +188,7 @@
             this.checkBox1.Location = new System.Drawing.Point(7, 220);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(137, 19);
-            this.checkBox1.TabIndex = 16;
+            this.checkBox1.TabIndex = 8;
             this.checkBox1.Text = "Don\'t show welcome";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -199,7 +199,7 @@
             this.EnableNoteHiding.Location = new System.Drawing.Point(7, 195);
             this.EnableNoteHiding.Name = "EnableNoteHiding";
             this.EnableNoteHiding.Size = new System.Drawing.Size(129, 19);
-            this.EnableNoteHiding.TabIndex = 15;
+            this.EnableNoteHiding.TabIndex = 7;
             this.EnableNoteHiding.Text = "Enable Note Hiding";
             this.EnableNoteHiding.UseVisualStyleBackColor = true;
             this.EnableNoteHiding.CheckedChanged += new System.EventHandler(this.EnableNoteHiding_CheckedChanged);
@@ -211,7 +211,7 @@
             this.soundMute.Location = new System.Drawing.Point(7, 171);
             this.soundMute.Name = "soundMute";
             this.soundMute.Size = new System.Drawing.Size(91, 19);
-            this.soundMute.TabIndex = 14;
+            this.soundMute.TabIndex = 6;
             this.soundMute.Text = "Sound mute";
             this.soundMute.UseVisualStyleBackColor = true;
             this.soundMute.CheckedChanged += new System.EventHandler(this.soundMute_CheckedChanged);
@@ -222,7 +222,7 @@
             this.hidetotrayconnect.Location = new System.Drawing.Point(7, 147);
             this.hidetotrayconnect.Name = "hidetotrayconnect";
             this.hidetotrayconnect.Size = new System.Drawing.Size(151, 19);
-            this.hidetotrayconnect.TabIndex = 6;
+            this.hidetotrayconnect.TabIndex = 5;
             this.hidetotrayconnect.Text = "Hide to tray on connect";
             this.hidetotrayconnect.UseVisualStyleBackColor = true;
             this.hidetotrayconnect.CheckedChanged += new System.EventHandler(this.hidetotrayconnect_CheckedChanged);
@@ -233,7 +233,7 @@
             this.enabletray.Location = new System.Drawing.Point(7, 122);
             this.enabletray.Name = "enabletray";
             this.enabletray.Size = new System.Drawing.Size(111, 19);
-            this.enabletray.TabIndex = 5;
+            this.enabletray.TabIndex = 4;
             this.enabletray.Text = "Enable Tray Icon";
             this.enabletray.UseVisualStyleBackColor = true;
             this.enabletray.CheckedChanged += new System.EventHandler(this.enabletray_CheckedChanged);
@@ -255,7 +255,7 @@
             this.autoconn.Location = new System.Drawing.Point(7, 47);
             this.autoconn.Name = "autoconn";
             this.autoconn.Size = new System.Drawing.Size(98, 19);
-            this.autoconn.TabIndex = 2;
+            this.autoconn.TabIndex = 1;
             this.autoconn.Text = "Auto connect";
             this.autoconn.UseVisualStyleBackColor = true;
             this.autoconn.CheckedChanged += new System.EventHandler(this.autoconn_CheckedChanged);
@@ -266,7 +266,7 @@
             this.savecom.Location = new System.Drawing.Point(7, 72);
             this.savecom.Name = "savecom";
             this.savecom.Size = new System.Drawing.Size(156, 19);
-            this.savecom.TabIndex = 1;
+            this.savecom.TabIndex = 2;
             this.savecom.Text = "Save COM Port selection";
             this.savecom.UseVisualStyleBackColor = true;
             this.savecom.CheckedChanged += new System.EventHandler(this.savecom_CheckedChanged);
@@ -346,6 +346,17 @@
             this.LCDLN4.TabIndex = 4;
             this.LCDLN4.Text = "[------------------]";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Music.LCD.Properties.Resources.LCDON;
+            this.pictureBox1.Location = new System.Drawing.Point(7, 23);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(351, 210);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // button3
             // 
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(165)))), ((int)(((byte)(132)))));
@@ -354,7 +365,7 @@
             this.button3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(175, 62);
-            this.button3.TabIndex = 5;
+            this.button3.TabIndex = 0;
             this.button3.Text = "Close to tray";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -366,7 +377,7 @@
             this.button4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(87, 28);
-            this.button4.TabIndex = 6;
+            this.button4.TabIndex = 2;
             this.button4.Text = "Exit";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -378,7 +389,7 @@
             this.button5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(88, 28);
-            this.button5.TabIndex = 7;
+            this.button5.TabIndex = 1;
             this.button5.Text = "Restart";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
@@ -390,7 +401,7 @@
             this.button6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(87, 28);
-            this.button6.TabIndex = 8;
+            this.button6.TabIndex = 7;
             this.button6.Text = "Open logs";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
@@ -416,7 +427,7 @@
             this.Logbox.ReadOnly = true;
             this.Logbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Logbox.Size = new System.Drawing.Size(208, 215);
-            this.Logbox.TabIndex = 5;
+            this.Logbox.TabIndex = 0;
             this.Logbox.Text = "Music LCD (Ver)\r\n(c) FikuSystems 2024\r\n=========================\r\nCode info:\r\ni -" +
     " Information\r\n! - Warning\r\nX - Error\r\n=========================\r\ni: Process star" +
     "ted";
@@ -428,7 +439,7 @@
             this.button7.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(87, 27);
-            this.button7.TabIndex = 11;
+            this.button7.TabIndex = 5;
             this.button7.Text = "Hide logs";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Visible = false;
@@ -466,7 +477,7 @@
             this.button8.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(88, 28);
-            this.button8.TabIndex = 12;
+            this.button8.TabIndex = 3;
             this.button8.Text = "Flash tool";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
@@ -498,17 +509,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(825, 71);
             this.panel1.TabIndex = 13;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Music.LCD.Properties.Resources.LCDON;
-            this.pictureBox1.Location = new System.Drawing.Point(7, 23);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(351, 210);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
@@ -545,11 +545,11 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
 		}

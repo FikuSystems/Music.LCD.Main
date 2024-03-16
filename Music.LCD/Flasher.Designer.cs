@@ -107,7 +107,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(192, 15);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Welcome to the Arduino flash tool.";
             // 
             // DownloadProgress
@@ -117,7 +117,7 @@
             this.DownloadProgress.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DownloadProgress.Name = "DownloadProgress";
             this.DownloadProgress.Size = new System.Drawing.Size(187, 23);
-            this.DownloadProgress.TabIndex = 3;
+            this.DownloadProgress.TabIndex = 1;
             // 
             // errtext
             // 
@@ -144,7 +144,7 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox1.Size = new System.Drawing.Size(276, 123);
-            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "1. Select Version - Hover on selection for info";
             // 
@@ -155,7 +155,7 @@
             this.BCS.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BCS.Name = "BCS";
             this.BCS.Size = new System.Drawing.Size(244, 19);
-            this.BCS.TabIndex = 4;
+            this.BCS.TabIndex = 3;
             this.BCS.Text = "Arduino MusicLCD - BCS Edition (Offline)";
             this.toolTip1.SetToolTip(this.BCS, resources.GetString("BCS.ToolTip"));
             this.BCS.UseVisualStyleBackColor = true;
@@ -167,7 +167,7 @@
             this.BCSI2C.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BCSI2C.Name = "BCSI2C";
             this.BCSI2C.Size = new System.Drawing.Size(261, 19);
-            this.BCSI2C.TabIndex = 3;
+            this.BCSI2C.TabIndex = 2;
             this.BCSI2C.Text = "Arduino MusicLCD - BCSI2C Edition (Offline)";
             this.toolTip1.SetToolTip(this.BCSI2C, resources.GetString("BCSI2C.ToolTip"));
             this.BCSI2C.UseVisualStyleBackColor = true;
@@ -209,7 +209,7 @@
             this.DoneButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DoneButton.Name = "DoneButton";
             this.DoneButton.Size = new System.Drawing.Size(75, 28);
-            this.DoneButton.TabIndex = 7;
+            this.DoneButton.TabIndex = 6;
             this.DoneButton.Text = "Done";
             this.DoneButton.UseVisualStyleBackColor = true;
             this.DoneButton.Click += new System.EventHandler(this.button1_Click);
@@ -237,7 +237,7 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox2.Size = new System.Drawing.Size(200, 123);
-            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "3. Choose and/ or download";
             // 
@@ -247,7 +247,7 @@
             this.DownloadFileName.Location = new System.Drawing.Point(7, 77);
             this.DownloadFileName.Name = "DownloadFileName";
             this.DownloadFileName.Size = new System.Drawing.Size(186, 39);
-            this.DownloadFileName.TabIndex = 5;
+            this.DownloadFileName.TabIndex = 2;
             this.DownloadFileName.Text = "MLCD-(Version)-(Edition)-(LCDSize).HEX";
             this.DownloadFileName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -271,7 +271,7 @@
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox3.Size = new System.Drawing.Size(200, 123);
-            this.groupBox3.TabIndex = 10;
+            this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "6. Upload/ Flash";
             // 
@@ -282,7 +282,7 @@
             this.FlashProgress.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.FlashProgress.Name = "FlashProgress";
             this.FlashProgress.Size = new System.Drawing.Size(184, 23);
-            this.FlashProgress.TabIndex = 5;
+            this.FlashProgress.TabIndex = 1;
             // 
             // Flash
             // 
@@ -292,7 +292,7 @@
             this.Flash.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Flash.Name = "Flash";
             this.Flash.Size = new System.Drawing.Size(184, 23);
-            this.Flash.TabIndex = 1;
+            this.Flash.TabIndex = 0;
             this.Flash.Text = "Flash";
             this.Flash.UseVisualStyleBackColor = true;
             this.Flash.Click += new System.EventHandler(this.Flash_Click);
@@ -304,7 +304,7 @@
             this.ArdSoftRepTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ArdSoftRepTitle.Name = "ArdSoftRepTitle";
             this.ArdSoftRepTitle.Size = new System.Drawing.Size(136, 15);
-            this.ArdSoftRepTitle.TabIndex = 11;
+            this.ArdSoftRepTitle.TabIndex = 4;
             this.ArdSoftRepTitle.Text = "Arduino software report:";
             // 
             // ArdSoftRep
@@ -313,7 +313,7 @@
             this.ArdSoftRep.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ArdSoftRep.Name = "ArdSoftRep";
             this.ArdSoftRep.Size = new System.Drawing.Size(1010, 15);
-            this.ArdSoftRep.TabIndex = 12;
+            this.ArdSoftRep.TabIndex = 5;
             this.ArdSoftRep.Text = "MLCD-(Edition Name)-(Version)-(Compilation Date)-(LCD Size)-(Release, Beta)";
             this.ArdSoftRep.Click += new System.EventHandler(this.ArdSoftRep_Click);
             // 
@@ -326,7 +326,7 @@
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox4.Size = new System.Drawing.Size(88, 123);
-            this.groupBox4.TabIndex = 13;
+            this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "5. COM port";
             // 
@@ -335,7 +335,7 @@
             this.label4.Location = new System.Drawing.Point(7, 51);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 65);
-            this.label4.TabIndex = 7;
+            this.label4.TabIndex = 1;
             this.label4.Text = "COM port. What else to say.\r\n ¯\\_(ツ)_/¯";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -358,7 +358,7 @@
             this.oktext.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.oktext.Name = "oktext";
             this.oktext.Size = new System.Drawing.Size(923, 30);
-            this.oktext.TabIndex = 18;
+            this.oktext.TabIndex = 7;
             this.oktext.Text = "Ready";
             this.oktext.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.oktext.Visible = false;
@@ -372,7 +372,7 @@
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox6.Size = new System.Drawing.Size(93, 123);
-            this.groupBox6.TabIndex = 14;
+            this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "2. Display size";
             // 
@@ -428,7 +428,7 @@
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox5.Size = new System.Drawing.Size(199, 123);
-            this.groupBox5.TabIndex = 14;
+            this.groupBox5.TabIndex = 0;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "4. Arduino model";
             // 
@@ -437,7 +437,7 @@
             this.label3.Location = new System.Drawing.Point(7, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(184, 65);
-            this.label3.TabIndex = 6;
+            this.label3.TabIndex = 1;
             this.label3.Text = "Select your Arduino model from the dropdown, required so that the liblaries know " +
     "what processor is used.\r\n";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -450,7 +450,7 @@
             this.groupBox7.Location = new System.Drawing.Point(12, 77);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(600, 153);
-            this.groupBox7.TabIndex = 19;
+            this.groupBox7.TabIndex = 2;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Stage 1. Edition select and download";
             // 
@@ -462,7 +462,7 @@
             this.groupBox8.Location = new System.Drawing.Point(618, 77);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(518, 153);
-            this.groupBox8.TabIndex = 20;
+            this.groupBox8.TabIndex = 3;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Stage 2. File flash/ upload";
             // 
@@ -499,7 +499,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1147, 71);
-            this.panel1.TabIndex = 22;
+            this.panel1.TabIndex = 1;
             // 
             // okico
             // 
@@ -536,7 +536,7 @@
             this.okunderstand.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.okunderstand.Name = "okunderstand";
             this.okunderstand.Size = new System.Drawing.Size(135, 39);
-            this.okunderstand.TabIndex = 15;
+            this.okunderstand.TabIndex = 8;
             this.okunderstand.Text = "OK, I understand";
             this.okunderstand.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.okunderstand.UseVisualStyleBackColor = true;
