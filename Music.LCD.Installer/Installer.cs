@@ -5,9 +5,12 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Reflection;
 
 namespace Music.LCD.Installer
 {
@@ -15,7 +18,7 @@ namespace Music.LCD.Installer
 	public partial class Installer : Form
     {
         public int PageNumber;
-
+        public string choosenPath;
         public Installer()
         {
             InitializeComponent();
@@ -41,7 +44,7 @@ namespace Music.LCD.Installer
             gradients();
             PageNumber = 0;
             this.Size = new System.Drawing.Size(793, 417);
-        }
+	    }
         private void gradients()
         {
             panel1.Paint += (sender, e) =>
@@ -137,6 +140,9 @@ namespace Music.LCD.Installer
                 s3.Font = new Font("Segoe UI", 9);
                 s4.Font = new Font("Segoe UI", 9, FontStyle.Bold);
                 s8.Font = new Font("Segoe UI", 12);
+
+                copyingFiles.RunWorkerAsync();
+
             }
             if (PageNumber == 5)
             {
@@ -246,5 +252,32 @@ namespace Music.LCD.Installer
         {
 
         }
-    }
+
+		private void copyingFiles_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+		{
+
+		}
+
+		private void copyingFiles_DoWork(object sender, DoWorkEventArgs e)
+		{
+			if (!Directory.Exists(choosenPath + @"InstallTemp"))
+			{
+				DirectoryInfo di = Directory.CreateDirectory(choosenPath + @"InstallTemp");
+				di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+			}
+
+			using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Music.LCD.Installer.Resources.Music.LCD.zip"))
+			{
+				string destFolder = choosenPath + @"InstallTemp";
+				string destPath = Path.Combine(destFolder, "Music.LCD.zip");
+				Directory.CreateDirectory(destFolder);
+				using (FileStream fileStream = File.Create(destPath))
+				{
+					resourceStream.CopyTo(fileStream);
+				}
+			}
+
+		}
+
+	}
 }

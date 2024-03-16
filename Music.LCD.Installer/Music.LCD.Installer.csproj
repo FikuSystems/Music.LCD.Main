@@ -97,6 +97,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Resources\Music.LCD.zip" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
