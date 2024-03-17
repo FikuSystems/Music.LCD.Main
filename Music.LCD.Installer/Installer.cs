@@ -14,14 +14,16 @@ using System.Reflection;
 
 namespace Music.LCD.Installer
 {
-	//TEST
-	public partial class Installer : Form
+    //TEST
+    public partial class Installer : Form
     {
         public int PageNumber;
         public string choosenPath;
+        public bool silentStart;
         public Installer()
         {
             InitializeComponent();
+
         }
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
@@ -35,16 +37,42 @@ namespace Music.LCD.Installer
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (Program.CommandLineArgs != null)
+            {
+                string[] args = Program.CommandLineArgs;
+                foreach (string arg in args)
+                {
+                    if (arg == "-s")
+                    {
+                        silentStart = true; break;
+                    }
+                    else
+                    {
+                        silentStart = false; break;
+                    }
+                }
+            }
+
+            if (silentStart)
+            {
+                this.Hide();
+                ShowInTaskbar = false;
+                choosenPath = AppDomain.CurrentDomain.BaseDirectory;
+                copyingFiles.RunWorkerAsync();
+            } else
+            {
+                gradients();
+            }
             Selectinstalllocation.Visible = false;
             shortcuts.Visible = false;
             instruct.Visible = false;
             installation.Visible = false;
             Complete.Visible = false;
             backbtn.Enabled = false;
-            gradients();
+
             PageNumber = 0;
             this.Size = new System.Drawing.Size(793, 417);
-	    }
+        }
         private void gradients()
         {
             panel1.Paint += (sender, e) =>
@@ -73,8 +101,8 @@ namespace Music.LCD.Installer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PageNumber +=1;
-            if(PageNumber == 0)
+            PageNumber += 1;
+            if (PageNumber == 0)
             {
                 Selectinstalllocation.Visible = false;
                 shortcuts.Visible = false;
@@ -253,31 +281,28 @@ namespace Music.LCD.Installer
 
         }
 
-		private void copyingFiles_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-		{
+        private void copyingFiles_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
 
-		}
+        }
 
-		private void copyingFiles_DoWork(object sender, DoWorkEventArgs e)
-		{
-			if (!Directory.Exists(choosenPath + @"InstallTemp"))
-			{
-				DirectoryInfo di = Directory.CreateDirectory(choosenPath + @"InstallTemp");
-				di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
-			}
+        private void copyingFiles_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (!Directory.Exists(choosenPath + @"InstallTemp"))
+            {
+                DirectoryInfo di = Directory.CreateDirectory(choosenPath + @"InstallTemp");
+                di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+            }
 
-			using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Music.LCD.Installer.Resources.Music.LCD.zip"))
-			{
-				string destFolder = choosenPath + @"InstallTemp";
-				string destPath = Path.Combine(destFolder, "Music.LCD.zip");
-				Directory.CreateDirectory(destFolder);
-				using (FileStream fileStream = File.Create(destPath))
-				{
-					resourceStream.CopyTo(fileStream);
-				}
-			}
+        }
+        public void ExtractZipResource(string resourceName, string targetDirectory)
+        {
+            // Get the assembly where the resources are embedded
+            Assembly assembly = Assembly.GetExecutingAssembly();
 
-		}
-
-	}
+            // Create a temporary directory to extract the zip file
+            string tempDirectory = Path.Combine(Path.GetTempPath(), "InstallTemp");
+            Directory.CreateDirectory(tempDirectory);
+        }
+	} 
 }
