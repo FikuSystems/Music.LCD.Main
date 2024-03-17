@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 using System.IO.Compression;
+using System.Threading;
 
 namespace Music.LCD.Installer
 {
@@ -310,11 +311,33 @@ namespace Music.LCD.Installer
                 }
                 catch {}
             }
+			DirectoryInfo dir = Directory.CreateDirectory(choosenPath + @"Music.LCD.Old");
+			dir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+			string sourceDir = choosenPath; 
+			string destDir = choosenPath + @"Music.LCD.Old"; 
+			Directory.CreateDirectory(destDir);
+			string[] files = Directory.GetFiles(sourceDir);
 
-            //unzip MusicLCD program
-            ZipFile.ExtractToDirectory(choosenPath + @"InstallTemp\MusicLCD.zip", choosenPath);
-            
+			foreach (string file in files)
+			{
+				string fileName = Path.GetFileName(file);
+				if (fileName != "Music.LCD.Installer.exe")
+				{
+					string destFile = Path.Combine(destDir, fileName);
+					File.Copy(file, destFile, true); 
+				}
+			}
+			foreach (string file in files)
+			{
+				string fileName = Path.GetFileName(file);
+				if (fileName != "Music.LCD.Installer.exe")
+				{
+					File.Delete(file);
+				}
+			}
+			ZipFile.ExtractToDirectory(choosenPath + @"InstallTemp\MusicLCD.zip", choosenPath);
+            File.Delete(choosenPath + @"InstallTemp\MusicLCD.zip");
+            Directory.Delete(choosenPath + @"InstallTemp");
         }
-    }
-	
+	}
 }
