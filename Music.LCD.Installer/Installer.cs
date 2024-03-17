@@ -13,6 +13,7 @@ using System.IO;
 using System.Reflection;
 using System.IO.Compression;
 using System.Threading;
+using System.Runtime.InteropServices;
 
 namespace Music.LCD.Installer
 {
@@ -278,7 +279,35 @@ namespace Music.LCD.Installer
                 Application.Exit();
             }
         }
+        void createShortcuts()
+        {
+            if (cdesktopshortcut.Checked)
+            {	
+				using (StreamWriter writer = new StreamWriter(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Music.LCD.lnk")))
+				{
+					writer.WriteLine("[InternetShortcut]");
+					writer.WriteLine("URL=file:///" + Assembly.GetEntryAssembly().Location.Replace('\\', '/'));
+					writer.WriteLine("IconIndex=0");
+					writer.WriteLine("IconFile=" + choosenPath + @"Music.LCD.ico".Replace('\\', '/'));
+					writer.Flush();
+				}
+			}
+            if (cstartmenufolder.Checked)
+            {
+				using (StreamWriter writer = new StreamWriter(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Music.LCD.lnk")))
+				{
+					writer.WriteLine("[InternetShortcut]");
+					writer.WriteLine("URL=file:///" + Assembly.GetEntryAssembly().Location.Replace('\\', '/'));
+					writer.WriteLine("IconIndex=0");
+					writer.WriteLine("IconFile=" + choosenPath + @"Music.LCD.ico".Replace('\\', '/'));
+					writer.Flush();
+				}
+			}
+            if (ctaskbarpin.Checked)
+            {
 
+			}
+		}
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -292,6 +321,7 @@ namespace Music.LCD.Installer
         private void copyingFiles_DoWork(object sender, DoWorkEventArgs e)
         {
             //get the MusicLCD program from installer
+            //copying files
             if (!Directory.Exists(choosenPath + @"InstallTemp"))
             {
                 DirectoryInfo di = Directory.CreateDirectory(choosenPath + @"InstallTemp");
@@ -303,14 +333,15 @@ namespace Music.LCD.Installer
             {
                 byte[] buffer = new byte[resourceStream.Length];
                 resourceStream.Read(buffer, 0, buffer.Length);
-                string destinationFolder = choosenPath + @"InstallTemp"; 
-                string destinationPath = Path.Combine(destinationFolder, "MusicLCD.zip"); 
                 try
                 {
-                    File.WriteAllBytes(destinationPath, buffer);
+                    File.WriteAllBytes(Path.Combine(choosenPath + @"InstallTemp", "MusicLCD.zip"), buffer);
                 }
                 catch {}
             }
+			
+
+
 			DirectoryInfo dir = Directory.CreateDirectory(choosenPath + @"Music.LCD.Old");
 			dir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
 			string sourceDir = choosenPath; 
@@ -335,9 +366,22 @@ namespace Music.LCD.Installer
 					File.Delete(file);
 				}
 			}
+			using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Music.LCD.Installer.Resources.mlcdhires.ico"))
+			{
+				byte[] buffer = new byte[resourceStream.Length];
+				resourceStream.Read(buffer, 0, buffer.Length);
+				try
+				{
+					File.WriteAllBytes(Path.Combine(choosenPath, "Music.LCD.ico"), buffer);
+				}
+				catch { }
+			}
 			ZipFile.ExtractToDirectory(choosenPath + @"InstallTemp\MusicLCD.zip", choosenPath);
             File.Delete(choosenPath + @"InstallTemp\MusicLCD.zip");
             Directory.Delete(choosenPath + @"InstallTemp");
-        }
+            //unsinstaller
+
+		}
 	}
+
 }

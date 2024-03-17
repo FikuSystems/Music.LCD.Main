@@ -117,6 +117,7 @@
   <ItemGroup>
     <Content Include="favicon%281%29.ico" />
     <None Include="Resources\INSTALLING.png" />
+    <EmbeddedResource Include="Resources\mlcdhires.ico" />
     <Content Include="titlebastr.ico" />
   </ItemGroup>
   <ItemGroup>
