@@ -293,16 +293,25 @@ namespace Music.LCD.Installer
                 DirectoryInfo di = Directory.CreateDirectory(choosenPath + @"InstallTemp");
                 di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
             }
+			string resourceName = "Music.LCD.Installer.Resources.Music.LCD.zip"; // Update this with your file's details
 
-        }
-        public void ExtractZipResource(string resourceName, string targetDirectory)
-        {
-            // Get the assembly where the resources are embedded
-            Assembly assembly = Assembly.GetExecutingAssembly();
+			// Get the embedded resource stream
+			using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+			{
+				byte[] buffer = new byte[resourceStream.Length];
+				resourceStream.Read(buffer, 0, buffer.Length);
+				string destinationFolder = choosenPath + @"InstallTemp"; // Update this with your desired destination folder
+				string destinationPath = Path.Combine(destinationFolder, "Music.LCD.zip"); // Update this with your desired file name
+				try
+				{
+					File.WriteAllBytes(destinationPath, buffer);
+				}
+				catch 
+				{
+					
+				}
+			}
 
-            // Create a temporary directory to extract the zip file
-            string tempDirectory = Path.Combine(Path.GetTempPath(), "InstallTemp");
-            Directory.CreateDirectory(tempDirectory);
-        }
+		}
 	} 
 }
