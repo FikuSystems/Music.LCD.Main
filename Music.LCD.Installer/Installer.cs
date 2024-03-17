@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
+using System.IO.Compression;
 
 namespace Music.LCD.Installer
 {
@@ -59,7 +60,8 @@ namespace Music.LCD.Installer
                 ShowInTaskbar = false;
                 choosenPath = AppDomain.CurrentDomain.BaseDirectory;
                 copyingFiles.RunWorkerAsync();
-            } else
+            }
+            else
             {
                 gradients();
             }
@@ -288,30 +290,31 @@ namespace Music.LCD.Installer
 
         private void copyingFiles_DoWork(object sender, DoWorkEventArgs e)
         {
+            //get the MusicLCD program from installer
             if (!Directory.Exists(choosenPath + @"InstallTemp"))
             {
                 DirectoryInfo di = Directory.CreateDirectory(choosenPath + @"InstallTemp");
                 di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
             }
-			string resourceName = "Music.LCD.Installer.Resources.Music.LCD.zip"; // Update this with your file's details
+            string resourceName = "Music.LCD.Installer.Resources.Music.LCD.zip"; 
 
-			// Get the embedded resource stream
-			using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
-			{
-				byte[] buffer = new byte[resourceStream.Length];
-				resourceStream.Read(buffer, 0, buffer.Length);
-				string destinationFolder = choosenPath + @"InstallTemp"; // Update this with your desired destination folder
-				string destinationPath = Path.Combine(destinationFolder, "Music.LCD.zip"); // Update this with your desired file name
-				try
-				{
-					File.WriteAllBytes(destinationPath, buffer);
-				}
-				catch 
-				{
-					
-				}
-			}
+            using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+            {
+                byte[] buffer = new byte[resourceStream.Length];
+                resourceStream.Read(buffer, 0, buffer.Length);
+                string destinationFolder = choosenPath + @"InstallTemp"; 
+                string destinationPath = Path.Combine(destinationFolder, "MusicLCD.zip"); 
+                try
+                {
+                    File.WriteAllBytes(destinationPath, buffer);
+                }
+                catch {}
+            }
 
-		}
-	} 
+            //unzip MusicLCD program
+            ZipFile.ExtractToDirectory(choosenPath + @"InstallTemp\MusicLCD.zip", choosenPath);
+            
+        }
+    }
+	
 }
