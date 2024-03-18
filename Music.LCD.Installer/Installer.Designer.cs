@@ -491,21 +491,23 @@
 			// ctaskbarpin
 			// 
 			this.ctaskbarpin.AutoSize = true;
+			this.ctaskbarpin.Enabled = false;
 			this.ctaskbarpin.Location = new System.Drawing.Point(9, 91);
 			this.ctaskbarpin.Name = "ctaskbarpin";
-			this.ctaskbarpin.Size = new System.Drawing.Size(121, 19);
+			this.ctaskbarpin.Size = new System.Drawing.Size(234, 19);
 			this.ctaskbarpin.TabIndex = 5;
-			this.ctaskbarpin.Text = "Create taskbar pin";
+			this.ctaskbarpin.Text = "Create taskbar pin (Under construction)";
 			this.ctaskbarpin.UseVisualStyleBackColor = true;
 			// 
 			// cstartmenupin
 			// 
 			this.cstartmenupin.AutoSize = true;
+			this.cstartmenupin.Enabled = false;
 			this.cstartmenupin.Location = new System.Drawing.Point(9, 66);
 			this.cstartmenupin.Name = "cstartmenupin";
-			this.cstartmenupin.Size = new System.Drawing.Size(140, 19);
+			this.cstartmenupin.Size = new System.Drawing.Size(253, 19);
 			this.cstartmenupin.TabIndex = 4;
-			this.cstartmenupin.Text = "Create start menu pin";
+			this.cstartmenupin.Text = "Create start menu pin (Under construction)";
 			this.cstartmenupin.UseVisualStyleBackColor = true;
 			// 
 			// cstartmenufolder

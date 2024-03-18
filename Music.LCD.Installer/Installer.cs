@@ -23,7 +23,7 @@ namespace Music.LCD.Installer
         public int PageNumber;
         public string choosenPath;
         public bool silentStart;
-        public Installer()
+		public Installer()
         {
             InitializeComponent();
 
@@ -282,31 +282,25 @@ namespace Music.LCD.Installer
         void createShortcuts()
         {
             if (cdesktopshortcut.Checked)
-            {	
-				using (StreamWriter writer = new StreamWriter(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Music.LCD.lnk")))
-				{
-					writer.WriteLine("[InternetShortcut]");
-					writer.WriteLine("URL=file:///" + Assembly.GetEntryAssembly().Location.Replace('\\', '/'));
-					writer.WriteLine("IconIndex=0");
-					writer.WriteLine("IconFile=" + choosenPath + @"Music.LCD.ico".Replace('\\', '/'));
-					writer.Flush();
-				}
+            {
+				string data = "Option Explicit\n" + "Dim objShell, objShortcut\n" + @"Set objShell = CreateObject(""WScript.Shell"")" + "\nDim TargetPath, ShortcutName\n" + "TargetPath = \"" + choosenPath + "Music.LCD.exe\"" + "\n" + @"ShortcutName = ""Music.LCD""" + "\n" + @"Set objShortcut = objShell.CreateShortcut(objShell.SpecialFolders(""StartMenu"") & ""\"" & ShortcutName & "".lnk"")" + "\nobjShortcut.TargetPath = TargetPath\nobjShortcut.Save\nSet objShortcut = Nothing\nSet objShell = Nothing\n";
+				File.Create(choosenPath + "createDesktopShort.vbs").Close();
+				TextWriter vbs = new StreamWriter(choosenPath + "createDesktopShort.vbs");
+				vbs.Write(data);
+				vbs.Close();
+				System.Diagnostics.Process.Start(choosenPath + @"createDesktopShort.vbs");
+
 			}
             if (cstartmenufolder.Checked)
             {
-				using (StreamWriter writer = new StreamWriter(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Music.LCD.lnk")))
-				{
-					writer.WriteLine("[InternetShortcut]");
-					writer.WriteLine("URL=file:///" + Assembly.GetEntryAssembly().Location.Replace('\\', '/'));
-					writer.WriteLine("IconIndex=0");
-					writer.WriteLine("IconFile=" + choosenPath + @"Music.LCD.ico".Replace('\\', '/'));
-					writer.Flush();
-				}
+				string data = "Option Explicit\n" + "Dim objShell, objShortcut\n" + @"Set objShell = CreateObject(""WScript.Shell"")" + "\nDim TargetPath, ShortcutName\n" + "TargetPath = \"" + choosenPath + "Music.LCD.exe\"" + "\n" + @"ShortcutName = ""Music.LCD""" + "\n" + @"Set objShortcut = objShell.CreateShortcut(objShell.SpecialFolders(""Desktop"") & ""\"" & ShortcutName & "".lnk"")" + "\nobjShortcut.TargetPath = TargetPath\nobjShortcut.Save\nSet objShortcut = Nothing\nSet objShell = Nothing\n";
+				File.Create(choosenPath + "createDesktopShort.vbs").Close();
+				TextWriter vbs = new StreamWriter(choosenPath + "createDesktopShort.vbs");
+				vbs.Write(data);
+				vbs.Close();
+				System.Diagnostics.Process.Start(choosenPath + @"createDesktopShort.vbs");
 			}
-            if (ctaskbarpin.Checked)
-            {
-
-			}
+            
 		}
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -379,9 +373,14 @@ namespace Music.LCD.Installer
 			ZipFile.ExtractToDirectory(choosenPath + @"InstallTemp\MusicLCD.zip", choosenPath);
             File.Delete(choosenPath + @"InstallTemp\MusicLCD.zip");
             Directory.Delete(choosenPath + @"InstallTemp");
-            //unsinstaller
+			//unsinstaller
 
+            if (silentStart)
+            {
+                this.Close();
+            }
 		}
+
 	}
 
 }
