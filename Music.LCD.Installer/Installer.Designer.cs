@@ -76,6 +76,7 @@
 			this.nextbtn = new System.Windows.Forms.Button();
 			this.copyingFiles = new System.ComponentModel.BackgroundWorker();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.groupBox4.SuspendLayout();
@@ -409,6 +410,7 @@
 			this.openexplorer.TabIndex = 1;
 			this.openexplorer.Text = "...";
 			this.openexplorer.UseVisualStyleBackColor = true;
+			this.openexplorer.Click += new System.EventHandler(this.openexplorer_Click);
 			// 
 			// filepath
 			// 
@@ -491,21 +493,23 @@
 			// ctaskbarpin
 			// 
 			this.ctaskbarpin.AutoSize = true;
+			this.ctaskbarpin.Enabled = false;
 			this.ctaskbarpin.Location = new System.Drawing.Point(9, 91);
 			this.ctaskbarpin.Name = "ctaskbarpin";
-			this.ctaskbarpin.Size = new System.Drawing.Size(121, 19);
+			this.ctaskbarpin.Size = new System.Drawing.Size(234, 19);
 			this.ctaskbarpin.TabIndex = 5;
-			this.ctaskbarpin.Text = "Create taskbar pin";
+			this.ctaskbarpin.Text = "Create taskbar pin (Under construction)";
 			this.ctaskbarpin.UseVisualStyleBackColor = true;
 			// 
 			// cstartmenupin
 			// 
 			this.cstartmenupin.AutoSize = true;
+			this.cstartmenupin.Enabled = false;
 			this.cstartmenupin.Location = new System.Drawing.Point(9, 66);
 			this.cstartmenupin.Name = "cstartmenupin";
-			this.cstartmenupin.Size = new System.Drawing.Size(140, 19);
+			this.cstartmenupin.Size = new System.Drawing.Size(253, 19);
 			this.cstartmenupin.TabIndex = 4;
-			this.cstartmenupin.Text = "Create start menu pin";
+			this.cstartmenupin.Text = "Create start menu pin (Under construction)";
 			this.cstartmenupin.UseVisualStyleBackColor = true;
 			// 
 			// cstartmenufolder
@@ -621,7 +625,9 @@
 			// 
 			// timer1
 			// 
+			this.timer1.Enabled = true;
 			this.timer1.Interval = 1;
+			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
 			// 
 			// Installer
 			// 
@@ -718,6 +724,7 @@
         private System.Windows.Forms.Button nextbtn;
 		private System.ComponentModel.BackgroundWorker copyingFiles;
 		private System.Windows.Forms.Timer timer1;
+		private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
 	}
 }
 
