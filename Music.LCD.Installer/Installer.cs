@@ -68,7 +68,7 @@ namespace Music.LCD.Installer
             else
             {
                 gradients();
-                filepath.Text = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) + @"\Music.LCD";
+                filepath.Text = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + @"\Music.LCD";
             }
             Selectinstalllocation.Visible = false;
             shortcuts.Visible = false;
@@ -317,68 +317,100 @@ namespace Music.LCD.Installer
 
         private void copyingFiles_DoWork(object sender, DoWorkEventArgs e)
         {
+
             //get the MusicLCD program from installer
             //copying files
-            if (!Directory.Exists(choosenPath + @"InstallTemp"))
-            {
-                DirectoryInfo di = Directory.CreateDirectory(choosenPath + @"InstallTemp");
-                di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
-            }
-            string resourceName = "Music.LCD.Installer.Resources.Music.LCD.zip"; 
-
-            using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
-            {
-                byte[] buffer = new byte[resourceStream.Length];
-                resourceStream.Read(buffer, 0, buffer.Length);
-                try
-                {
-                    File.WriteAllBytes(Path.Combine(choosenPath + @"InstallTemp", "MusicLCD.zip"), buffer);
-                }
-                catch {}
-            }
-			
-
-
-			DirectoryInfo dir = Directory.CreateDirectory(choosenPath + @"Music.LCD.Old");
-			dir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
-			string sourceDir = choosenPath; 
-			string destDir = choosenPath + @"Music.LCD.Old"; 
-			Directory.CreateDirectory(destDir);
-			string[] files = Directory.GetFiles(sourceDir);
-
-			foreach (string file in files)
-			{
-				string fileName = Path.GetFileName(file);
-				if (fileName != "Music.LCD.Installer.exe")
-				{
-					string destFile = Path.Combine(destDir, fileName);
-					File.Copy(file, destFile, true); 
-				}
-			}
-			foreach (string file in files)
-			{
-				string fileName = Path.GetFileName(file);
-				if (fileName != "Music.LCD.Installer.exe")
-				{
-					File.Delete(file);
-				}
-			}
-			
-			ZipFile.ExtractToDirectory(choosenPath + @"InstallTemp\MusicLCD.zip", choosenPath);
-            File.Delete(choosenPath + @"InstallTemp\MusicLCD.zip");
-            Directory.Delete(choosenPath + @"InstallTemp");
-			//unsinstaller
-
             if (silentStart)
             {
-                this.Close();
-            }
+
+
+                if (!Directory.Exists(choosenPath + @"InstallTemp"))
+                {
+                    DirectoryInfo di = Directory.CreateDirectory(choosenPath + @"InstallTemp");
+                    di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+                }
+                string resourceName = "Music.LCD.Installer.Resources.Music.LCD.zip";
+
+                using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+                {
+                    byte[] buffer = new byte[resourceStream.Length];
+                    resourceStream.Read(buffer, 0, buffer.Length);
+                    try
+                    {
+                        File.WriteAllBytes(Path.Combine(choosenPath + @"InstallTemp", "MusicLCD.zip"), buffer);
+                    }
+                    catch { }
+                }
+
+                DirectoryInfo dir = Directory.CreateDirectory(choosenPath + @"Music.LCD.Old");
+                dir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+                string sourceDir = choosenPath;
+                string destDir = choosenPath + @"Music.LCD.Old";
+                Directory.CreateDirectory(destDir);
+                string[] files = Directory.GetFiles(sourceDir);
+
+                foreach (string file in files)
+                {
+                    string fileName = Path.GetFileName(file);
+                    if (fileName != "Music.LCD.Installer.exe")
+                    {
+                        string destFile = Path.Combine(destDir, fileName);
+                        File.Copy(file, destFile, true);
+                    }
+                }
+                foreach (string file in files)
+                {
+                    string fileName = Path.GetFileName(file);
+                    if (fileName != "Music.LCD.Installer.exe")
+                    {
+                        File.Delete(file);
+                    }
+                }
+
+                ZipFile.ExtractToDirectory(choosenPath + @"InstallTemp\MusicLCD.zip", choosenPath);
+                File.Delete(choosenPath + @"InstallTemp\MusicLCD.zip");
+                Directory.Delete(choosenPath + @"InstallTemp");
+                //unsinstaller
+
+                if (silentStart)
+                {
+                    this.Close();
+                }
+            } else
+            {
+                choosenPath = filepath.Text;
+				if (!Directory.Exists(choosenPath + @"InstallTemp"))
+				{
+					DirectoryInfo di = Directory.CreateDirectory(choosenPath + @"InstallTemp");
+					di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+				}
+				string resourceName = "Music.LCD.Installer.Resources.Music.LCD.zip";
+
+				using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+				{
+					byte[] buffer = new byte[resourceStream.Length];
+					resourceStream.Read(buffer, 0, buffer.Length);
+					try
+					{
+						File.WriteAllBytes(Path.Combine(choosenPath + @"InstallTemp", "MusicLCD.zip"), buffer);
+					}
+					catch { }
+				}
+				ZipFile.ExtractToDirectory(choosenPath + @"InstallTemp\MusicLCD.zip", choosenPath);
+				File.Delete(choosenPath + @"InstallTemp\MusicLCD.zip");
+				Directory.Delete(choosenPath + @"InstallTemp");
+                createShortcuts();
+			}
 		}
 
 		private void openexplorer_Click(object sender, EventArgs e)
 		{
-            folderBrowserDialog1.ShowDialog();
-            dialogShowed = true;
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filepath.Text = folderBrowserDialog1.SelectedPath + @"\Music.LCD";
+                choosenPath = filepath.Text;
+            }
+            
 		}
 
 		private void timer1_Tick(object sender, EventArgs e)
