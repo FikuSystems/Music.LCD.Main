@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Security.Principal;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Music.LCD.Installer
@@ -12,8 +9,6 @@ namespace Music.LCD.Installer
     internal static class Program
     {
 		public static string[] CommandLineArgs { get; private set; }
-		/// <summary>
-		/// </summary>
 		[STAThread]
 
 		static void Main(string[] args)
@@ -37,21 +32,22 @@ namespace Music.LCD.Installer
 
 		static void ElevateProcess()
 		{
-			string tmp = Application.ExecutablePath;
+			string tmp = null;
 			foreach (string arg in CommandLineArgs)
 			{
 				if (arg == "-s")
 				{
-					tmp += " -s";
+					tmp = "-s";
 					break;
 				}
 			}
 
-			try
-			{
-				Process.Start(tmp);
-			}
-			catch {}
+			var exeName = Process.GetCurrentProcess().MainModule.FileName;
+			ProcessStartInfo startInfo = new ProcessStartInfo(exeName);
+			startInfo.Verb = "runas";
+			startInfo.Arguments = tmp;
+			Process.Start(startInfo);
+			Application.Exit();
 		}
 
 	}

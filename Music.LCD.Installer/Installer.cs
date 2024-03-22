@@ -23,7 +23,6 @@ namespace Music.LCD.Installer
         public int PageNumber;
         public string choosenPath;
         public bool silentStart;
-        private bool dialogShowed;
 
 		public Installer()
         {
