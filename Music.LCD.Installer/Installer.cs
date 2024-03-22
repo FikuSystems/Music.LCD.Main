@@ -23,7 +23,6 @@ namespace Music.LCD.Installer
         public int PageNumber;
         public string choosenPath;
         public bool silentStart;
-        private bool dialogShowed;
 
 		public Installer()
         {
@@ -323,11 +322,14 @@ namespace Music.LCD.Installer
             //copying files
             if (silentStart)
             {
-                if (!Directory.Exists(choosenPath + @"InstallTemp"))
+                saveFileLogs("creating Directory InstallTemp\n", false);
+
+				if (!Directory.Exists(choosenPath + @"InstallTemp"))
                 {
                     DirectoryInfo di = Directory.CreateDirectory(choosenPath + @"InstallTemp");
                     di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
-                }
+					saveFileLogs("created\n", false);
+				}
                 string resourceName = "Music.LCD.Installer.Resources.Music.LCD.zip";
 
                 using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
@@ -377,7 +379,8 @@ namespace Music.LCD.Installer
                 }
             } else
             {
-                choosenPath = filepath.Text;
+				saveFileLogs("creating Directory InstallTemp\n", true);
+				choosenPath = filepath.Text;
                 if (!Directory.Exists(choosenPath))
                 {
                     Directory.CreateDirectory(choosenPath);
@@ -424,6 +427,42 @@ namespace Music.LCD.Installer
 		{
             
 		}
+        private void saveFileLogs(string text, bool addBackSlash)
+        {
+            string path = choosenPath;
+            if (addBackSlash)
+            {
+                path += @"\";
+            }
+            MessageBox.Show("working1");
+            if (!File.Exists(path + "InstallerLogs.txt"))
+            {
+				MessageBox.Show("working2");
+
+				FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
+				var tmp = text;
+				byte[] writeArr = Encoding.UTF8.GetBytes(text);
+				fs.Write(writeArr, 0, tmp.Length);
+				MessageBox.Show("working3");
+				fs.Close();
+			} else
+            {
+                string tmp = null;
+				FileStream fs = new FileStream(path, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
+				byte[] readArr = new byte[text.Length];
+				int count;
+				while ((count = fs.Read(readArr, 0, readArr.Length)) > 0)
+				{
+				    tmp += Encoding.UTF8.GetString(readArr, 0, count);
+                    tmp += text;
+				}
+                var tmpW = tmp;
+				byte[] writeArr = Encoding.UTF8.GetBytes(text);
+                fs.Write(writeArr, 0, tmpW.Length);
+                fs.Close();
+			}
+            
+        }
 
 	}
 
