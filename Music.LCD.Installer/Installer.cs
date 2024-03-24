@@ -41,8 +41,8 @@ namespace Music.LCD.Installer
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            if (Program.CommandLineArgs != null)
+			
+			if (Program.CommandLineArgs != null)
             {
                 string[] args = Program.CommandLineArgs;
                 foreach (string arg in args)
@@ -318,17 +318,14 @@ namespace Music.LCD.Installer
         private void copyingFiles_DoWork(object sender, DoWorkEventArgs e)
         {
 
-            //get the MusicLCD program from installer
-            //copying files
-            if (silentStart)
+			File.WriteAllText(choosenPath + @"InstallerLogs.txt", "Music.LCD.Installer logs " + System.DateTime.Now.ToString() + "\n");
+			if (silentStart)
             {
-                saveFileLogs("creating Directory InstallTemp\n", false);
 
 				if (!Directory.Exists(choosenPath + @"InstallTemp"))
                 {
                     DirectoryInfo di = Directory.CreateDirectory(choosenPath + @"InstallTemp");
                     di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
-					saveFileLogs("created\n", false);
 				}
                 string resourceName = "Music.LCD.Installer.Resources.Music.LCD.zip";
 
@@ -353,16 +350,16 @@ namespace Music.LCD.Installer
                 foreach (string file in files)
                 {
                     string fileName = Path.GetFileName(file);
-                    if (fileName != "Music.LCD.Installer.exe")
+                    if (fileName != "Music.LCD.Installer.exe" && fileName != @"InstallerLogs.txt")
                     {
-                        string destFile = Path.Combine(destDir, fileName);
+						string destFile = Path.Combine(destDir, fileName);
                         File.Copy(file, destFile, true);
                     }
                 }
                 foreach (string file in files)
                 {
                     string fileName = Path.GetFileName(file);
-                    if (fileName != "Music.LCD.Installer.exe")
+                    if (fileName != "Music.LCD.Installer.exe" && fileName != @"InstallerLogs.txt")
                     {
                         File.Delete(file);
                     }
@@ -379,7 +376,6 @@ namespace Music.LCD.Installer
                 }
             } else
             {
-				saveFileLogs("creating Directory InstallTemp\n", true);
 				choosenPath = filepath.Text;
                 if (!Directory.Exists(choosenPath))
                 {
@@ -427,40 +423,20 @@ namespace Music.LCD.Installer
 		{
             
 		}
-        private void saveFileLogs(string text, bool addBackSlash)
+        private void saveFileLogs(string text)
         {
             string path = choosenPath;
-            if (addBackSlash)
+            if (!text.EndsWith(@"\"))
             {
                 path += @"\";
             }
-            MessageBox.Show("working1");
-            if (!File.Exists(path + "InstallerLogs.txt"))
+           
+            if (File.Exists(path + "InstallerLogs.txt"))
             {
-				MessageBox.Show("working2");
-
-				FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
-				var tmp = text;
-				byte[] writeArr = Encoding.UTF8.GetBytes(text);
-				fs.Write(writeArr, 0, tmp.Length);
-				MessageBox.Show("working3");
-				fs.Close();
-			} else
-            {
-                string tmp = null;
-				FileStream fs = new FileStream(path, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
-				byte[] readArr = new byte[text.Length];
-				int count;
-				while ((count = fs.Read(readArr, 0, readArr.Length)) > 0)
-				{
-				    tmp += Encoding.UTF8.GetString(readArr, 0, count);
-                    tmp += text;
-				}
-                var tmpW = tmp;
-				byte[] writeArr = Encoding.UTF8.GetBytes(text);
-                fs.Write(writeArr, 0, tmpW.Length);
-                fs.Close();
+				text = File.ReadAllText(path + @"InstallerLogs.txt").ToString() + text;
 			}
+            File.WriteAllText(path + @"InstallerLogs.txt", text);
+			
             
         }
 
