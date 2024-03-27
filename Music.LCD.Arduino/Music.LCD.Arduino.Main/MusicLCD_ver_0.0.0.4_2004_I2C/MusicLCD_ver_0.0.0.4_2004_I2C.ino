@@ -127,7 +127,7 @@ void setup() {
   delay(1000);
   lcd.clear();
   
-  Serial.begin(500000);
+  Serial.begin(115200);
   lcd.createChar(0, customChar0);
   lcd.createChar(1, customChar1);
   lcd.createChar(2, customChar2);
