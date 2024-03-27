@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Music.LCD.Uninstaller")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Compas75 Limited")]
+[assembly: AssemblyCompany("FikuSystems")]
 [assembly: AssemblyProduct("Music.LCD.Uninstaller")]
-[assembly: AssemblyCopyright("Copyright © Compas75 Limited 2024")]
+[assembly: AssemblyCopyright("Copyright © FikuSystems 2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
