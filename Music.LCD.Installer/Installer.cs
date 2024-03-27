@@ -33,7 +33,7 @@ namespace Music.LCD.Installer
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-			
+            saveFileLogs(text: "Music LCD Install Logs\r\n(c) FikuSystems 2024\r\n==================================================================");
 			if (Program.CommandLineArgs != null)
             {
                 string[] args = Program.CommandLineArgs;
@@ -423,11 +423,11 @@ namespace Music.LCD.Installer
                 path += @"\";
             }
            
-            if (File.Exists(path + "InstallerLogs.txt"))
+            if (File.Exists(path + "Music.LCD.Installer.Log.txt"))
             {
-				text = File.ReadAllText(path + @"InstallerLogs.txt").ToString() + text;
+				text = File.ReadAllText(path + @"Music.LCD.Installer.Log.txt").ToString() + text;
 			}
-            File.WriteAllText(path + @"InstallerLogs.txt", text);
+            File.WriteAllText(path + @"Music.LCD.Installer.Log.txt", text);
 			
             
         }
