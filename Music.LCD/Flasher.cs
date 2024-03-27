@@ -398,6 +398,7 @@ namespace Music.LCD
 
 		private void Download_Click(object sender, EventArgs e)
 		{
+			Directory.CreateDirectory(directory + @"\Temp");
 			WebClient webClient = new WebClient();
 			webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
 			webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
@@ -442,6 +443,10 @@ namespace Music.LCD
 			senddata.Hide();
 			FlashProgress.Style = ProgressBarStyle.Blocks;
 			FlashProgress.Value = 100; this.Close();
+			if(Directory.Exists(directory + @"\Temp"))
+			{
+				Directory.Delete(directory + @"\Temp");
+			}
 			flashdonehappyyaynodie flashdone = new flashdonehappyyaynodie(); flashdone.Show();
 		}
 
