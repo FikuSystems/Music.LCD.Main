@@ -15,7 +15,7 @@ namespace Music.LCD.Installer
         public int PageNumber;
         public string choosenPath;
         public bool silentStart;
-
+        private static string Currentdate = System.DateTime.Now.ToString().Replace(".", "-").Replace(":", ".");
 		public Installer()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace Music.LCD.Installer
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            saveFileLogs(text: "Music LCD Install Logs\r\n(c) FikuSystems 2024\r\n==================================================================");
+            saveFileLogs("Music LCD Install Logs\r\n(c) FikuSystems 2024\r\n==================================================================");
 			if (Program.CommandLineArgs != null)
             {
                 string[] args = Program.CommandLineArgs;
@@ -417,17 +417,18 @@ namespace Music.LCD.Installer
 		}
         private void saveFileLogs(string text)
         {
-            string path = choosenPath;
-            if (!text.EndsWith(@"\"))
+            
+			string path = @"C:\Music.LCD.Installer.Logs\";
+			if (!Directory.Exists(path))
             {
-                path += @"\";
+                Directory.CreateDirectory(path);
             }
            
-            if (File.Exists(path + "Music.LCD.Installer.Log.txt"))
+            if (File.Exists(path  + "Music.LCD.Installer.Log " + Currentdate + ".txt"))
             {
-				text = File.ReadAllText(path + @"Music.LCD.Installer.Log.txt").ToString() + text;
+				text = File.ReadAllText(path + "Music.LCD.Installer.Log " + Currentdate + ".txt").ToString() + text;
 			}
-            File.WriteAllText(path + @"Music.LCD.Installer.Log.txt", text);
+            File.WriteAllText(path + "Music.LCD.Installer.Log " + Currentdate + ".txt", text);
 			
             
         }
