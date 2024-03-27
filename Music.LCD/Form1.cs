@@ -864,7 +864,6 @@ namespace Music.LCD
 				LogWrite("info", "Creating new config file", true);
 				try
 				{
-					File.Create(currentPath + "config.MLCD");
 					LogWrite("info", "File created succesfully", false);
                     fileCreate = true;
 				}
@@ -881,11 +880,8 @@ namespace Music.LCD
 
         void writeConfigToFIle()
         {
-            if (File.Exists(currentPath + "config.MLCD"))
-            {
-				File.WriteAllText(currentPath + "config.MLCD", "com_port = " + config[0] + "\n" + "start_logon = " + config[1] + "\n" + "auto_con = " + config[2] + "\n" + "save_com = " + config[3] + "\n" + "launch_tray = " + config[4] + "\n" + "enable_tray = " + config[5] + "\n" + "hide_to_trayoncon = " + config[6] + "\n" + "sound_mute = " + config[7] + "\n" + "note_hiding = " + config[8] + "\n" + "dont_show_welcome = " + config[9] + "\n");
-            }
-        }
+			File.WriteAllText(currentPath + "config.MLCD", "com_port = " + config[0] + "\n" + "start_logon = " + config[1] + "\n" + "auto_con = " + config[2] + "\n" + "save_com = " + config[3] + "\n" + "launch_tray = " + config[4] + "\n" + "enable_tray = " + config[5] + "\n" + "hide_to_trayoncon = " + config[6] + "\n" + "sound_mute = " + config[7] + "\n" + "note_hiding = " + config[8] + "\n" + "dont_show_welcome = " + config[9] + "\n");
+		}
 
         public void LogWrite(string type, string text, bool printSeperation)
         {
