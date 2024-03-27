@@ -159,7 +159,7 @@ namespace Music.LCD.Installer
                 instruct.Visible = true;
                 installation.Visible = true;
                 Complete.Visible = false;
-                nextbtn.Enabled = true;
+                nextbtn.Enabled = false;
                 backbtn.Enabled = false;
                 exitbtn.Enabled = false;
                 instalprogress.Value = 4;
@@ -304,13 +304,14 @@ namespace Music.LCD.Installer
 
         private void copyingFiles_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
-        }
+			nextbtn.Enabled = true;
+			nextbtn.PerformClick();
+		}
 
         private void copyingFiles_DoWork(object sender, DoWorkEventArgs e)
         {
 
-			File.WriteAllText(choosenPath + @"InstallerLogs.txt", "Music.LCD.Installer logs " + System.DateTime.Now.ToString() + "\n");
+			File.WriteAllText(choosenPath + @"InstallerLogs.txt", "Music.LCD.Installer logs " + Currentdate + "\n");
 			if (silentStart)
             {
 
@@ -391,11 +392,34 @@ namespace Music.LCD.Installer
 					}
 					catch { }
 				}
+				DirectoryInfo dir = Directory.CreateDirectory(choosenPath + @"Music.LCD.Old");
+				dir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+				string sourceDir = choosenPath;
+				string destDir = choosenPath + @"Music.LCD.Old";
+				Directory.CreateDirectory(destDir);
+				string[] files = Directory.GetFiles(sourceDir);
+
+				foreach (string file in files)
+				{
+					string fileName = Path.GetFileName(file);
+					if (fileName != "Music.LCD.Installer.exe" && fileName != @"InstallerLogs.txt")
+					{
+						string destFile = Path.Combine(destDir, fileName);
+						File.Copy(file, destFile, true);
+					}
+				}
+				foreach (string file in files)
+				{
+					string fileName = Path.GetFileName(file);
+					if (fileName != "Music.LCD.Installer.exe" && fileName != @"InstallerLogs.txt")
+					{
+						File.Delete(file);
+					}
+				}
 				ZipFile.ExtractToDirectory(choosenPath + @"InstallTemp\MusicLCD.zip", choosenPath);
 				File.Delete(choosenPath + @"InstallTemp\MusicLCD.zip");
 				Directory.Delete(choosenPath + @"InstallTemp");
                 createShortcuts();
-				
 			}
 		}
 
@@ -429,8 +453,6 @@ namespace Music.LCD.Installer
 				text = File.ReadAllText(path + "Music.LCD.Installer.Log " + Currentdate + ".txt").ToString() + text;
 			}
             File.WriteAllText(path + "Music.LCD.Installer.Log " + Currentdate + ".txt", text);
-			
-            
         }
 
 	}
