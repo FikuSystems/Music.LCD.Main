@@ -8,66 +8,6 @@
 #define FORWARD_PIN 2
 
 //define custom progressBar
-const byte customChar0[] = {
-  0x00,
-  0x07,
-  0x0C,
-  0x08,
-  0x08,
-  0x0C,
-  0x07,
-  0x00
-};
-const byte customChar1[] = {
-  0x00,
-  0x07,
-  0x0C,
-  0x0B,
-  0x0B,
-  0x0C,
-  0x07,
-  0x00
-};
-const byte customChar2[] = {
-  0x00,
-  0x1F,
-  0x00,
-  0x00,
-  0x00,
-  0x00,
-  0x1F,
-  0x00
-};
-const byte customChar3[] = {
-  0x00,
-  0x1F,
-  0x00,
-  0x1F,
-  0x1F,
-  0x00,
-  0x1F,
-  0x00
-};
-const byte customChar4[] = {
-  0x00,
-  0x1C,
-  0x06,
-  0x02,
-  0x02,
-  0x06,
-  0x1C,
-  0x00
-};
-const byte customChar5[] = {
-  0x00,
-  0x1C,
-  0x06,
-  0x1A,
-  0x1A,
-  0x06,
-  0x1C,
-  0x00
-};
 const byte customChar6[] = {
   B01110,
   B10001,
@@ -83,7 +23,7 @@ const byte customChar6[] = {
 
 
 
-LiquidCrystal_I2C lcd(0x27,20,4); 
+LiquidCrystal_I2C lcd(0x27,16,2); 
 //unfortunetly it needs to be global for experimentla function
 String Line1 = "";
 String Line2 = "";
@@ -118,22 +58,14 @@ void setup() {
   lcd.backlight();
   lcd.home();
   lcd.setCursor(0,0);
-  lcd.print("    FikuSystems     ");
+  lcd.print("  FikuSystems   ");
   lcd.setCursor(0,1);
-  lcd.print("     MusicLCD       ");
-  lcd.setCursor(0,3);
-  lcd.print("GitHub:  FikuSystems");
+  lcd.print("   MusicLCD     ");
   playStartupSound();
   delay(1000);
   lcd.clear();
   
   Serial.begin(115200);
-  lcd.createChar(0, customChar0);
-  lcd.createChar(1, customChar1);
-  lcd.createChar(2, customChar2);
-  lcd.createChar(3, customChar3);
-  lcd.createChar(4, customChar4);
-  lcd.createChar(5, customChar5);
   lcd.createChar(6, customChar6);
   pinMode(11, OUTPUT);
   pinMode(9, INPUT_PULLUP);
@@ -203,66 +135,37 @@ void playConnectSound() {
   lcd.print("   Please wait...   ");
 }
 void displayDisconnectScreen() {
-
+  playDisconnectSound();
   lcd.clear();
-  lcd.setCursor(0,0);
-  lcd.write(6);
+  lcd.setCursor(0, 0);
   delay(50); 
-  lcd.print("   Disconnected   ");
+  lcd.print("       Display");
   delay(50); 
-  lcd.write(6);
-  delay(50); 
-  lcd.setCursor(0,1);
-  lcd.print("                    ");
-  delay(50); 
-  lcd.setCursor(0, 2);
-  lcd.print("Display Disconnected");
-  delay(50); 
-  lcd.setCursor(0, 3);
-  lcd.print("                    ");
-  delay(1000);
+  lcd.setCursor(0, 1);
+  lcd.print("  Disconnected  ");
   displayMainScreen();
 }
 void displayDisconnectScreenError() {
-
+  playDisconnectSound();
   lcd.clear();
-  lcd.setCursor(0,0);
-  lcd.write(6);
-  delay(50); 
-  lcd.print("   Disconnected   ");
-  delay(50); 
-  lcd.write(6);
-  delay(50); 
   lcd.setCursor(0,1);
-  lcd.print("                    ");
   delay(50); 
-  lcd.setCursor(0, 2);
-  lcd.print(" Internal Exception ");
+  lcd.print("  Disconnected  ");
   delay(50); 
-  lcd.setCursor(0, 3);
-  lcd.print("                    ");
+  lcd.setCursor(0, 1);
+  lcd.print("   Exception    ");
   delay(1000);
   displayMainScreen();
 }
 void displayMainScreen() {
-
-  lcd.write(6);
-      delay(100); 
-  lcd.print("  Connect Wizard  ");
-      delay(100); 
-  lcd.write(6);
-      delay(100); 
-  lcd.setCursor(0,1);
-      delay(100); 
-  lcd.print("                    ");
-      delay(100); 
-  lcd.setCursor(0, 2);
-      delay(100); 
-  lcd.print(" Please tap connect ");
-      delay(100); 
-  lcd.setCursor(0, 3);
-      delay(100); 
-  lcd.print("  in Music LCD PRG  ");
+  lcd.clear();
+  lcd.print(" Connect Wizard ");
+  delay(100); 
+  lcd.setCursor(0, 0);
+  delay(100); 
+  lcd.setCursor(0, 1);
+  delay(100); 
+  lcd.print("  Tap connect   ");
 }
 
 void loop() {
@@ -298,67 +201,17 @@ ISR(PCINT2_vect) {
     checkButtons();
   }
 }
-//printing progress bar one character, used in other void
-void printChar(int LCDPosition, int state) {
-  if (LCDPosition == 0) {
-    lcd.setCursor(0, 3);
-    if (state == 0) {
-      lcd.write(0);
-    } else if (state == 1) {
-      lcd.write(1);
-    }
-  } else if (LCDPosition > 0 && LCDPosition < 19) {
-    lcd.setCursor(LCDPosition, 3);
-    if (state == 0) {
-      lcd.write(2);
-    } else if (state == 1) {
-      lcd.write(3);
-    }
-  } else if (LCDPosition == 19) {
-    lcd.setCursor(19, 3);
-    if (state == 0) {
-      lcd.write(4);
-    } else if (state == 1) {
-      lcd.write(5);
-    }
-  }
-}
-//printing full if needed
-void lcdPrintFullBar() {
-  for (int i = 0; i < 20; i++) {
-    lcd.setCursor(i, 3);
-    if (i == 0 && progress[0] == 0) {
-      lcd.write(0);
-    } else if (i == 0 && progress[0] == 1) {
-      lcd.write(1);
-    } else if (i == 19 && progress[19] == 0) {
-      lcd.write(4);
-    } else if (i == 19 && progress[19] == 1) {
-      lcd.write(5);
-    }
-    if (i > 0 && i < 19) {
-      if (progress[i] == 0) {
-        lcd.setCursor(i, 3);
-        lcd.write(2);
-      } else if (progress[i] == 1) {
-        lcd.setCursor(i, 3);
-        lcd.write(3);
-      }
-    }
-  }
-}
+
 //printig every single line of lcd if they're not the same as before
 void StartPrintingData() {
   String input = "";
-  String Line3 = "";
-  String Line4 = "";
   String Line5 = "";
   if (Serial.available() > 0 && !connected) {
     previousMillisOut = millis(); // Reset the timeout
     timeoutReached = false; // Reset the timeout reached flag
     connected = true;
     String version = " 0.0.0.4";
-    String codeType = "I2C 20x4 ";
+    String codeType = "I2C 16x4";
     Serial.println(codeType + version);
     playConnectSound();
     firstConnect = true;
@@ -380,8 +233,6 @@ void StartPrintingData() {
 
       Line1 = input.substring(0, input.indexOf(">1"));
       Line2 = input.substring(input.indexOf(">1") + 2, input.indexOf(">2"));
-      Line3 = input.substring(input.indexOf(">2") + 2, input.indexOf(">3"));
-      Line4 = input.substring(input.indexOf(">3") + 2, input.indexOf(">4"));
       Line5 = input.substring(input.indexOf(">4") + 2, input.length());
 
       if(Line5 != "") {
@@ -400,75 +251,31 @@ void StartPrintingData() {
       if (Line1 != Line1lastState) {
         scrollPosition = 0;
         lcd.setCursor(0, 0);
-        lcd.print("                    ");
+        lcd.print("                ");
         lcd.setCursor(0, 0);
-        if (Line1.length() > 19) {
-          lcd.print(Line1.substring(0, 20));
+        if (Line1.length() > 15) {
+          lcd.print(Line1.substring(0, 16));
         } else {
           lcd.print(Line1);
         }
       }
-      if (Line2 != Line2lastState) {
+      if (Line2 != Line2lastState && Line2 != "D*I^S$C)O%N#E%C&T") {
         lcd.setCursor(0, 1);
-        lcd.print("                    ");
+        lcd.print("                ");
         lcd.setCursor(0, 1);
-        if (Line2.length() > 19) {
-          lcd.print(Line2.substring(0, 20));
+        if (Line2.length() > 15) {
+          lcd.print(Line2.substring(0, 16));
         } else {
           lcd.print(Line2);
         }
-      }
-      if (Line3 != Line3lastState && Line3 != "Disconnect request") {
-        lcd.setCursor(0, 2);
-        lcd.print("                    ");
-        lcd.setCursor(0, 2);
-        lcd.print(Line3);
-        
-      } else if (Line3 != Line3lastState && Line3 == "Disconnect request") {
-        //disconnect screen
-        playDisconnectSound();
+      } else if (Line2 == "D*I^S$C)O%N#E%C&T") {
         displayDisconnectScreen();
-        connected = false;
-      }
-      if (Line4.length() < 5) {
-        if (Line4lastState.length() > 5) {
-          lcdPrintFullBar();
-        }
-        if (Line4 != Line4lastState) {
-          for (int i = 0; i < Line4.toInt(); i++) {
-            progress[i] = 1;
-          }
-          for (int i = 19; i >= Line4.toInt(); i--) {
-            progress[i] = 0;
-          }
-          for (int i = 0; i < 20; i++) {
-            if (progress[i] != progresslastState[i]) {
-              printChar(i, progress[i]);
-            }
-          }
-        }
-      } else if (Line4 == "Disconnect") {
-        playDisconnectSound();
-        displayDisconnectScreen();
-        connected = false;
-      } else {
-        lcd.setCursor(0, 3);
-        lcd.print("                    ");
-        lcd.setCursor(0, 3);
-        lcd.print(Line4);
       }
     }
-
   }
 
     Line1lastState = Line1;
     Line2lastState = Line2;
-    Line3lastState = Line3;
-    Line4lastState = Line4;
-    for (int i = 0; i < 20; i++) {
-      progresslastState[i] = progress[i];
-    }
-  
 }
 
 
@@ -493,14 +300,14 @@ void scrollLine1() {
 
 void scrollTextFromLine1() {
   // Print the scrolling text
-  if(Line1.length() > 20) {
+  if(Line1.length() > 16) {
     lcd.setCursor(0, 0);
     String Line1tmp = Line1 + "    ";
-    if (Line1tmp.length() > scrollPosition + 20) {
-      lcd.print(Line1tmp.substring(scrollPosition, scrollPosition + 20));
+    if (Line1tmp.length() > scrollPosition + 16) {
+      lcd.print(Line1tmp.substring(scrollPosition, scrollPosition + 16));
     } else {
       int tmpScrollPosition = Line1tmp.length() - scrollPosition;
-      String tmpData = Line1tmp.substring(scrollPosition, Line1tmp.length()) + Line1.substring(0, 20 - tmpScrollPosition);
+      String tmpData = Line1tmp.substring(scrollPosition, Line1tmp.length()) + Line1.substring(0, 16 - tmpScrollPosition);
       lcd.print(tmpData);
     }
     // Increment scroll position
@@ -526,14 +333,14 @@ void scrollTextFromLine1() {
 
 void scrollTextFromLine2() {
   // Print the scrolling text
-  if(Line2.length() > 20) {
+  if(Line2.length() > 16) {
     lcd.setCursor(0, 1);
     String Line1tmp = Line2 + "    ";
-    if (Line1tmp.length() > scrollPosition1 + 20) {
-      lcd.print(Line1tmp.substring(scrollPosition1, scrollPosition1 + 20));
+    if (Line1tmp.length() > scrollPosition1 + 16) {
+      lcd.print(Line1tmp.substring(scrollPosition1, scrollPosition1 + 16));
     } else {
       int tmpScrollPosition = Line1tmp.length() - scrollPosition1;
-      String tmpData = Line1tmp.substring(scrollPosition1, Line1tmp.length()) + Line2.substring(0, 20 - tmpScrollPosition);
+      String tmpData = Line1tmp.substring(scrollPosition1, Line1tmp.length()) + Line2.substring(0, 16 - tmpScrollPosition);
       lcd.print(tmpData);
     }
     // Increment scroll position
