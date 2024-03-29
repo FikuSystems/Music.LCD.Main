@@ -364,9 +364,9 @@ namespace Music.LCD.Installer
                 ZipFile.ExtractToDirectory(choosenPath + @"InstallTemp\MusicLCD.zip", choosenPath);
                 File.Delete(choosenPath + @"InstallTemp\MusicLCD.zip");
                 Directory.Delete(choosenPath + @"InstallTemp");
-                //unsinstaller
+				//unsinstaller
 
-                if (silentStart)
+				if (silentStart)
                 {
                     this.Close();
                 }
@@ -396,7 +396,18 @@ namespace Music.LCD.Installer
                     }
                     catch { }
                 }
-                DirectoryInfo dir = Directory.CreateDirectory(choosenPath + @"Music.LCD.Old");
+				string resourceIcon = "Music.LCD.Installer.Resources.favicon.ico";
+				using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceIcon))
+				{
+					byte[] buffer = new byte[resourceStream.Length];
+					resourceStream.Read(buffer, 0, buffer.Length);
+					try
+					{
+						File.WriteAllBytes(Path.Combine(choosenPath, "Music.LCD.ico"), buffer);
+					}
+					catch { }
+				}
+				DirectoryInfo dir = Directory.CreateDirectory(choosenPath + @"Music.LCD.Old");
                 dir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
                 string sourceDir = choosenPath;
                 string destDir = choosenPath + @"Music.LCD.Old";
@@ -406,7 +417,7 @@ namespace Music.LCD.Installer
                 foreach (string file in files)
                 {
                     string fileName = Path.GetFileName(file);
-                    if (fileName != "Music.LCD.Installer.exe" && fileName != @"InstallerLogs.txt")
+                    if (fileName != "Music.LCD.Installer.exe" && fileName != @"InstallerLogs.txt" && fileName != "Music.LCD.ico")
                     {
                         string destFile = Path.Combine(destDir, fileName);
                         File.Copy(file, destFile, true);
@@ -415,7 +426,7 @@ namespace Music.LCD.Installer
                 foreach (string file in files)
                 {
                     string fileName = Path.GetFileName(file);
-                    if (fileName != "Music.LCD.Installer.exe" && fileName != @"InstallerLogs.txt")
+                    if (fileName != "Music.LCD.Installer.exe" && fileName != @"InstallerLogs.txt" && fileName != "Music.LCD.ico")
                     {
                         File.Delete(file);
                     }
@@ -424,8 +435,18 @@ namespace Music.LCD.Installer
                 File.Delete(choosenPath + @"InstallTemp\MusicLCD.zip");
                 Directory.Delete(choosenPath + @"InstallTemp");
                 createShortcuts();
+                RegistryKey key = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\MusicLCD\", true);
+                key.SetValue("DisplayName", "Music.LCD");
+				key.SetValue("UninstallString", choosenPath + "Music.LCD.Uninstaller.exe");
+                key.SetValue("DisplayIcon", choosenPath + "Music.LCD.ico");
+                key.SetValue("Publisher", "FikuSystems");
+                key.SetValue("HelpLink", @"https:\\www.fikusystems.com\");
+                key.SetValue("InstallLocation", choosenPath);
+                key.SetValue("DisplayVersion", "0.0.0.5");
+                key.SetValue("URLInfoAbout", @"https:\\www.fikusystems.com\");
+                key.Close();
             }
-		}
+        }
 		
 
 		private void openexplorer_Click(object sender, EventArgs e)
