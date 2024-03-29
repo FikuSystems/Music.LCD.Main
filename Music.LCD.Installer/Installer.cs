@@ -291,7 +291,7 @@ namespace Music.LCD.Installer
 			}
             if (cstartmenufolder.Checked)
             {
-				string data = "Option Explicit\n" + "Dim objShell, objShortcut\n" + @"Set objShell = CreateObject(""WScript.Shell"")" + "\nDim TargetPath, ShortcutName\n" + "TargetPath = \"" + choosenPath + "Music.LCD.exe\"" + "\n" + @"ShortcutName = ""Music.LCD""" + "\n" + @"Set objShortcut = objShell.CreateShortcut(objShell.SpecialFolders(""StartMenu"") & ""\"" & ShortcutName & "".lnk"")" + "\nobjShortcut.TargetPath = TargetPath\nobjShortcut.Save\nSet objShortcut = Nothing\nSet objShell = Nothing\n";
+				string data = "Option Explicit\n" + "Dim objShell, objShortcut\n" + @"Set objShell = CreateObject(""WScript.Shell"")" + "\nDim TargetPath, ShortcutName\n" + "TargetPath = \"" + choosenPath + "Music.LCD.exe\"" + "\n" + @"ShortcutName = ""Music.LCD""" + "\n" + @"Set objShortcut = objShell.CreateShortcut(objShell.SpecialFolders(""StartMenu"") & ""\"" & ""Programs"" &""\""& ShortcutName & "".lnk"")" + "\nobjShortcut.TargetPath = TargetPath\nobjShortcut.Save\nSet objShortcut = Nothing\nSet objShell = Nothing\n";
 				File.Create(choosenPath + "createStartShort.vbs").Close();
 				TextWriter vbs = new StreamWriter(choosenPath + @"\createStartShort.vbs");
 				vbs.Write(data);
@@ -313,8 +313,6 @@ namespace Music.LCD.Installer
 
         private void copyingFiles_DoWork(object sender, DoWorkEventArgs e)
         {
-
-			File.WriteAllText(choosenPath + @"InstallerLogs.txt", "Music.LCD.Installer logs " + Currentdate + "\n");
             if (silentStart)
             {
 
@@ -417,7 +415,7 @@ namespace Music.LCD.Installer
                 foreach (string file in files)
                 {
                     string fileName = Path.GetFileName(file);
-                    if (fileName != "Music.LCD.Installer.exe" && fileName != @"InstallerLogs.txt" && fileName != "Music.LCD.ico")
+                    if (fileName != "Music.LCD.Installer.exe" && fileName != "Music.LCD.ico")
                     {
                         string destFile = Path.Combine(destDir, fileName);
                         File.Copy(file, destFile, true);
@@ -426,7 +424,7 @@ namespace Music.LCD.Installer
                 foreach (string file in files)
                 {
                     string fileName = Path.GetFileName(file);
-                    if (fileName != "Music.LCD.Installer.exe" && fileName != @"InstallerLogs.txt" && fileName != "Music.LCD.ico")
+                    if (fileName != "Music.LCD.Installer.exe" && fileName != "Music.LCD.ico")
                     {
                         File.Delete(file);
                     }
@@ -451,14 +449,11 @@ namespace Music.LCD.Installer
 
 		private void openexplorer_Click(object sender, EventArgs e)
 		{
-
 			if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
-
                 filepath.Text = folderBrowserDialog1.SelectedPath + @"\Music.LCD";
                 choosenPath = filepath.Text;
             }
-            
 		}
 
 		private void timer1_Tick(object sender, EventArgs e)
