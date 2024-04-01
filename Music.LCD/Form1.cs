@@ -885,7 +885,7 @@ namespace Music.LCD
 
         void writeConfigToFIle()
         {
-			File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD" + @"\config.MLCD", "com_port = " + config[0] + "\n" + "start_logon = " + config[1] + "\n" + "auto_con = " + config[2] + "\n" + "save_com = " + config[3] + "\n" + "launch_tray = " + config[4] + "\n" + "enable_tray = " + config[5] + "\n" + "hide_to_trayoncon = " + config[6] + "\n" + "sound_mute = " + config[7] + "\n" + "note_hiding = " + config[8] + "\n" + "dont_show_welcome = " + config[9] + "\n");
+			File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD\" + "config.MLCD", "com_port = " + config[0] + "\n" + "start_logon = " + config[1] + "\n" + "auto_con = " + config[2] + "\n" + "save_com = " + config[3] + "\n" + "launch_tray = " + config[4] + "\n" + "enable_tray = " + config[5] + "\n" + "hide_to_trayoncon = " + config[6] + "\n" + "sound_mute = " + config[7] + "\n" + "note_hiding = " + config[8] + "\n" + "dont_show_welcome = " + config[9] + "\n");
 		}
        
       
