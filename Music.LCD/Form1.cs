@@ -173,10 +173,12 @@ namespace Music.LCD
                     ComSelec.Items.Clear();
                     foreach (string comport in ports)
                     {
-                        ComSelec.Items.Add(comport);
+                        if (!ComSelec.Items.Contains(comport))
+                        {
+							ComSelec.Items.Add(comport);
+						}
                         if (comport == config[0])
                         {
-                            LogWrite("deb", "found", true);
                             ComSelec.Text = comport;
                             break;
                         }
@@ -422,10 +424,10 @@ namespace Music.LCD
 				}
                 if (MusicLCDType == "BCS")
                 {
-                    finalData = L1 + ">1" + L2 + ">2" + "\n";
+                    finalData = L1 + ">1" + L2 + ">2";
                 } else
                 {
-					finalData = L1 + ">1" + L2 + ">2" + L3 + ">3" + L4 + ">4" + L5 + "\n";
+					finalData = L1 + ">1" + L2 + ">2" + L3 + ">3" + L4 + ">4" + L5;
 				}
 
 				// Open the serial po
