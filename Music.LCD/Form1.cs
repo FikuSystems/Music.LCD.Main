@@ -105,7 +105,7 @@ namespace Music.LCD
             
         {//Handles setting the settings group box to intended size
             gradients();
-			readConfigFromReg();
+			ReadConfigFile();
 			string latestVersionUrl = "http://newestversion.xlx.pl/version.php";
 
 			try
@@ -695,21 +695,22 @@ namespace Music.LCD
             Logbox.SelectionStart = Logbox.Text.Length;
             // scroll it automatically
             Logbox.ScrollToCaret();
-
         }
 
 		
 
         private void ReadConfigFile()
         {
-            readConfigFromReg();
-            /*
-
-			string read = null;
-
-            if (File.Exists(currentPath + "config.MLCD"))
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD";
+            if (!Directory.Exists(path))
             {
-                read = File.ReadAllText(currentPath + "config.MLCD");
+                Directory.CreateDirectory(path);
+            }
+            string read = null;
+
+            if (File.Exists(path + @"\config.MLCD"))
+            {
+                read = File.ReadAllText(path + @"\config.MLCD");
 
                 if (read.Contains("com_port = "))
                 {
@@ -877,201 +878,17 @@ namespace Music.LCD
 				}
 			}
 
-            */
+            
            
         }
 
 
         void writeConfigToFIle()
         {
-            writeConfigToReg();
-			//File.WriteAllText(currentPath + "config.MLCD", "com_port = " + config[0] + "\n" + "start_logon = " + config[1] + "\n" + "auto_con = " + config[2] + "\n" + "save_com = " + config[3] + "\n" + "launch_tray = " + config[4] + "\n" + "enable_tray = " + config[5] + "\n" + "hide_to_trayoncon = " + config[6] + "\n" + "sound_mute = " + config[7] + "\n" + "note_hiding = " + config[8] + "\n" + "dont_show_welcome = " + config[9] + "\n");
+			File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD" + @"\config.MLCD", "com_port = " + config[0] + "\n" + "start_logon = " + config[1] + "\n" + "auto_con = " + config[2] + "\n" + "save_com = " + config[3] + "\n" + "launch_tray = " + config[4] + "\n" + "enable_tray = " + config[5] + "\n" + "hide_to_trayoncon = " + config[6] + "\n" + "sound_mute = " + config[7] + "\n" + "note_hiding = " + config[8] + "\n" + "dont_show_welcome = " + config[9] + "\n");
 		}
-        void writeConfigToReg()
-        {
-            RegistryKey regWrite = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\MusicLCD", true);
-            regWrite.SetValue("config", "com_port = " + config[0] + "\n" + "start_logon = " + config[1] + "\n" + "auto_con = " + config[2] + "\n" + "save_com = " + config[3] + "\n" + "launch_tray = " + config[4] + "\n" + "enable_tray = " + config[5] + "\n" + "hide_to_trayoncon = " + config[6] + "\n" + "sound_mute = " + config[7] + "\n" + "note_hiding = " + config[8] + "\n" + "dont_show_welcome = " + config[9] + "\n");
-        }
-        void readConfigFromReg()
-        {
-            RegistryKey regCheck = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\MusicLCD");
-            if (regCheck == null)
-            {
-                RegistryKey regCreate = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\MusicLCD");
-                regCreate.SetValue("config", "com_port = " + config[0] + "\n" + "start_logon = " + config[1] + "\n" + "auto_con = " + config[2] + "\n" + "save_com = " + config[3] + "\n" + "launch_tray = " + config[4] + "\n" + "enable_tray = " + config[5] + "\n" + "hide_to_trayoncon = " + config[6] + "\n" + "sound_mute = " + config[7] + "\n" + "note_hiding = " + config[8] + "\n" + "dont_show_welcome = " + config[9] + "\n");
-                regCreate.Close();
-            } else
-            {
-
-				object configValue = Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\MusicLCD", "config", null);
-                string read = configValue.ToString();
-
-				if (read.Contains("com_port = "))
-				{
-					config[0] = read.Substring(read.IndexOf("com_port = ") + 11, read.IndexOf("start_logon = ") - read.IndexOf("com_port = ") - 12);
-					if (!string.IsNullOrEmpty(config[0]))
-					{
-						serialPort.PortName = config[0];
-					}
-
-				}
-				else
-				{
-					LogWrite("warn", "config property: com_port failed", false);
-				}
-
-				if (read.Contains("start_logon = "))
-				{
-					config[1] = read.Substring(read.IndexOf("start_logon = ") + 14, 1);
-					if (Convert.ToInt16(config[1]) == 1)
-					{
-						startlogon.Checked = true;
-					}
-					else
-					{
-						startlogon.Checked = false;
-					}
-				}
-				else
-				{
-					LogWrite("warn", "config property: start_logon failed", false);
-				}
-
-
-				if (read.Contains("auto_con = "))
-				{
-					config[2] = read.Substring(read.IndexOf("auto_con = ") + 11, 1);
-					if (Convert.ToInt16(config[2]) == 1)
-					{
-						autoconn.Checked = true;
-					}
-					else
-					{
-						autoconn.Checked = false;
-					}
-				}
-				else
-				{
-					LogWrite("warn", "config property: auto_con failed", false);
-				}
-
-				if (read.Contains("save_com = "))
-				{
-					config[3] = read.Substring(read.IndexOf("save_com = ") + 11, 1);
-					if (Convert.ToInt16(config[3]) == 1)
-					{
-						savecom.Checked = true;
-					}
-					else
-					{
-						savecom.Checked = false;
-					}
-				}
-				else
-				{
-					LogWrite("warn", "config property: save_com failed", false);
-				}
-
-				if (read.Contains("launch_tray = "))
-				{
-					config[4] = read.Substring(read.IndexOf("launch_tray = ") + 14, 1);
-					if (Convert.ToInt16(config[4]) == 1)
-					{
-						launchtray.Checked = true;
-					}
-					else
-					{
-						launchtray.Checked = false;
-					}
-				}
-				else
-				{
-					LogWrite("warn", "config property: launch_tray failed", false);
-				}
-
-				if (read.Contains("enable_tray = "))
-				{
-					config[5] = read.Substring(read.IndexOf("enable_tray = ") + 14, 1);
-					if (Convert.ToInt16(config[5]) == 1)
-					{
-						enabletray.Checked = true;
-					}
-					else
-					{
-						enabletray.Checked = false;
-					}
-				}
-				else
-				{
-					LogWrite("warn", "config property: enable_tray failed", false);
-				}
-
-
-				if (read.Contains("hide_to_trayoncon = "))
-				{
-					config[6] = read.Substring(read.IndexOf("hide_to_trayoncon = ") + 20, 1);
-					if (Convert.ToInt16(config[6]) == 1)
-					{
-						hidetotrayconnect.Checked = true;
-					}
-					else
-					{
-						hidetotrayconnect.Checked = false;
-					}
-				}
-				else
-				{
-					LogWrite("warn", "config property: hide_to_trayoncon failed", false);
-				}
-
-				if (read.Contains("sound_mute = "))
-				{
-					config[7] = read.Substring(read.IndexOf("sound_mute = ") + 13, 1);
-					if (Convert.ToInt16(config[7]) == 1)
-					{
-						soundMute.Checked = true;
-					}
-					else
-					{
-						soundMute.Checked = false;
-					}
-				}
-				else
-				{
-					LogWrite("warn", "config property: sound_mute failed", false);
-				}
-
-				if (read.Contains("note_hiding = "))
-				{
-					config[8] = read.Substring(read.IndexOf("note_hiding = ") + 14, 1);
-					if (Convert.ToInt16(config[8]) == 1)
-					{
-						EnableNoteHiding.Checked = true;
-					}
-					else
-					{
-						EnableNoteHiding.Checked = false;
-					}
-				}
-				else
-				{
-					LogWrite("warn", "config property: note_hiding failed", false);
-				}
-
-				if (read.Contains("dont_show_welcome = "))
-				{
-					config[9] = read.Substring(read.IndexOf("dont_show_welcome = ") + 20, 1);
-					if (Convert.ToInt16(config[9]) == 1)
-					{
-						checkBox1.Checked = true;
-					}
-					else
-					{
-						checkBox1.Checked = false;
-					}
-				}
-			}
-        }
+       
+      
         public void LogWrite(string type, string text, bool printSeperation)
         {
             if(printSeperation)
