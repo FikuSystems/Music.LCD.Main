@@ -142,6 +142,12 @@
   <data name="Direct LCD 16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Direct LCD 16.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="happyyay" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\happyyay.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="infoglass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\infoglass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Direct LCD" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Direct LCD.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -150,9 +156,6 @@
   </data>
   <data name="Bez tytułu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bez tytułu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="curves" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\curves.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="errorglass" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\errorglass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,19 +175,19 @@
   <data name="Untitled-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Untitled-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="infoglass" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\infoglass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="curves" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\curves.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="jajo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\jajo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LCDON" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LCDON.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="I2C LCD" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\I2C LCD.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="happyyay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\happyyay.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LCDON" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LCDON.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="globe_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\globe_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

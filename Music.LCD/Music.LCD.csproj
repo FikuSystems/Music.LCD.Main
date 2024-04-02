@@ -80,6 +80,12 @@
     <Compile Include="ConfirmBox.Designer.cs">
       <DependentUpon>ConfirmBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="DownloadUtility.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DownloadUtility.Designer.cs">
+      <DependentUpon>DownloadUtility.cs</DependentUpon>
+    </Compile>
     <Compile Include="flashdonehappyyaynodie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConfirmBox.resx">
       <DependentUpon>ConfirmBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DownloadUtility.resx">
+      <DependentUpon>DownloadUtility.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="flashdonehappyyaynodie.resx">
       <DependentUpon>flashdonehappyyaynodie.cs</DependentUpon>
@@ -237,7 +246,7 @@
     <PackageReference Include="Dubya.WindowsMediaController" Version="2.5.3" />
     <PackageReference Include="Dubya.WindowsMediaController" Version="2.5.4" />
     <PackageReference Include="HtmlAgilityPack">
-      <Version>1.11.59</Version>
+      <Version>1.11.60</Version>
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.59" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.59" />
@@ -319,6 +328,7 @@
     <None Include="Resources\titlebastr.ico" />
     <None Include="Resources\Untitled-2.png" />
     <None Include="Resources\happyyay.png" />
+    <None Include="Resources\globe_down.png" />
     <Content Include="titlebastr.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

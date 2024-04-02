@@ -10,13 +10,22 @@ using System.ComponentModel;
 using Microsoft.Win32;
 using System.Net.Http;
 using System.Drawing.Drawing2D;
+using AngleSharp.Html.Parser;
+using System.Threading.Tasks;
 
 namespace Music.LCD
 {
     public partial class Form1 : Form
     {
 		//TEST
+		private static HttpClient _client = new HttpClient();
 
+		private static async Task<string> GetHtmlAsync(string uri)
+		{
+			var response = await _client.GetAsync(uri);
+			response.EnsureSuccessStatusCode();
+			return await response.Content.ReadAsStringAsync();
+		}
 		RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 		public bool pressed;
         public string finalData;
@@ -43,6 +52,7 @@ namespace Music.LCD
         public bool closeApp = false;
         private string MusicLCDType;
         public static string NewestArduinCodeVersion;
+        private string link, newestVersion;
         public Form1()
         {
             InitializeComponent();
@@ -102,35 +112,30 @@ namespace Music.LCD
             };
         }
         private async void Form1_Load(object sender, EventArgs e)
-            
         {//Handles setting the settings group box to intended size
-            gradients();
-			ReadConfigFile();
-			string latestVersionUrl = "http://newestversion.xlx.pl/version.php";
-
 			try
 			{
-				using (HttpClient client = new HttpClient())
-				{
-					HttpResponseMessage response = await client.GetAsync(latestVersionUrl);
+				string htmlContent = await GetHtmlAsync("https://fikusystems.github.io/Music.LCD.WebService/Music.LCD.WebService.appVersion.html");
+				var parser = new HtmlParser();
+				var document = await parser.ParseDocumentAsync(htmlContent);
+				// Extract the links and version
+				var link1Node = document.QuerySelector("#link1");
+				link = link1Node != null ? link1Node.TextContent.Trim() : null;
+				
+				var versionNode = document.QuerySelector("#version");
+				newestVersion = versionNode != null ? versionNode.TextContent.Trim() : null;
+			} catch(Exception ex) { LogWrite("err", ex.ToString(), true); }
+            RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\MusicLCD\");
+            string currentVersion = key.GetValue("DisplayVersion").ToString();
 
-					if (response.IsSuccessStatusCode)
-					{
-						string jsonString = await response.Content.ReadAsStringAsync();
-						dynamic data = Newtonsoft.Json.JsonConvert.DeserializeObject(jsonString);
-
-						string latestVersion = data.version;
-                        NewestArduinCodeVersion = latestVersion;
-					}
-					else
-					{
-					}
-				}
-			}
-			catch
-			{
-			}
-
+            if (Convert.ToInt16(currentVersion.Replace(".", "")) < Convert.ToInt16(newestVersion.Replace(".", "")))
+            {
+                ConfirmBox confirmbox = new ConfirmBox();
+                confirmbox.Show();
+                confirmbox.notificationtext.Text = "Newer version is available to download";
+            } 
+           
+			gradients();
 			ReadConfigFile();
             if (config[4] == "1")
             {
@@ -1055,6 +1060,12 @@ namespace Music.LCD
             {
                 closeApp = true;
 			}
+		}
+
+		private void button9_Click(object sender, EventArgs e)
+		{
+            DownloadUtility downloadutility = new DownloadUtility();
+            downloadutility.Show();
 		}
 
 		private void DisconnectDelay_Tick(object sender, EventArgs e)
