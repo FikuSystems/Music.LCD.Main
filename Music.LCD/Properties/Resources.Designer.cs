@@ -133,6 +133,16 @@ namespace Music.LCD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap download_globe {
+            get {
+                object obj = ResourceManager.GetObject("download globe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap error {
             get {
                 object obj = ResourceManager.GetObject("error", resourceCulture);
@@ -186,6 +196,16 @@ namespace Music.LCD.Properties {
         internal static System.Drawing.Bitmap I2C_LCD_16 {
             get {
                 object obj = ResourceManager.GetObject("I2C LCD 16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap info_globe {
+            get {
+                object obj = ResourceManager.GetObject("info globe", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -256,6 +276,36 @@ namespace Music.LCD.Properties {
         internal static System.Drawing.Bitmap LCDON1 {
             get {
                 object obj = ResourceManager.GetObject("LCDON1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MsMpRes_134 {
+            get {
+                object obj = ResourceManager.GetObject("MsMpRes_134", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap postponeglobe {
+            get {
+                object obj = ResourceManager.GetObject("postponeglobe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settings_globe {
+            get {
+                object obj = ResourceManager.GetObject("settings globe", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

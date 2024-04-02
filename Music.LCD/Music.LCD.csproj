@@ -329,6 +329,11 @@
     <None Include="Resources\Untitled-2.png" />
     <None Include="Resources\happyyay.png" />
     <None Include="Resources\globe_down.png" />
+    <None Include="Resources\download globe.png" />
+    <None Include="Resources\info globe.png" />
+    <None Include="Resources\settings globe.png" />
+    <None Include="Resources\postponeglobe.png" />
+    <None Include="Resources\MsMpRes_134.ico" />
     <Content Include="titlebastr.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -118,14 +118,20 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="shoot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\shoot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Warningglass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Warningglass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="I2C LCD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\I2C LCD.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LCDOFF" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LCDOFF.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="I2C LCD 16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\I2C LCD 16.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="settings globe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settings globe.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jajo3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\jajo3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="confirmglass1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\confirmglass1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -133,17 +139,59 @@
   <data name="confirmglass - Copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\confirmglass - Copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="jajo3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\jajo3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="I2C LCD 16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\I2C LCD 16.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jajo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\jajo2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="confirmglass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\confirmglass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="globe_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\globe_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="error" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jajo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\jajo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LCDON1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LCDON1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="happyyay" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\happyyay.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Direct LCD 16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Direct LCD 16.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="happyyay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\happyyay.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Untitled-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Untitled-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="info globe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\info globe.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LCDON" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LCDON.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="errorglass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\errorglass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="postponeglobe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\postponeglobe.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="download globe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\download globe.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bez tytułu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bez tytułu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shoot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shoot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="curves" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\curves.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="infoglass" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\infoglass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,43 +199,10 @@
   <data name="Direct LCD" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Direct LCD.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="jajo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\jajo2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Bez tytułu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Bez tytułu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="errorglass" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\errorglass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Warningglass" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Warningglass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="error" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="confirmglass" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\confirmglass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="titlebastr" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\titlebastr.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Untitled-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Untitled-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="curves" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\curves.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="jajo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\jajo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="I2C LCD" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\I2C LCD.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LCDON" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LCDON.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="globe_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\globe_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MsMpRes_134" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MsMpRes_134.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
