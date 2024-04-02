@@ -113,7 +113,8 @@ namespace Music.LCD
         }
         private async void Form1_Load(object sender, EventArgs e)
         {//Handles setting the settings group box to intended size
-			try
+            gradients();
+            try
 			{
 				string htmlContent = await GetHtmlAsync("https://fikusystems.github.io/Music.LCD.WebService/Music.LCD.WebService.appVersion.html");
 				var parser = new HtmlParser();
@@ -135,7 +136,7 @@ namespace Music.LCD
                 confirmbox.notificationtext.Text = "Newer version is available to download";
             } 
            
-			gradients();
+
 			ReadConfigFile();
             if (config[4] == "1")
             {
