@@ -114,6 +114,8 @@ namespace Music.LCD
         private async void Form1_Load(object sender, EventArgs e)
         {//Handles setting the settings group box to intended size
             gradients();
+            checksuminvalid checksuminvalid = new checksuminvalid();
+            checksuminvalid.Show();
             try
 			{
 				string htmlContent = await GetHtmlAsync("https://fikusystems.github.io/Music.LCD.WebService/Music.LCD.WebService.appVersion.html");

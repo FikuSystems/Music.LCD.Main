@@ -1,7 +1,7 @@
 ﻿namespace Music.LCD
 {
-	partial class flashdonehappyyaynodie
-	{
+    partial class checksuminvalid
+    {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -29,26 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(flashdonehappyyaynodie));
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(checksuminvalid));
             this.label1 = new System.Windows.Forms.Label();
-            this.Maintext = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.progressBar1.Location = new System.Drawing.Point(19, 252);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(392, 23);
-            this.progressBar1.TabIndex = 1;
-            this.progressBar1.Value = 100;
             // 
             // label1
             // 
@@ -59,41 +50,18 @@
             this.label1.Location = new System.Drawing.Point(8, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(215, 32);
+            this.label1.Size = new System.Drawing.Size(242, 32);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Arduino Flash Tool";
-            // 
-            // Maintext
-            // 
-            this.Maintext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Maintext.AutoSize = true;
-            this.Maintext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Maintext.Location = new System.Drawing.Point(16, 234);
-            this.Maintext.Name = "Maintext";
-            this.Maintext.Size = new System.Drawing.Size(118, 15);
-            this.Maintext.TabIndex = 4;
-            this.Maintext.Text = "Uploading complete!";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox1.Image = global::Music.LCD.Properties.Resources.happyyay;
-            this.pictureBox1.Location = new System.Drawing.Point(19, 93);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(392, 138);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.label1.Text = "Checksum has failed.";
             // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 5000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(165)))), ((int)(((byte)(132)))));
+            this.panel1.BackColor = System.Drawing.Color.Red;
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -112,46 +80,75 @@
             this.label2.Location = new System.Drawing.Point(12, 42);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 15);
+            this.label2.Size = new System.Drawing.Size(282, 15);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Flash successful!";
+            this.label2.Text = "The file downloaded does not match the Checksum.";
             // 
-            // flashdonehappyyaynodie
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Music.LCD.Properties.Resources.goodbad_globe;
+            this.pictureBox1.Location = new System.Drawing.Point(19, 93);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(392, 135);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(298, 239);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 28);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Continue anyway";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(226, 239);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(66, 28);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Cancel";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // checksuminvalid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(429, 295);
+            this.ClientSize = new System.Drawing.Size(429, 286);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.Maintext);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "flashdonehappyyaynodie";
+            this.Name = "checksuminvalid";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "| MusicLCD | Sending Data";
+            this.Text = "| MusicLCD | Checksum Invalid";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.flashdonehappyyaynodie_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.checksuminvalid_Load_1);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label Maintext;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
