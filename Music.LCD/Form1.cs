@@ -27,6 +27,8 @@ namespace Music.LCD
 			return await response.Content.ReadAsStringAsync();
 		}
 		RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+		
+        string currentVersion; 
 		public bool pressed;
         public string finalData;
         public static String songTitle;
@@ -52,7 +54,7 @@ namespace Music.LCD
         public bool closeApp = false;
         private string MusicLCDType;
         public static string NewestArduinCodeVersion;
-        private string link, newestVersion;
+        private string link, newestVersion, newFileSize;
         public Form1()
         {
             InitializeComponent();
@@ -113,7 +115,9 @@ namespace Music.LCD
         }
         private async void Form1_Load(object sender, EventArgs e)
         {//Handles setting the settings group box to intended size
-            gradients();
+			RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\MusicLCD\");
+			currentVersion = key.GetValue("DisplayVersion").ToString();
+			gradients();
             try
 			{
 				string htmlContent = await GetHtmlAsync("https://fikusystems.github.io/Music.LCD.WebService/Music.LCD.WebService.appVersion.html");
@@ -125,9 +129,12 @@ namespace Music.LCD
 				
 				var versionNode = document.QuerySelector("#version");
 				newestVersion = versionNode != null ? versionNode.TextContent.Trim() : null;
+
+                var fileSizeNode = document.QuerySelector("#fileSize");
+                newFileSize = fileSizeNode != null ? fileSizeNode.TextContent.Trim() : null;
+
 			} catch(Exception ex) { LogWrite("err", ex.ToString(), true); }
-            RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\MusicLCD\");
-            string currentVersion = key.GetValue("DisplayVersion").ToString();
+            
 
             if (Convert.ToInt16(currentVersion.Replace(".", "")) < Convert.ToInt16(newestVersion.Replace(".", "")))
             {
@@ -1067,6 +1074,9 @@ namespace Music.LCD
 		{
             DownloadUtility downloadutility = new DownloadUtility();
             downloadutility.Show();
+            downloadutility.currentVersion.Text = currentVersion;
+            downloadutility.NewVersion.Text = newestVersion;
+            downloadutility.DonwloadSize.Text = newFileSize;
 		}
 
 		private void DisconnectDelay_Tick(object sender, EventArgs e)
