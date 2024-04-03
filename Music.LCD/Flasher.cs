@@ -374,8 +374,7 @@ namespace Music.LCD
             MessageBox.Show($"{error}");
             try
 			{
-				//Form1 form1 = new Form1(); 
-				//form1.LogWrite("err", $"Failed to flash {error}", false);
+			
 			}
 			catch
 			{
@@ -438,16 +437,31 @@ namespace Music.LCD
 		}
 		private void DownloadFileCompleted(object sender, DownloadDataCompletedEventArgs e)
 		{
-			string checkMD5(string filename)
+			MessageBox.Show("works");
+			string filename = null;
+			if (LiqCry.Checked && LCD2004.Checked)
 			{
-				using (var md5 = MD5.Create())
-				{
-					using (var stream = File.OpenRead(filename))
-					{
-						return Encoding.Default.GetString(md5.ComputeHash(stream));
-					}
-				}
+				//LIQCRY 2004
+				filename = @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRY-2004.hex";
 			}
+			else if (LiqCryI2C.Checked && LCD2004.Checked)
+			{
+				//LIQCRYI2C-2004
+				filename = @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRYI2C-2004.hex";
+			}
+			else if (LiqCry.Checked && LCD1602.Checked)
+			{
+
+				//LIQCRY-1602
+				filename = @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRY-1602.hex";
+			}
+			else if (LiqCryI2C.Checked && LCD1602.Checked)
+			{
+
+				//LIQCRYI2C-1602
+				filename = @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRYI2C-1602.hex";
+			}
+			CalculateMD5(filename);
 		}
 
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -477,7 +491,18 @@ namespace Music.LCD
 
         }
 
-        private void Completed(object sender, AsyncCompletedEventArgs e)
+		public static string CalculateMD5(string filename)
+		{
+			using (var md5 = MD5.Create())
+			{
+				using (var stream = File.OpenRead(filename))
+				{
+					return BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", string.Empty);
+				}
+			}
+		}
+
+		private void Completed(object sender, AsyncCompletedEventArgs e)
 		{
             okunderstand.Visible = false;
             errico.Visible = false;
