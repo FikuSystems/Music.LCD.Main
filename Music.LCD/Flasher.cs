@@ -12,8 +12,8 @@ using System.Drawing.Drawing2D;
 using System.Threading.Tasks;
 using System.Net.Http;
 using AngleSharp.Html.Parser;
-
-
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Music.LCD
 {
@@ -435,7 +435,19 @@ namespace Music.LCD
 		private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
 		{
 			DownloadProgress.Value = e.ProgressPercentage;
-			
+		}
+		private void DownloadFileCompleted(object sender, DownloadDataCompletedEventArgs e)
+		{
+			string checkMD5(string filename)
+			{
+				using (var md5 = MD5.Create())
+				{
+					using (var stream = File.OpenRead(filename))
+					{
+						return Encoding.Default.GetString(md5.ComputeHash(stream));
+					}
+				}
+			}
 		}
 
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
