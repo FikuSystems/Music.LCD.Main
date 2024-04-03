@@ -321,7 +321,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::Music.LCD.Properties.Resources.MsMpRes_134;
-            this.pictureBox5.Location = new System.Drawing.Point(26, 3);
+            this.pictureBox5.Location = new System.Drawing.Point(26, 7);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(32, 32);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
