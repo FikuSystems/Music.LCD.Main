@@ -28,6 +28,7 @@ namespace Music.LCD
 		private String directory = AppDomain.CurrentDomain.BaseDirectory;
 		private String selectedModel;
 		string link1, link2, link3, link4, NewestArduinoFirmwareVersion;
+		private bool downloadError;
 		public Flasher()
         {
             InitializeComponent();
@@ -485,8 +486,18 @@ namespace Music.LCD
 				filename = @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRYI2C-1602.hex";
 				fileChecksum = link4Checksum;
 			}
-			MessageBox.Show(CalculateMD5(filename).ToString() + "\n" + fileChecksum);
-			
+			if (fileChecksum != CalculateMD5(filename).ToString())
+			{
+				if (!downloadError)
+				{
+					downloadError = true;
+					Download.PerformClick();
+				} else
+				{
+					downloadError = false;
+					checksuminvalid checksuminvalid = new checksuminvalid(); checksuminvalid.Show();
+				}
+			}
 		}
 
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -529,7 +540,8 @@ namespace Music.LCD
 
 		private void Completed(object sender, AsyncCompletedEventArgs e)
 		{
-            okunderstand.Visible = false;
+			Chekcksum();
+			okunderstand.Visible = false;
             errico.Visible = false;
             errtext.Visible = false;
             oktext.Visible = true;
@@ -574,7 +586,6 @@ namespace Music.LCD
 				{
 					if (!ArdModel.Enabled)
 					{
-						Chekcksum();
 						ArdModel.Enabled = true;
 					}
 					if (ArdModel.Text != "" && !ArdCOM.Enabled)
@@ -612,7 +623,6 @@ namespace Music.LCD
 				{
 					if (!ArdModel.Enabled)
 					{
-						Chekcksum();
 						ArdModel.Enabled = true;
 					}
 					if (ArdModel.Text != "" && !ArdCOM.Enabled)
@@ -724,7 +734,6 @@ namespace Music.LCD
 				{
 					if (!ArdModel.Enabled)
 					{
-						Chekcksum();
 						ArdModel.Enabled = true;
 					}
 					if (ArdModel.Text != "" && !ArdCOM.Enabled)
@@ -762,7 +771,6 @@ namespace Music.LCD
 				{
 					if (!ArdModel.Enabled)
 					{
-						Chekcksum();
 						ArdModel.Enabled = true;
 					}
 					if (ArdModel.Text != "" && !ArdCOM.Enabled)

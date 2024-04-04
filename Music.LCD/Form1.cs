@@ -27,7 +27,6 @@ namespace Music.LCD
 			return await response.Content.ReadAsStringAsync();
 		}
 		RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-		
         string currentVersion; 
 		public bool pressed;
         public string finalData;
@@ -116,8 +115,6 @@ namespace Music.LCD
         private async void Form1_Load(object sender, EventArgs e)
         {//Handles setting the settings group box to intended size
             gradients();
-            checksuminvalid checksuminvalid = new checksuminvalid();
-            checksuminvalid.Show();
             try
 			{
 				string htmlContent = await GetHtmlAsync("https://fikusystems.github.io/Music.LCD.WebService/Music.LCD.WebService.appVersion.html");
@@ -134,14 +131,17 @@ namespace Music.LCD
                 newFileSize = fileSizeNode != null ? fileSizeNode.TextContent.Trim() : null;
 
 			} catch(Exception ex) { LogWrite("err", ex.ToString(), true); }
-            
-
-            if (Convert.ToInt16(currentVersion.Replace(".", "")) < Convert.ToInt16(newestVersion.Replace(".", "")))
-            {
-                ConfirmBox confirmbox = new ConfirmBox();
-                confirmbox.Show();
-                confirmbox.notificationtext.Text = "Newer version is available to download";
-            } 
+            RegistryKey versionkey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\MusicLCD");
+            currentVersion = versionkey.GetValue("DisplayVersion").ToString();
+			try
+			{
+                if (Convert.ToInt16(currentVersion.Replace(".", "")) < Convert.ToInt16(newestVersion.Replace(".", "")))
+                {
+                    ConfirmBox confirmbox = new ConfirmBox();
+                    confirmbox.Show();
+                    confirmbox.notificationtext.Text = "Newer version is available to download";
+                }
+            } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
            
 
 			ReadConfigFile();
