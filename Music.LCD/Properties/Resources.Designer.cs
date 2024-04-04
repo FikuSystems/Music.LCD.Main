@@ -173,6 +173,16 @@ namespace Music.LCD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap goodbad_globe {
+            get {
+                object obj = ResourceManager.GetObject("goodbad globe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap happyyay {
             get {
                 object obj = ResourceManager.GetObject("happyyay", resourceCulture);

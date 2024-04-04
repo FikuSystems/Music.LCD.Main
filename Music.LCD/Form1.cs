@@ -115,9 +115,9 @@ namespace Music.LCD
         }
         private async void Form1_Load(object sender, EventArgs e)
         {//Handles setting the settings group box to intended size
-			RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\MusicLCD\");
-			currentVersion = key.GetValue("DisplayVersion").ToString();
-			gradients();
+            gradients();
+            checksuminvalid checksuminvalid = new checksuminvalid();
+            checksuminvalid.Show();
             try
 			{
 				string htmlContent = await GetHtmlAsync("https://fikusystems.github.io/Music.LCD.WebService/Music.LCD.WebService.appVersion.html");

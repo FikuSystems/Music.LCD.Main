@@ -74,6 +74,12 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="checksuminvalid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="checksuminvalid.Designer.cs">
+      <DependentUpon>checksuminvalid.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConfirmBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +157,9 @@
     </Compile>
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="checksuminvalid.resx">
+      <DependentUpon>checksuminvalid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConfirmBox.resx">
       <DependentUpon>ConfirmBox.cs</DependentUpon>
@@ -337,6 +346,7 @@
     <None Include="Resources\settings globe.png" />
     <None Include="Resources\postponeglobe.png" />
     <None Include="Resources\MsMpRes_134.ico" />
+    <None Include="Resources\goodbad globe.png" />
     <Content Include="titlebastr.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
