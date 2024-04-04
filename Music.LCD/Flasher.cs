@@ -435,33 +435,58 @@ namespace Music.LCD
 		{
 			DownloadProgress.Value = e.ProgressPercentage;
 		}
-		private void DownloadFileCompleted(object sender, DownloadDataCompletedEventArgs e)
+		private async void Chekcksum()
 		{
-			MessageBox.Show("works");
 			string filename = null;
+			string fileChecksum = null, link1Checksum = null, link2Checksum = null, link3Checksum = null, link4Checksum = null;
+			try
+			{
+				string htmlContent = await GetHtmlAsync("https://fikusystems.github.io/Music.LCD.WebService/Music.LCD.Checksum.html");
+				var parser = new HtmlParser();
+				var document = await parser.ParseDocumentAsync(htmlContent);
+				// Extract the links and version
+				var link1Node = document.QuerySelector("#link1");
+				link1Checksum = link1Node != null ? link1Node.TextContent.Trim() : null;
+				var link2Node = document.QuerySelector("#link2");
+				link2Checksum = link2Node != null ? link2Node.TextContent.Trim() : null;
+				var link3Node = document.QuerySelector("#link3");
+				link3Checksum = link3Node != null ? link3Node.TextContent.Trim() : null;
+				var link4Node = document.QuerySelector("#link4");
+				link4Checksum = link4Node != null ? link4Node.TextContent.Trim() : null;
+			}
+			catch (Exception ex)
+			{
+				Form1 form1 = new Form1();
+				form1.LogWrite("err", "cannot connect to the server" + ex.ToString(), true);
+			}
 			if (LiqCry.Checked && LCD2004.Checked)
 			{
 				//LIQCRY 2004
 				filename = @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRY-2004.hex";
+				fileChecksum = link1Checksum;
 			}
 			else if (LiqCryI2C.Checked && LCD2004.Checked)
 			{
 				//LIQCRYI2C-2004
 				filename = @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRYI2C-2004.hex";
+				fileChecksum = link2Checksum;
 			}
 			else if (LiqCry.Checked && LCD1602.Checked)
 			{
 
 				//LIQCRY-1602
 				filename = @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRY-1602.hex";
+				fileChecksum = link3Checksum;
 			}
 			else if (LiqCryI2C.Checked && LCD1602.Checked)
 			{
 
 				//LIQCRYI2C-1602
 				filename = @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRYI2C-1602.hex";
+				fileChecksum = link4Checksum;
 			}
-			CalculateMD5(filename);
+			MessageBox.Show(CalculateMD5(filename).ToString() + "\n" + fileChecksum);
+			
 		}
 
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -549,6 +574,7 @@ namespace Music.LCD
 				{
 					if (!ArdModel.Enabled)
 					{
+						Chekcksum();
 						ArdModel.Enabled = true;
 					}
 					if (ArdModel.Text != "" && !ArdCOM.Enabled)
@@ -586,6 +612,7 @@ namespace Music.LCD
 				{
 					if (!ArdModel.Enabled)
 					{
+						Chekcksum();
 						ArdModel.Enabled = true;
 					}
 					if (ArdModel.Text != "" && !ArdCOM.Enabled)
@@ -697,6 +724,7 @@ namespace Music.LCD
 				{
 					if (!ArdModel.Enabled)
 					{
+						Chekcksum();
 						ArdModel.Enabled = true;
 					}
 					if (ArdModel.Text != "" && !ArdCOM.Enabled)
@@ -734,6 +762,7 @@ namespace Music.LCD
 				{
 					if (!ArdModel.Enabled)
 					{
+						Chekcksum();
 						ArdModel.Enabled = true;
 					}
 					if (ArdModel.Text != "" && !ArdCOM.Enabled)
