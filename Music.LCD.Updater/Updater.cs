@@ -98,7 +98,7 @@ namespace Music.LCD.Updater
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            OverallProgress.Value = DownloadProgress.Value + BackupProgress.Value + InstallProgress.Value;
+            OverallProgress.Value = gatherProgress.Value + BackupProgress.Value + InstallProgress.Value;
         }
         private void updatedone()
         {
@@ -109,25 +109,12 @@ namespace Music.LCD.Updater
             InstallProgress.Visible = false;
             OverallProgress.Visible = false;
             timer2.Enabled = true;
-            DownloadProgress.Value = 0;
-            DownloadProgress.SetState(2);
+            gatherProgress.Value = 0;
+            gatherProgress.SetState(2);
         }
-        void downloadUpdate()
-        {
-            if (!Directory.Exists(directory + @"UpdateTemp"))
-            {
-				DirectoryInfo di = Directory.CreateDirectory(directory + @"UpdateTemp");
-				di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
-			}
-			WebClient webClient = new WebClient();
-			webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
-			Uri url = new Uri(link1);
-			webClient.DownloadFileAsync(url, @"");
-			
-		}
 		private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
 		{
-			DownloadProgress.Value = e.ProgressPercentage;
+			gatherProgress.Value = e.ProgressPercentage;
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -147,8 +134,8 @@ namespace Music.LCD.Updater
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            DownloadProgress.Increment(1);
-            if (DownloadProgress.Value == 100)
+            gatherProgress.Increment(1);
+            if (gatherProgress.Value == 100)
             {
                 // start mlcd
                 timer2.Stop();
@@ -158,7 +145,7 @@ namespace Music.LCD.Updater
 
         void displayError(string message)
         {
-
+            
         }
     }
     public static class ModifyProgressBarColor
