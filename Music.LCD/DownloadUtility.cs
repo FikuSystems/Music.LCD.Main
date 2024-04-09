@@ -14,6 +14,7 @@ using System.Net.Http;
 using AngleSharp.Html.Parser;
 using System.Security.Cryptography;
 using System.Text;
+using AngleSharp.Io;
 
 namespace Music.LCD
 {
@@ -21,6 +22,7 @@ namespace Music.LCD
 	{
 		string directory = AppDomain.CurrentDomain.BaseDirectory;
 		string link5, NewestVersion;
+		bool downloadError;
 		public DownloadUtility()
 		{
 			InitializeComponent();
@@ -79,18 +81,55 @@ namespace Music.LCD
 		{
 			Directory.CreateDirectory(directory + @"\Temp");
 			WebClient webClient = new WebClient();
-			webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
+			webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadCompleted);
 			webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
 			Uri url = new Uri(link5);
-			webClient.DownloadFileAsync(url, @"Temp/Music.LCD.Installer.exe");
+			webClient.DownloadFileAsync(url, directory + @"Temp\Music.LCD.Installer.exe");
 		}
-		private void Completed(object sender, AsyncCompletedEventArgs e)
+		private async void DownloadCompleted(object sender, AsyncCompletedEventArgs e)
 		{
-			
+			string link5Checksum = null;
+			try
+			{
+				string htmlContent = await GetHtmlAsync("https://fikusystems.github.io/Music.LCD.WebService/Music.LCD.Checksum.html");
+				var parser = new HtmlParser();
+				var document = await parser.ParseDocumentAsync(htmlContent);
+				// Extract the links and version
+				var link5Node = document.QuerySelector("#link5");
+				link5Checksum = link5Node != null ? link5Node.TextContent.Trim() : null;
+			}
+			catch (Exception ex)
+			{
+				Form1 form1 = new Form1();
+				form1.LogWrite("err", "cannot connect to the server" + ex.ToString(), true);
+			}
+			if (link5Checksum != CalculateMD5(directory + @"Temp\Music.LCD.Installer.exe").ToString())
+			{
+				if (!downloadError)
+				{
+					downloadError = true;
+					button2.PerformClick();
+				}
+				else
+				{
+					downloadError = false;
+					checksuminvalid checksuminvalid = new checksuminvalid(); checksuminvalid.Show();
+				}
+			}
 		}
 		private void ProgressChanged(object sender,  DownloadProgressChangedEventArgs e)
 		{
 
+		}
+		public static string CalculateMD5(string filename)
+		{
+			using (var md5 = MD5.Create())
+			{
+				using (var stream = File.OpenRead(filename))
+				{
+					return BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", string.Empty);
+				}
+			}
 		}
 	}
 }
