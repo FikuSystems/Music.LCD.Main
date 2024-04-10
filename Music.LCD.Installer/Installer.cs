@@ -345,7 +345,7 @@ namespace Music.LCD.Installer
                 foreach (string file in files)
                 {
                     string fileName = Path.GetFileName(file);
-                    if (fileName != "Music.LCD.Installer.exe" && fileName != @"InstallerLogs.txt")
+                    if (true)
                     {
                         string destFile = Path.Combine(destDir, fileName);
                         File.Copy(file, destFile, true);
@@ -354,7 +354,7 @@ namespace Music.LCD.Installer
                 foreach (string file in files)
                 {
                     string fileName = Path.GetFileName(file);
-                    if (fileName != "Music.LCD.Installer.exe" && fileName != @"InstallerLogs.txt")
+                    if (fileName != @"config.MLCD")
                     {
                         File.Delete(file);
                     }
@@ -416,7 +416,7 @@ namespace Music.LCD.Installer
                 foreach (string file in files)
                 {
                     string fileName = Path.GetFileName(file);
-                    if (fileName != "Music.LCD.Installer.exe" && fileName != "Music.LCD.ico")
+                    if (fileName != "Music.LCD.ico")
                     {
                         string destFile = Path.Combine(destDir, fileName);
                         File.Copy(file, destFile, true);
@@ -425,7 +425,7 @@ namespace Music.LCD.Installer
                 foreach (string file in files)
                 {
                     string fileName = Path.GetFileName(file);
-                    if (fileName != "Music.LCD.Installer.exe" && fileName != "Music.LCD.ico")
+                    if (fileName != "Music.LCD.ico")
                     {
                         File.Delete(file);
                     }
