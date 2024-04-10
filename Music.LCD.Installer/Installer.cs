@@ -57,7 +57,8 @@ namespace Music.LCD.Installer
             {
                 this.Hide();
                 ShowInTaskbar = false;
-                choosenPath = AppDomain.CurrentDomain.BaseDirectory;
+                choosenPath = AppDomain.CurrentDomain.BaseDirectory.Replace(@"Temp\", "");
+                MessageBox.Show(choosenPath);
                 copyingFiles.RunWorkerAsync();
             }
             else
