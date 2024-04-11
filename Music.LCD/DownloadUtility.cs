@@ -27,6 +27,18 @@ namespace Music.LCD
 		{
 			InitializeComponent();
 		}
+		public void checksumInvalidButtonClicked(bool button)
+		{//true - cancel		false - continue anyway
+			if (button && File.Exists(directory + @"\Temp\Music.LCD.Installer.exe"))
+			{
+				try
+				{
+					File.Delete(directory + @"\Temp\Music.LCD.Installer.exe");
+				}
+				catch { }
+
+			}
+		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{
@@ -113,7 +125,7 @@ namespace Music.LCD
 				else
 				{
 					downloadError = false;
-					checksuminvalid checksuminvalid = new checksuminvalid(); checksuminvalid.Show();
+					checksuminvalid checksuminvalid = new checksuminvalid("DownloadUtility"); checksuminvalid.Show();
 				}
 			}
 		}

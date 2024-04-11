@@ -135,6 +135,7 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "| MusicLCD | Checksum Invalid";
 			this.TopMost = true;
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.checksuminvalid_FormClosing);
 			this.Load += new System.EventHandler(this.checksuminvalid_Load_1);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();

@@ -29,11 +29,23 @@ namespace Music.LCD
 		private String selectedModel;
 		string link1, link2, link3, link4, NewestArduinoFirmwareVersion;
 		private bool downloadError;
+		private string lastDownloaded;
+
 		public Flasher()
         {
             InitializeComponent();
         }
-
+		public void checksumInvalidButtonClicked(bool button)
+		{//true - cancel		false - continue anyway
+			if (button && File.Exists(directory + @"\Temp\" + lastDownloaded))
+			{
+				try
+				{
+					File.Delete(directory + @"\Temp\" + lastDownloaded);
+				} catch {}
+				
+			} 
+		}
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -486,6 +498,7 @@ namespace Music.LCD
 				filename = @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRYI2C-1602.hex";
 				fileChecksum = link4Checksum;
 			}
+			lastDownloaded = filename.Replace(@"Temp/", "");
 			if (fileChecksum != CalculateMD5(filename).ToString())
 			{
 				if (!downloadError)
@@ -495,7 +508,7 @@ namespace Music.LCD
 				} else
 				{
 					downloadError = false;
-					checksuminvalid checksuminvalid = new checksuminvalid(); checksuminvalid.Show();
+					checksuminvalid checksuminvalid = new checksuminvalid("DownloadUtility"); checksuminvalid.Show();
 				}
 			}
 		}

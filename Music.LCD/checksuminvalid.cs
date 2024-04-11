@@ -13,14 +13,16 @@ namespace Music.LCD
 {
     public partial class checksuminvalid : Form
     {
-        public checksuminvalid()
+        private string formArgument;
+        public checksuminvalid(string argument)
         {
             InitializeComponent();
+            formArgument = argument;
         }
 
         private void checksuminvalid_Load(object sender, EventArgs e)
         {
-
+            
         }
         private void grad()
         {
@@ -43,12 +45,36 @@ namespace Music.LCD
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-
+			if (formArgument == "Flasher")
+			{
+				Flasher flasher = Application.OpenForms.OfType<Flasher>().FirstOrDefault();
+                flasher.checksumInvalidButtonClicked(false);
+			}
+			else if (formArgument == "DownloadUtility")
+			{
+				DownloadUtility downloadUtility = Application.OpenForms.OfType<DownloadUtility>().FirstOrDefault();
+				downloadUtility.checksumInvalidButtonClicked(false);
+			}
+			this.Close();
 		}
-
 		private void button2_Click(object sender, EventArgs e)
 		{
+			if (formArgument == "Flasher")
+			{
+				Flasher flasher = Application.OpenForms.OfType<Flasher>().FirstOrDefault();
+				flasher.checksumInvalidButtonClicked(true);
+			}
+			else if (formArgument == "DownloadUtility")
+			{
+				DownloadUtility downloadUtility = Application.OpenForms.OfType<DownloadUtility>().FirstOrDefault();
+				downloadUtility.checksumInvalidButtonClicked(true);
+			}
+            this.Close();
+		}
 
+		private void checksuminvalid_FormClosing(object sender, FormClosingEventArgs e)
+		{
+            
 		}
 	}
 }
