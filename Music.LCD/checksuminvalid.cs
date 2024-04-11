@@ -13,9 +13,11 @@ namespace Music.LCD
 {
     public partial class checksuminvalid : Form
     {
-        public checksuminvalid()
+        private string formArgument;
+        public checksuminvalid(string argument)
         {
             InitializeComponent();
+            formArgument = argument;
         }
 
         private void checksuminvalid_Load(object sender, EventArgs e)
