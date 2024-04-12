@@ -15,6 +15,7 @@ using AngleSharp.Html.Parser;
 using System.Security.Cryptography;
 using System.Text;
 using AngleSharp.Io;
+using System.Diagnostics;
 
 namespace Music.LCD
 {
@@ -37,6 +38,9 @@ namespace Music.LCD
 				}
 				catch { }
 
+			} else
+			{
+				BeginUpdate();
 			}
 		}
 
@@ -127,6 +131,9 @@ namespace Music.LCD
 					downloadError = false;
 					checksuminvalid checksuminvalid = new checksuminvalid("DownloadUtility"); checksuminvalid.Show();
 				}
+			} else
+			{
+				BeginUpdate();
 			}
 		}
 		private void ProgressChanged(object sender,  DownloadProgressChangedEventArgs e)
@@ -141,6 +148,13 @@ namespace Music.LCD
 				{
 					return BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", string.Empty);
 				}
+			}
+		}
+		private void BeginUpdate()
+		{
+			if (File.Exists(directory + @"\Temp\Music.LCD.Installer.exe"))
+			{
+				Process.Start(directory + @"\Temp\Music.LCD.Installer.exe", "-s");
 			}
 		}
 	}
