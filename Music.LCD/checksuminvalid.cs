@@ -66,8 +66,9 @@ namespace Music.LCD
 			}
 			else if (formArgument == "DownloadUtility")
 			{
-				DownloadUtility downloadUtility = Application.OpenForms.OfType<DownloadUtility>().FirstOrDefault();
-				downloadUtility.checksumInvalidButtonClicked(true);
+					DownloadUtility downloadUtility = Application.OpenForms.OfType<DownloadUtility>().FirstOrDefault();
+					downloadUtility.checksumInvalidButtonClicked(true);
+				
 			}
             this.Close();
 		}

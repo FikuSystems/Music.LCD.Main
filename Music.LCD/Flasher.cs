@@ -508,7 +508,7 @@ namespace Music.LCD
 				} else
 				{
 					downloadError = false;
-					checksuminvalid checksuminvalid = new checksuminvalid("DownloadUtility"); checksuminvalid.Show();
+					checksuminvalid checksuminvalid = new checksuminvalid("Flasher"); checksuminvalid.Show();
 				}
 			}
 		}
