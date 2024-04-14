@@ -7,6 +7,7 @@ using System.IO;
 using System.Reflection;
 using System.IO.Compression;
 using Microsoft.Win32;
+using System.Runtime.CompilerServices;
 
 namespace Music.LCD.Installer
 {
@@ -18,6 +19,7 @@ namespace Music.LCD.Installer
         public string choosenPath;
         public bool silentStart;
         private static string Currentdate = System.DateTime.Now.ToString().Replace(".", "-").Replace(":", ".");
+        private string totalInstallPercentage = "001";
 		public Installer()
         {
             InitializeComponent();
@@ -36,7 +38,7 @@ namespace Music.LCD.Installer
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            saveFileLogs("Music LCD Install Logs\r\n(c) FikuSystems 2024\r\n==================================================================");
+            saveFileLogs("Music LCD Install Logs\r\n(c) FikuSystems 2024\r\n==================================================================",true);
 			if (Program.CommandLineArgs != null)
             {
                 string[] args = Program.CommandLineArgs;
@@ -461,22 +463,51 @@ namespace Music.LCD.Installer
 		{
             
 		}
-        private void saveFileLogs(string text)
-        {
-            
+        private void saveFileLogs(string text, bool argument)
+        {//true - silent mode    false - normal mode
 			string path = @"C:\Music.LCD.Installer.Logs\";
 			if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
-           
-            if (File.Exists(path  + "Music.LCD.Installer.Log " + Currentdate + ".txt"))
+			if (File.Exists(path  + "Music.LCD.Installer.Log " + Currentdate + ".txt"))
             {
-				text = File.ReadAllText(path + "Music.LCD.Installer.Log " + Currentdate + ".txt").ToString() + text;
+                string tmp = null;
+				tmp = File.ReadAllText(path + "Music.LCD.Installer.Log " + Currentdate + ".txt");
+                
+				if (tmp.Length - tmp.IndexOf("Progress$") == 12)
+                {
+                    tmp = tmp.Replace(tmp.Substring(tmp.IndexOf("Progress$"), 12), "");
+				}
+                text = tmp + text;
+
+            }
+            File.WriteAllText(path + "Music.LCD.Installer.Log " + Currentdate + ".txt", text + @"Progress$" + totalInstallPercentage);
+			//Progress$005 - example
+			if (silentStart)
+            {
+				path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD.Installer.Logs\";
+				if (!Directory.Exists(path))
+				{
+					Directory.CreateDirectory(path);
+				}
+				if (File.Exists(path + "Music.LCD.Installer.Log " + Currentdate + ".txt"))
+				{
+					string tmp = null;
+					tmp = File.ReadAllText(path + "Music.LCD.Installer.Log " + Currentdate + ".txt");
+
+					if (tmp.Length - tmp.IndexOf("Progress$") == 12)
+					{
+						tmp = tmp.Replace(tmp.Substring(tmp.IndexOf("Progress$"), 12), "");
+					}
+					text = tmp + text;
+
+				}
+				File.WriteAllText(path + "Music.LCD.Installer.Log " + Currentdate + ".txt", text + @"Progress$" + totalInstallPercentage);
 			}
-            File.WriteAllText(path + "Music.LCD.Installer.Log " + Currentdate + ".txt", text);
+           
         }
 
-	}
+    }
 
 }

@@ -21,7 +21,6 @@ namespace Music.LCD
 	public partial class Flasher : Form
     {
 		public Senddata senddata = new Senddata();
-		private string debugString;
 		private String filePath;
 		private String fileNameChoosen;
 		private String selectedCOM;
@@ -570,7 +569,6 @@ namespace Music.LCD
 
 		private void CheckPorts_Tick(object sender, EventArgs e)
 		{
-			label5.Text = debugString;
 			if (ArdCOM.Text.ToString() == "") 
 			{
 				try

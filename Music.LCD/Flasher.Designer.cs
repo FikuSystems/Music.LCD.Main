@@ -63,7 +63,6 @@
 			this.groupBox7 = new System.Windows.Forms.GroupBox();
 			this.groupBox8 = new System.Windows.Forms.GroupBox();
 			this.CheckPorts = new System.Windows.Forms.Timer(this.components);
-			this.label5 = new System.Windows.Forms.Label();
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.okico = new System.Windows.Forms.PictureBox();
@@ -472,17 +471,6 @@
 			this.CheckPorts.Interval = 10;
 			this.CheckPorts.Tick += new System.EventHandler(this.CheckPorts_Tick);
 			// 
-			// label5
-			// 
-			this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.label5.AutoSize = true;
-			this.label5.BackColor = System.Drawing.Color.Transparent;
-			this.label5.Location = new System.Drawing.Point(925, 26);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(38, 15);
-			this.label5.TabIndex = 21;
-			this.label5.Text = "label5";
-			// 
 			// backgroundWorker1
 			// 
 			this.backgroundWorker1.WorkerReportsProgress = true;
@@ -493,7 +481,6 @@
 			// 
 			this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(165)))), ((int)(((byte)(132)))));
 			this.panel1.Controls.Add(this.label1);
-			this.panel1.Controls.Add(this.label5);
 			this.panel1.Controls.Add(this.label2);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -627,7 +614,6 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox8;
 		private System.Windows.Forms.Timer CheckPorts;
-		private System.Windows.Forms.Label label5;
 		private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Panel panel1;
 	}
