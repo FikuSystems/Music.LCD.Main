@@ -14,13 +14,13 @@ namespace Music.LCD.Installer
 		static void Main(string[] args)
 		{
 			CommandLineArgs = args;
-			/*
+			
 			if (!IsRunAsAdmin())
 			{
 				//ElevateProcess();
 				return;
 			}
-			*/
+			
 			Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Installer());

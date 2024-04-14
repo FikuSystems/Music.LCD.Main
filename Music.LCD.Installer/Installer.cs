@@ -44,9 +44,10 @@ namespace Music.LCD.Installer
                 string[] args = Program.CommandLineArgs;
                 foreach (string arg in args)
                 {
-                    if (arg == "-s")
+                    if (arg.Contains("-s"))
                     {
-                        silentStart = true; break;
+                        Currentdate = arg.Replace("-s", "").Replace(".", "-").Replace(":", ".");
+						silentStart = true; break;
                     }
                     else
                     {

@@ -18,6 +18,7 @@ using HtmlAgilityPack;
 using AngleSharp.Html.Parser;
 using System.Net.NetworkInformation;
 using AngleSharp.Html.Dom;
+using System.Diagnostics;
 
 namespace Music.LCD.Updater
 {
@@ -26,6 +27,7 @@ namespace Music.LCD.Updater
     {
         private string link1, newestVersion;
 		private String directory = AppDomain.CurrentDomain.BaseDirectory;
+        private string currentDate = System.DateTime.Now.ToString();
 
 		public Updater()
         {
@@ -68,7 +70,11 @@ namespace Music.LCD.Updater
             {
                 displayError("Can't connect to the server: " + ex);
             }
-        }
+			if (File.Exists(directory + @"\Temp\Music.LCD.Installer.exe"))
+			{
+				Process.Start(directory + @"\Temp\Music.LCD.Installer.exe", "-s" + currentDate);
+			}
+		}
 
         private void gradients()
         {
@@ -98,6 +104,12 @@ namespace Music.LCD.Updater
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD.Installer.Logs") && File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD.Installer.Logs\Music.LCD.Installer.Log " + currentDate + ".txt"))
+            {
+                string tmp = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD.Installer.Logs\Music.LCD.Installer.Log " + currentDate + ".txt");
+			}
+            
+
             OverallProgress.Value = gatherProgress.Value + BackupProgress.Value + InstallProgress.Value;
         }
         private void updatedone()

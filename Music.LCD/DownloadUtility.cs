@@ -152,6 +152,7 @@ namespace Music.LCD
 		}
 		private void BeginUpdate()
 		{
+			//it is wrong will be changed, do not touch
 			if (File.Exists(directory + @"\Temp\Music.LCD.Installer.exe"))
 			{
 				Process.Start(directory + @"\Temp\Music.LCD.Installer.exe", "-s");
