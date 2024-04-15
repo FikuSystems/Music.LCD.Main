@@ -52,10 +52,10 @@
 			this.button3 = new System.Windows.Forms.Button();
 			this.OverallProgress = new System.Windows.Forms.ProgressBar();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.timer2 = new System.Windows.Forms.Timer(this.components);
 			this.label2 = new System.Windows.Forms.Label();
 			this.gatherProgress = new System.Windows.Forms.ProgressBar();
+			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.timer2 = new System.Windows.Forms.Timer(this.components);
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -199,20 +199,23 @@
 			this.BackupProgress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.BackupProgress.Location = new System.Drawing.Point(7, 145);
 			this.BackupProgress.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			this.BackupProgress.Minimum = 30;
 			this.BackupProgress.Name = "BackupProgress";
 			this.BackupProgress.Size = new System.Drawing.Size(492, 23);
 			this.BackupProgress.TabIndex = 5;
-			this.BackupProgress.Value = 80;
+			this.BackupProgress.Value = 30;
 			// 
 			// InstallProgress
 			// 
 			this.InstallProgress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.InstallProgress.Location = new System.Drawing.Point(7, 91);
 			this.InstallProgress.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			this.InstallProgress.Maximum = 30;
+			this.InstallProgress.Minimum = 15;
 			this.InstallProgress.Name = "InstallProgress";
 			this.InstallProgress.Size = new System.Drawing.Size(492, 23);
 			this.InstallProgress.TabIndex = 3;
-			this.InstallProgress.Value = 78;
+			this.InstallProgress.Value = 15;
 			// 
 			// label3
 			// 
@@ -306,7 +309,6 @@
 			this.OverallProgress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.OverallProgress.Location = new System.Drawing.Point(352, 343);
 			this.OverallProgress.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			this.OverallProgress.Maximum = 300;
 			this.OverallProgress.Name = "OverallProgress";
 			this.OverallProgress.Size = new System.Drawing.Size(227, 25);
 			this.OverallProgress.TabIndex = 4;
@@ -328,17 +330,6 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Updating";
 			// 
-			// timer1
-			// 
-			this.timer1.Enabled = true;
-			this.timer1.Interval = 1;
-			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-			// 
-			// timer2
-			// 
-			this.timer2.Interval = 40;
-			this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-			// 
 			// label2
 			// 
 			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -354,10 +345,21 @@
 			this.gatherProgress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.gatherProgress.Location = new System.Drawing.Point(7, 37);
 			this.gatherProgress.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			this.gatherProgress.Maximum = 15;
 			this.gatherProgress.Name = "gatherProgress";
 			this.gatherProgress.Size = new System.Drawing.Size(492, 23);
 			this.gatherProgress.TabIndex = 1;
-			this.gatherProgress.Value = 34;
+			// 
+			// timer1
+			// 
+			this.timer1.Enabled = true;
+			this.timer1.Interval = 1;
+			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			// 
+			// timer2
+			// 
+			this.timer2.Interval = 40;
+			this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
 			// 
 			// Updater
 			// 

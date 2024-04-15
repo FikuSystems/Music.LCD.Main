@@ -28,6 +28,7 @@ namespace Music.LCD.Updater
         private string link1, newestVersion;
 		private String directory = AppDomain.CurrentDomain.BaseDirectory;
         private string currentDate = System.DateTime.Now.ToString();
+        private int overallProgressInt = 0;
 
 		public Updater()
         {
@@ -70,10 +71,28 @@ namespace Music.LCD.Updater
             {
                 displayError("Can't connect to the server: " + ex);
             }
-			if (File.Exists(directory + @"\Temp\Music.LCD.Installer.exe"))
-			{
-				Process.Start(directory + @"\Temp\Music.LCD.Installer.exe", "-s" + currentDate);
-			}
+            if (Process.GetProcessesByName("Music.LCD").Length > 0)
+            {
+                try
+                {
+                    Process[] localByName = Process.GetProcessesByName("Music.LCD");
+                    foreach (Process p in localByName)
+                    {
+                        p.Kill();
+                    }
+                } catch { }
+
+            } else
+            {
+                if (File.Exists(directory + @"\Temp\Music.LCD.Installer.exe"))
+                {
+                    Process.Start(directory + @"\Temp\Music.LCD.Installer.exe", "-s" + currentDate);
+                } else
+                {
+                    this.Close();
+                }
+			} 
+			
 		}
 
         private void gradients()
@@ -104,13 +123,34 @@ namespace Music.LCD.Updater
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            
             if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD.Installer.Logs") && File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD.Installer.Logs\Music.LCD.Installer.Log " + currentDate + ".txt"))
             {
                 string tmp = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD.Installer.Logs\Music.LCD.Installer.Log " + currentDate + ".txt");
+                if (tmp.Contains("Progress$"))
+                {
+                    tmp = tmp.Substring(tmp.IndexOf("Progress$") + 9, 3);
+                    overallProgressInt = Convert.ToInt16(tmp);
+                }
+			}
+            if (overallProgressInt <= 15)
+            {//Gathering
+                gatherProgress.Value = overallProgressInt;
+            } else if (overallProgressInt > 15 && overallProgressInt <= 30)
+            {//Backup
+                
+                BackupProgress.Value = overallProgressInt;
+            } else if (overallProgressInt > 30 && overallProgressInt < 100)
+            {//Apply
+                BackupProgress.Value = overallProgressInt;
+			} else if (overallProgressInt == 100)
+            {//Updated
+                updatedone();
 			}
             
 
-            OverallProgress.Value = gatherProgress.Value + BackupProgress.Value + InstallProgress.Value;
+
+			OverallProgress.Value = gatherProgress.Value + BackupProgress.Value + InstallProgress.Value;
         }
         private void updatedone()
         {
