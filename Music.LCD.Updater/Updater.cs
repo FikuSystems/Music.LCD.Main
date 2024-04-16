@@ -26,7 +26,7 @@ namespace Music.LCD.Updater
     public partial class Updater : Form
     {
         private string link1, newestVersion;
-		private String directory = AppDomain.CurrentDomain.BaseDirectory;
+		private String directory = AppDomain.CurrentDomain.BaseDirectory.Replace(@"\Music.LCD.Updater", "");
         private string currentDate = System.DateTime.Now.ToString();
         private int overallProgressInt = 0;
 
@@ -54,6 +54,7 @@ namespace Music.LCD.Updater
         }
         private async void Updater_Load(object sender, EventArgs e)
         {
+            MessageBox.Show(directory);
             gradients();
             try
             {
@@ -147,10 +148,7 @@ namespace Music.LCD.Updater
             {//Updated
                 updatedone();
 			}
-            
-
-
-			OverallProgress.Value = gatherProgress.Value + BackupProgress.Value + InstallProgress.Value;
+			OverallProgress.Value = overallProgressInt;
         }
         private void updatedone()
         {
