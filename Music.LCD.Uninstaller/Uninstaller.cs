@@ -18,7 +18,7 @@ namespace Music.LCD.Uninstaller
         public Uninstaller()
         {
             InitializeComponent();
-            BeginUninstall();
+            //BeginUninstall();
 		}
 		private void BeginUninstall()
 		{
