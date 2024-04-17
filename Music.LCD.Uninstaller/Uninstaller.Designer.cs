@@ -49,8 +49,8 @@
 			this.OverallProgress = new System.Windows.Forms.ProgressBar();
 			this.page1 = new System.Windows.Forms.GroupBox();
 			this.page2 = new System.Windows.Forms.GroupBox();
-			this.label3 = new System.Windows.Forms.Label();
 			this.Progress = new System.Windows.Forms.ProgressBar();
+			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.timer2 = new System.Windows.Forms.Timer(this.components);
@@ -297,6 +297,15 @@
 			this.page2.TabStop = false;
 			this.page2.Text = "Uninstalling";
 			// 
+			// Progress
+			// 
+			this.Progress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.Progress.Location = new System.Drawing.Point(7, 37);
+			this.Progress.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			this.Progress.Name = "Progress";
+			this.Progress.Size = new System.Drawing.Size(492, 23);
+			this.Progress.TabIndex = 7;
+			// 
 			// label3
 			// 
 			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -306,15 +315,6 @@
 			this.label3.Size = new System.Drawing.Size(121, 15);
 			this.label3.TabIndex = 6;
 			this.label3.Text = "Removing Music LCD";
-			// 
-			// Progress
-			// 
-			this.Progress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.Progress.Location = new System.Drawing.Point(7, 37);
-			this.Progress.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			this.Progress.Name = "Progress";
-			this.Progress.Size = new System.Drawing.Size(492, 23);
-			this.Progress.TabIndex = 7;
 			// 
 			// label2
 			// 
@@ -378,6 +378,7 @@
 			this.Name = "Uninstaller";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "| Music LCD | Updater";
+			this.Load += new System.EventHandler(this.Uninstaller_Load);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			this.panel2.ResumeLayout(false);

@@ -18,7 +18,7 @@ namespace Music.LCD.Uninstaller
         public Uninstaller()
         {
             InitializeComponent();
-            BeginUninstall();
+
 		}
 		private void BeginUninstall()
 		{
@@ -35,7 +35,12 @@ namespace Music.LCD.Uninstaller
             {
                 File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu) + @"\Programs\Music.LCD.lnk");
             }
-            this.Close();
+            Directory.Delete(installLocation);
+		}
+
+		private void Uninstaller_Load(object sender, EventArgs e)
+		{
+			BeginUninstall();
 		}
 	} 
     
