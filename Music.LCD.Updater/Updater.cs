@@ -102,8 +102,8 @@ namespace Music.LCD.Updater
             {
                 using (LinearGradientBrush brush = new LinearGradientBrush(
                     panel1.ClientRectangle,
-                    Color.FromArgb(86, 165, 132),
-                    Color.FromArgb(62, 120, 96),
+                    Color.FromArgb(108, 211, 236),
+                    Color.FromArgb(59, 92, 188),
                     LinearGradientMode.Vertical))
                 {
                     e.Graphics.FillRectangle(brush, panel1.ClientRectangle); ;
