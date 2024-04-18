@@ -19,7 +19,14 @@ namespace Music.LCD.Uninstaller
         [STAThread]
         static void Main()
         {
+			
 
+			if (!IsRunAsAdmin())
+			{
+				ElevateProcess();
+				return;
+			}
+			
 			if (AppDomain.CurrentDomain.BaseDirectory.ToString() != Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Temp\")
 			{
 				string tempFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Temp\";
@@ -30,20 +37,15 @@ namespace Music.LCD.Uninstaller
 				return;
 			} 
 			
-			if (!IsRunAsAdmin())
-			{
-				ElevateProcess();
-				return;
-			}
 			
-			
-			
-			
-			
+
 			Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Uninstaller());
-        }
+			Application.SetCompatibleTextRenderingDefault(false);
+			Application.Run(new Uninstaller());
+
+
+
+		}
 		static bool IsRunAsAdmin()
 		{
 			WindowsIdentity identity = WindowsIdentity.GetCurrent();

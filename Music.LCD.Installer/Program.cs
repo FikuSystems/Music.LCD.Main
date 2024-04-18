@@ -17,7 +17,7 @@ namespace Music.LCD.Installer
 			
 			if (!IsRunAsAdmin())
 			{
-				//ElevateProcess();
+				ElevateProcess();
 				return;
 			}
 			
