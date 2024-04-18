@@ -54,6 +54,7 @@ namespace Music.LCD.Updater
         }
         private async void Updater_Load(object sender, EventArgs e)
         {
+            
             MessageBox.Show(directory);
             gradients();
             try
@@ -90,7 +91,9 @@ namespace Music.LCD.Updater
                     Process.Start(directory + @"\Temp\Music.LCD.Installer.exe", "-s" + currentDate);
                 } else
                 {
-                    this.Close();
+                    //  NoUpdates noUpdates = new NoUpdates();
+                    displayError("Update cannot be performed due to lack of update files. Please download the update files from Music.LCD when an update becomes avalible.");
+                    // noUpdates.Show();
                 }
 			} 
 			
@@ -102,8 +105,8 @@ namespace Music.LCD.Updater
             {
                 using (LinearGradientBrush brush = new LinearGradientBrush(
                     panel1.ClientRectangle,
-                    Color.FromArgb(108, 211, 236),
-                    Color.FromArgb(59, 92, 188),
+                    Color.FromArgb(86, 165, 132),
+                    Color.FromArgb(62, 120, 96),
                     LinearGradientMode.Vertical))
                 {
                     e.Graphics.FillRectangle(brush, panel1.ClientRectangle); ;
@@ -195,7 +198,14 @@ namespace Music.LCD.Updater
 
         void displayError(string message)
         {
-            
+            NoUpdates noupdates = new NoUpdates();
+            noupdates.titlelabel.Text = "Update has failed";
+            noupdates.descriptionlabel.Text = "An error has been encountered";
+            noupdates.bodylabel.Text = $"The updater updater has performed an illegal operation and will be closed.\r\nIf the problem persists, contact the program vendor.\r\n\r\nError information:\r\n{message}";
+            noupdates.Show();
+            this.ShowInTaskbar = false;
+            this.WindowState = FormWindowState.Minimized;
+            this.Enabled = false;
         }
     }
     public static class ModifyProgressBarColor
