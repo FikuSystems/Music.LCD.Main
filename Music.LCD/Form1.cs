@@ -12,13 +12,15 @@ using System.Net.Http;
 using System.Drawing.Drawing2D;
 using AngleSharp.Html.Parser;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace Music.LCD
 {
     public partial class Form1 : Form
     {
-		//TEST
-		private static HttpClient _client = new HttpClient();
+
+        //TEST
+        private static HttpClient _client = new HttpClient();
 
 		private static async Task<string> GetHtmlAsync(string uri)
 		{
@@ -114,6 +116,7 @@ namespace Music.LCD
         }
         private async void Form1_Load(object sender, EventArgs e)
         {//Handles setting the settings group box to intended size
+            
             gradients();
             try
 			{
