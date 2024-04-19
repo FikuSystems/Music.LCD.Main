@@ -29,8 +29,9 @@ namespace Music.LCD.Updater
 		private String directory = AppDomain.CurrentDomain.BaseDirectory.Replace(@"\Music.LCD.Updater", "");
         private string currentDate = System.DateTime.Now.ToString();
         private int overallProgressInt = 0;
+        NoUpdates noupdates = new NoUpdates();
 
-		public Updater()
+        public Updater()
         {
             InitializeComponent();
         }
@@ -59,7 +60,7 @@ namespace Music.LCD.Updater
             gradients();
             try
             {
-                string htmlContent = await GetHtmlAsync("https://fikusystems.github.io/Music.LCD.WebService/Music.LCD.WebService.appVersion.html");
+                string htmlContent = await GetHtmlAsync("nhttps://fikusystems.github.io/Music.LCD.WebService/Music.LCD.WebService.appVersion.html");
                 var parser = new HtmlParser();
                 var document = await parser.ParseDocumentAsync(htmlContent);
                 // Extract the link and version
@@ -71,7 +72,7 @@ namespace Music.LCD.Updater
 
             } catch (Exception ex)
             {
-                displayError("Can't connect to the server: " + ex);
+                displayError("Can't connect to the update server. Details:\r\n" + ex);
             }
             if (Process.GetProcessesByName("Music.LCD").Length > 0)
             {
@@ -198,14 +199,15 @@ namespace Music.LCD.Updater
 
         void displayError(string message)
         {
-            NoUpdates noupdates = new NoUpdates();
+            
             noupdates.titlelabel.Text = "Update has failed";
             noupdates.descriptionlabel.Text = "An error has been encountered";
-            noupdates.bodylabel.Text = $"The updater updater has performed an illegal operation and will be closed.\r\nIf the problem persists, contact the program vendor.\r\n\r\nError information:\r\n{message}";
+            noupdates.bodylabel.Text = $"The updater updater has performed an illegal operation and will be closed.\r\nIf the problem persists, contact the program vendor.\r\n\r\nError information 1:\r\n{message}";
             noupdates.Show();
             this.ShowInTaskbar = false;
             this.WindowState = FormWindowState.Minimized;
             this.Enabled = false;
+
         }
     }
     public static class ModifyProgressBarColor
