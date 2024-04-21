@@ -24,7 +24,7 @@ namespace Music.LCD
 		private String filePath;
 		private String fileNameChoosen;
 		private String selectedCOM;
-		private String directory = AppDomain.CurrentDomain.BaseDirectory;
+		private String directory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Temp\Music.LCD\";
 		private String selectedModel;
 		string link1, link2, link3, link4, NewestArduinoFirmwareVersion;
 		private bool downloadError;
@@ -36,11 +36,11 @@ namespace Music.LCD
         }
 		public void checksumInvalidButtonClicked(bool button)
 		{//true - cancel		false - continue anyway
-			if (button && File.Exists(directory + @"\Temp\" + lastDownloaded))
+			if (button && File.Exists(directory + @"Temp\" + lastDownloaded))
 			{
 				try
 				{
-					File.Delete(directory + @"\Temp\" + lastDownloaded);
+					File.Delete(directory + @"Temp\" + lastDownloaded);
 				} catch {}
 				
 			} 
@@ -122,13 +122,12 @@ namespace Music.LCD
 			FlashProgress.Style = ProgressBarStyle.Marquee;
 			selectedCOM = ArdCOM.Text;
 			selectedModel = ArdModel.Text;
-			directory = AppDomain.CurrentDomain.BaseDirectory;
 
 			if (LiqCry.Checked && LCD2004.Checked)
 			{
 
 				//LIQCRY 2004
-				if(File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRY-2004.hex"))
+				if(File.Exists(directory + @"Temp\MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRY-2004.hex"))
 				{
 					fileNameChoosen = "MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRY-2004.hex";
 					senddata.Show();
@@ -142,7 +141,7 @@ namespace Music.LCD
 			{
 
 				//LIQCRYI2C-2004
-				if (File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRYI2C-2004.hex"))
+				if (File.Exists(directory + @"Temp\MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRYI2C-2004.hex"))
 				{
 					fileNameChoosen = "MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRYI2C-2004.hex";
 					senddata.Show();
@@ -157,7 +156,7 @@ namespace Music.LCD
 			{
 
 				//BCS-2004
-				if (File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-BCS-2004.hex"))
+				if (File.Exists(directory + @"Temp\MLCD-" + NewestArduinoFirmwareVersion + @"-BCS-2004.hex"))
 				{
 					fileNameChoosen = "MLCD-" + NewestArduinoFirmwareVersion + @"-BCS-2004.hex";
 					backgroundWorker1.RunWorkerAsync();
@@ -171,7 +170,7 @@ namespace Music.LCD
 			{
 
 				//BCSI2C-2004
-				if (File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-BCSI2C-2004.hex"))
+				if (File.Exists(directory + @"Temp\MLCD-" + NewestArduinoFirmwareVersion + @"-BCSI2C-2004.hex"))
 				{
 					fileNameChoosen = "MLCD-" + NewestArduinoFirmwareVersion + @"-BCSI2C-2004.hex";
 					backgroundWorker1.RunWorkerAsync();
@@ -185,7 +184,7 @@ namespace Music.LCD
 			{
 
 				//LIQCRY-1602
-				if (File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRY-1602.hex"))
+				if (File.Exists(directory + @"Temp\MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRY-1602.hex"))
 				{
 					fileNameChoosen = "MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRY-1602.hex";
 					backgroundWorker1.RunWorkerAsync();
@@ -199,7 +198,7 @@ namespace Music.LCD
 			{
 
 				//LIQCRYI2C-1602
-				if (File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRYI2C-1602.hex"))
+				if (File.Exists(directory + @"Temp\MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRYI2C-1602.hex"))
 				{
 					fileNameChoosen = "MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRYI2C-1602.hex";
 					backgroundWorker1.RunWorkerAsync();
@@ -213,7 +212,7 @@ namespace Music.LCD
 			{
 
 				//BCS-1602
-				if (File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-BCS-1602.hex"))
+				if (File.Exists(directory + @"Temp\MLCD-" + NewestArduinoFirmwareVersion + @"-BCS-1602.hex"))
 				{
 					fileNameChoosen = "MLCD-" + NewestArduinoFirmwareVersion + @"-BCS-1602.hex";
 					backgroundWorker1.RunWorkerAsync();
@@ -227,7 +226,7 @@ namespace Music.LCD
 			{
 
 				//BCSI2C-1602
-				if (File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-BCSI2C-1602.hex"))
+				if (File.Exists(directory + @"Temp\MLCD-" + NewestArduinoFirmwareVersion + @"-BCSI2C-1602.hex"))
 				{
 					fileNameChoosen = "MLCD-" + NewestArduinoFirmwareVersion + @"-BCSI2C-1602.hex";
 					backgroundWorker1.RunWorkerAsync();
@@ -418,27 +417,27 @@ namespace Music.LCD
 			{
 				//LIQCRY 2004
 				Uri url = new Uri(link1);
-				webClient.DownloadFileAsync(url, @"Temp/MLCD-"+ NewestArduinoFirmwareVersion + "-LIQCRY-2004.hex");
+				webClient.DownloadFileAsync(url, directory + @"Temp\MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRY-2004.hex");
 			}
 			else if (LiqCryI2C.Checked && LCD2004.Checked)
 			{
 				//LIQCRYI2C-2004
 				Uri url = new Uri(link2);
-				webClient.DownloadFileAsync(url, @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRYI2C-2004.hex");
+				webClient.DownloadFileAsync(url, directory + @"Temp\MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRYI2C-2004.hex");
 			}
 			else if (LiqCry.Checked && LCD1602.Checked)
 			{
 
 				//LIQCRY-1602
 				Uri url = new Uri(link3);
-				webClient.DownloadFileAsync(url, @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRY-1602.hex");
+				webClient.DownloadFileAsync(url, directory + @"Temp\MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRY-1602.hex");
 			}
 			else if (LiqCryI2C.Checked && LCD1602.Checked)
 			{
 
 				//LIQCRYI2C-1602
 				Uri url = new Uri(link4);
-				webClient.DownloadFileAsync(url, @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRYI2C-1602.hex");
+				webClient.DownloadFileAsync(url, directory + @"Temp\MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRYI2C-1602.hex");
 			}
 			
 		}
@@ -474,42 +473,47 @@ namespace Music.LCD
 			if (LiqCry.Checked && LCD2004.Checked)
 			{
 				//LIQCRY 2004
-				filename = @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRY-2004.hex";
+				filename = @"Temp\MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRY-2004.hex";
 				fileChecksum = link1Checksum;
 			}
 			else if (LiqCryI2C.Checked && LCD2004.Checked)
 			{
 				//LIQCRYI2C-2004
-				filename = @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRYI2C-2004.hex";
+				filename = @"Temp\MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRYI2C-2004.hex";
 				fileChecksum = link2Checksum;
 			}
 			else if (LiqCry.Checked && LCD1602.Checked)
 			{
 
 				//LIQCRY-1602
-				filename = @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRY-1602.hex";
+				filename = @"Temp\MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRY-1602.hex";
 				fileChecksum = link3Checksum;
 			}
 			else if (LiqCryI2C.Checked && LCD1602.Checked)
 			{
 
 				//LIQCRYI2C-1602
-				filename = @"Temp/MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRYI2C-1602.hex";
+				filename = @"Temp\MLCD-" + NewestArduinoFirmwareVersion + "-LIQCRYI2C-1602.hex";
 				fileChecksum = link4Checksum;
 			}
-			lastDownloaded = filename.Replace(@"Temp/", "");
-			if (fileChecksum != CalculateMD5(filename).ToString())
+			lastDownloaded = directory + filename;
+			if(fileChecksum != CalculateMD5(lastDownloaded).ToString())
 			{
+
 				if (!downloadError)
 				{
 					downloadError = true;
 					Download.PerformClick();
-				} else
+				}
+				else
 				{
 					downloadError = false;
 					checksuminvalid checksuminvalid = new checksuminvalid("Flasher"); checksuminvalid.Show();
 				}
 			}
+			
+
+
 		}
 
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -589,7 +593,7 @@ namespace Music.LCD
 			{
 
 				//LIQCRY 2004
-				if (File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRY-2004.hex"))
+				if (File.Exists(directory + @"Temp\MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRY-2004.hex"))
 				{
 					if (!ArdModel.Enabled)
 					{
@@ -626,7 +630,7 @@ namespace Music.LCD
 			{
 
 				//LIQCRYI2C-2004
-				if (File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRYI2C-2004.hex"))
+				if (File.Exists(directory + @"Temp\MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRYI2C-2004.hex"))
 				{
 					if (!ArdModel.Enabled)
 					{
@@ -737,7 +741,7 @@ namespace Music.LCD
 			{
 
 				//LIQCRY-1602
-				if (File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRY-1602.hex"))
+				if (File.Exists(directory + @"Temp\MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRY-1602.hex"))
 				{
 					if (!ArdModel.Enabled)
 					{
@@ -774,7 +778,7 @@ namespace Music.LCD
 			{
 
 				//LIQCRYI2C-1602
-				if (File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRYI2C-1602.hex"))
+				if (File.Exists(directory + @"Temp\MLCD-" + NewestArduinoFirmwareVersion + @"-LIQCRYI2C-1602.hex"))
 				{
 					if (!ArdModel.Enabled)
 					{
