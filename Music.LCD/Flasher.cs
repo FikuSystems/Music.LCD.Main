@@ -517,10 +517,6 @@ namespace Music.LCD
 			senddata.Hide();
 			FlashProgress.Style = ProgressBarStyle.Blocks;
 			FlashProgress.Value = 100; this.Close();
-			if(Directory.Exists(directory + @"\Temp"))
-			{
-				Directory.Delete(directory + @"\Temp");
-			}
 			flashdonehappyyaynodie flashdone = new flashdonehappyyaynodie(); flashdone.Show();
 		}
 
