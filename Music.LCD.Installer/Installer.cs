@@ -38,7 +38,7 @@ namespace Music.LCD.Installer
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            saveFileLogs("Music LCD Install Logs\r\n(c) FikuSystems 2024\r\n==================================================================",true);
+            saveFileLogs("Music LCD Install Logs\r\n(c) FikuSystems 2024\r\n==================================================================");
 			if (Program.CommandLineArgs != null)
             {
                 string[] args = Program.CommandLineArgs;
@@ -319,15 +319,15 @@ namespace Music.LCD.Installer
         {
             if (silentStart)
             {
-
+                saveFileLogs("Progress$000");
                 if (!Directory.Exists(choosenPath + @"InstallTemp"))
                 {
                     DirectoryInfo di = Directory.CreateDirectory(choosenPath + @"InstallTemp");
                     di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
                 }
                 string resourceName = "Music.LCD.Installer.Resources.Music.LCD.zip";
-
-                using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+				saveFileLogs("Progress$005");
+				using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
                 {
                     byte[] buffer = new byte[resourceStream.Length];
                     resourceStream.Read(buffer, 0, buffer.Length);
@@ -337,15 +337,17 @@ namespace Music.LCD.Installer
                     }
                     catch { }
                 }
-
-                DirectoryInfo dir = Directory.CreateDirectory(choosenPath + @"Music.LCD.Old");
-                dir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+				saveFileLogs("Progress$015");
+				DirectoryInfo dir = Directory.CreateDirectory(choosenPath + @"Music.LCD.Old");
+				dir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
                 string sourceDir = choosenPath;
                 string destDir = choosenPath + @"Music.LCD.Old";
                 Directory.CreateDirectory(destDir);
-                string[] files = Directory.GetFiles(sourceDir);
+				saveFileLogs("Progress$017");
+				string[] files = Directory.GetFiles(sourceDir);
+				saveFileLogs("Progress$020");
 
-                foreach (string file in files)
+				foreach (string file in files)
                 {
                     string fileName = Path.GetFileName(file);
                     if (true)
@@ -354,7 +356,8 @@ namespace Music.LCD.Installer
                         File.Copy(file, destFile, true);
                     }
                 }
-                foreach (string file in files)
+				saveFileLogs("Progress$025");
+				foreach (string file in files)
                 {
                     string fileName = Path.GetFileName(file);
                     if (fileName != @"config.MLCD")
@@ -362,17 +365,22 @@ namespace Music.LCD.Installer
                         File.Delete(file);
                     }
                 }
-
-                ZipFile.ExtractToDirectory(choosenPath + @"InstallTemp\MusicLCD.zip", choosenPath);
-                File.Delete(choosenPath + @"InstallTemp\MusicLCD.zip");
-                Directory.Delete(choosenPath + @"InstallTemp");
+				saveFileLogs("Progress$030");
+				ZipFile.ExtractToDirectory(choosenPath + @"InstallTemp\MusicLCD.zip", choosenPath);
+				saveFileLogs("Progress$065");
+				File.Delete(choosenPath + @"InstallTemp\MusicLCD.zip");
+				saveFileLogs("Progress$080");
+				Directory.Delete(choosenPath + @"InstallTemp");
+				saveFileLogs("Progress$090");
 				//unsinstaller
 
 				if (silentStart)
                 {
-                    this.Close();
+					saveFileLogs("Progress$100");
+					this.Close();
                 }
-            }
+				saveFileLogs("Progress$100");
+			}
             else
             {
                 choosenPath = filepath.Text;
@@ -464,7 +472,7 @@ namespace Music.LCD.Installer
 		{
             
 		}
-        private void saveFileLogs(string text, bool argument)
+        private void saveFileLogs(string text)
         {//true - silent mode    false - normal mode
 			string path = @"C:\Music.LCD.Installer.Logs\";
 			if (!Directory.Exists(path))

@@ -25,7 +25,7 @@ namespace Music.LCD.Updater
 
     public partial class Updater : Form
     {
-        private string link1, newestVersion;
+        private string newestVersion;
 		private String directory = AppDomain.CurrentDomain.BaseDirectory.Replace(@"\Music.LCD.Updater", "");
         private string currentDate = System.DateTime.Now.ToString();
         private int overallProgressInt = 0;
@@ -63,8 +63,6 @@ namespace Music.LCD.Updater
                 var parser = new HtmlParser();
                 var document = await parser.ParseDocumentAsync(htmlContent);
                 // Extract the link and version
-                var link1Node = document.QuerySelector("#link1");
-                link1 = link1Node != null ? link1Node.TextContent.Trim() : null;
                 var versionNode = document.QuerySelector("#version");
                 newestVersion = versionNode != null ? versionNode.TextContent.Trim() : null;
                 label6.Text = "new version: " + newestVersion;
