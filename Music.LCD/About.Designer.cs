@@ -39,7 +39,16 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.TextList = new System.Windows.Forms.Label();
+            this.OldVer = new System.Windows.Forms.Label();
+            this.CurVer = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -114,6 +123,14 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.CurVer);
+            this.groupBox2.Controls.Add(this.OldVer);
+            this.groupBox2.Controls.Add(this.TextList);
             this.groupBox2.Location = new System.Drawing.Point(6, 163);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(359, 232);
@@ -154,6 +171,80 @@
             this.panel1.Size = new System.Drawing.Size(396, 71);
             this.panel1.TabIndex = 0;
             // 
+            // TextList
+            // 
+            this.TextList.AutoSize = true;
+            this.TextList.Location = new System.Drawing.Point(6, 19);
+            this.TextList.Name = "TextList";
+            this.TextList.Size = new System.Drawing.Size(91, 180);
+            this.TextList.TabIndex = 0;
+            this.TextList.Text = "Old Version:\r\nCurrent Version:\r\n\r\nPublisher:\r\nProduct:\r\nCopyright:\r\nDescription:\r" +
+    "\n\r\n\r\n\r\n\r\nContributers:";
+            this.TextList.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // OldVer
+            // 
+            this.OldVer.AutoSize = true;
+            this.OldVer.Location = new System.Drawing.Point(103, 19);
+            this.OldVer.Name = "OldVer";
+            this.OldVer.Size = new System.Drawing.Size(40, 15);
+            this.OldVer.TabIndex = 1;
+            this.OldVer.Text = "x.x.x.x";
+            // 
+            // CurVer
+            // 
+            this.CurVer.AutoSize = true;
+            this.CurVer.Location = new System.Drawing.Point(103, 34);
+            this.CurVer.Name = "CurVer";
+            this.CurVer.Size = new System.Drawing.Size(40, 15);
+            this.CurVer.TabIndex = 2;
+            this.CurVer.Text = "x.x.x.x";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(103, 64);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 15);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "FikuSystems";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(103, 79);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 15);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Music.LCD";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(103, 94);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 15);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "2024";
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(103, 109);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(250, 48);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Music LCD is a program that displays windows media information on a character LCD" +
+    " powered by an arduino.";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(103, 184);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(248, 15);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "FikuSystems (Fiku_, Rudy), NotSnorlax(Gruby)";
+            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -175,6 +266,8 @@
             this.Text = "| Music LCD | About";
             this.Load += new System.EventHandler(this.About_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -194,5 +287,13 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label CurVer;
+        private System.Windows.Forms.Label OldVer;
+        private System.Windows.Forms.Label TextList;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label7;
     }
 }

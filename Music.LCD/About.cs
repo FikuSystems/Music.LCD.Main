@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,6 +50,16 @@ namespace Music.LCD
         private void About_Load(object sender, EventArgs e)
         {
             gradients();
+            CurVer.Text = Application.ProductVersion.ToString();
+            try
+            {
+                OldVer.Text = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\MusicLCD\OldVersionNumber").ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Could not get registry value.\r\nDownload installer to create neccessary registry values!");
+            }
+
         }
         private void gradients()
         {
