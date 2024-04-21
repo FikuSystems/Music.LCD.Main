@@ -117,22 +117,6 @@ namespace Music.LCD
         }
         private async void Form1_Load(object sender, EventArgs e)
         {//Handles setting the settings group box to intended size
-			if (File.Exists(currentPath + "installTemp.mlcd"))
-			{
-				File.Delete("installTemp.mlcd");
-				string resourceName = "Music.LCD.Resources.Music.LCD.Updater.exe";
-
-				using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
-				{
-					byte[] buffer = new byte[resourceStream.Length];
-					resourceStream.Read(buffer, 0, buffer.Length);
-					try
-					{
-						File.WriteAllBytes(Path.Combine(currentPath, "Music.LCD.Updater.exe"), buffer);
-					}
-					catch { }
-				}
-			}
 			gradients();
             try
 			{
@@ -739,8 +723,26 @@ namespace Music.LCD
                 Directory.CreateDirectory(path);
             }
             string read = null;
+            /* not working shit
+			if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"Music.LCD\installTemp.mlcd"))
+			{
 
-            if (File.Exists(path + @"\config.MLCD"))
+				File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"Music.LCD\installTemp.mlcd");
+				string resourceName = "Music.LCD.Resources.Music.LCD.Updater.exe";
+
+				using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+				{
+					byte[] buffer = new byte[resourceStream.Length];
+					resourceStream.Read(buffer, 0, buffer.Length);
+					try
+					{
+						File.WriteAllBytes(Path.Combine(currentPath, "Music.LCD.Updater.exe"), buffer);
+					}
+					catch { }
+				}
+			}
+            */
+			if (File.Exists(path + @"\config.MLCD"))
             {
                 read = File.ReadAllText(path + @"\config.MLCD");
 
