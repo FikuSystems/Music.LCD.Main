@@ -117,13 +117,9 @@ namespace Music.LCD
         }
         private async void Form1_Load(object sender, EventArgs e)
         {//Handles setting the settings group box to intended size
-			RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\MusicLCD\", true);
-			currentVersion = key.GetValue("DisplayVersion").ToString();
-            string OldVersion = key.GetValue("OldVersionNumber").ToString();
-            if(currentVersion != OldVersion)
-            {
-                key.SetValue("OldVersionNumber", currentVersion);
-                File.Delete(currentPath + @"/Music.LCD.Updater.exe");
+			if (File.Exists(currentPath + "installTemp.mlcd"))
+			{
+				File.Delete("installTemp.mlcd");
 				string resourceName = "Music.LCD.Resources.Music.LCD.Updater.exe";
 
 				using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
@@ -137,7 +133,6 @@ namespace Music.LCD
 					catch { }
 				}
 			}
-			key.Close();
 			gradients();
             try
 			{
@@ -157,7 +152,7 @@ namespace Music.LCD
 			} catch(Exception ex) { LogWrite("err", ex.ToString(), true); }
 			try
 			{
-                if (Convert.ToInt16(currentVersion.Replace(".", "")) < Convert.ToInt16(newestVersion.Replace(".", "")))
+                if (currentVersion != null && Convert.ToInt16(currentVersion.Replace(".", "")) < Convert.ToInt16(newestVersion.Replace(".", "")))
                 {
                     ConfirmBox confirmbox = new ConfirmBox();
                     confirmbox.Show();
