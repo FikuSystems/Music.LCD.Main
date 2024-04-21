@@ -381,6 +381,7 @@ namespace Music.LCD.Installer
                 key.SetValue("HelpLink", @"https:\\www.fikusystems.com\");
                 key.SetValue("InstallLocation", choosenPath);
                 key.SetValue("URLInfoAbout", @"https:\\www.fikusystems.com\");
+                key.SetValue("DisplayVersion", "0.1.0.1");
                 key.Close();
 				if (silentStart)
                 {
@@ -460,7 +461,7 @@ namespace Music.LCD.Installer
                 key.SetValue("Publisher", "FikuSystems");
                 key.SetValue("HelpLink", @"https:\\www.fikusystems.com\");
                 key.SetValue("InstallLocation", choosenPath);
-                key.SetValue("DisplayVersion", "0.1.0.0");
+                key.SetValue("DisplayVersion", "0.1.0.1");
                 key.SetValue("URLInfoAbout", @"https:\\www.fikusystems.com\");
                 key.Close();
             }
