@@ -18,12 +18,23 @@ namespace Music.LCD.Uninstaller
 {
     public partial class Uninstaller : Form
     {
+		int Pagenumber = 0;
         public Uninstaller()
         {
             InitializeComponent();
 			gradients();
 		}
-		private void gradients()
+        private const int CP_NOCLOSE_BUTTON = 0x200;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams Crp = base.CreateParams;
+                Crp.ClassStyle = Crp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return Crp;
+            }
+        }
+        private void gradients()
 		{
 			panel1.Paint += (sender, e) =>
 			{
@@ -105,7 +116,7 @@ namespace Music.LCD.Uninstaller
 				clearFolder(installLocation);
 				Directory.Delete(installLocation);
 			} catch (Exception ex) { }
-			
+			Pagenumber = Pagenumber + 1;
 			
 		}
 		private void clearFolder(string FolderName)
@@ -146,6 +157,64 @@ namespace Music.LCD.Uninstaller
 			Application.Exit();
 			return;
 		}
-	} 
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+			if (Pagenumber == 2)
+			{
+				InitiateSelfDestructSequence();
+			}
+			else
+			{
+				Application.Exit();
+			}
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+			Pagenumber = Pagenumber + 1;
+			pagenumber();
+        }
+		private void pagenumber()
+		{
+			if (Pagenumber == 0)
+			{
+				page1.Visible = true;
+                page2.Visible = false;
+				page3.Visible = false;
+				button1.Text = "Next";
+				button1.Enabled = true;
+                button3.Enabled = true;
+				s1.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+                s2.Font = new Font("Segoe UI", 12);
+                s3.Font = new Font("Segoe UI", 12);
+            }
+            if (Pagenumber == 1)
+            {
+                page1.Visible = true;
+                page2.Visible = true;
+                page3.Visible = false;
+                button1.Text = "Next";
+                button1.Enabled = false;
+                button3.Enabled = false;
+				BeginUninstall();
+                s1.Font = new Font("Segoe UI", 12);
+                s2.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+                s3.Font = new Font("Segoe UI", 12);
+            }
+            if (Pagenumber == 2)
+            {
+                page1.Visible = true;
+                page2.Visible = true;
+                page3.Visible = true;
+                button1.Text = "Next";
+                button1.Enabled = false;
+                button3.Enabled = true;
+                s1.Font = new Font("Segoe UI", 12);
+                s2.Font = new Font("Segoe UI", 12);
+                s3.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            }
+        }
+    } 
     
 }
