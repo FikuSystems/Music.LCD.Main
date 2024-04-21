@@ -19,7 +19,7 @@ namespace Music.LCD.Installer
         public string choosenPath;
         public bool silentStart;
         private static string Currentdate = System.DateTime.Now.ToString().Replace(".", "-").Replace(":", ".");
-        private string totalInstallPercentage = "001";
+        private string totalInstallPercentage = "000";
 		public Installer()
         {
             InitializeComponent();
@@ -373,7 +373,16 @@ namespace Music.LCD.Installer
 				Directory.Delete(choosenPath + @"InstallTemp");
 				saveFileLogs("Progress$090");
 				//unsinstaller
-
+                RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\MusicLCD\", true);
+                key.SetValue("DisplayName", "Music.LCD");
+				key.SetValue("UninstallString", choosenPath + "Music.LCD.Uninstaller.exe");
+                key.SetValue("DisplayIcon", choosenPath + "Music.LCD.ico");
+                key.SetValue("Publisher", "FikuSystems");
+                key.SetValue("HelpLink", @"https:\\www.fikusystems.com\");
+                key.SetValue("InstallLocation", choosenPath);
+                key.SetValue("DisplayVersion", "0.1.0.0");
+                key.SetValue("URLInfoAbout", @"https:\\www.fikusystems.com\");
+                key.Close();
 				if (silentStart)
                 {
 					saveFileLogs("Progress$100");
@@ -452,8 +461,9 @@ namespace Music.LCD.Installer
                 key.SetValue("Publisher", "FikuSystems");
                 key.SetValue("HelpLink", @"https:\\www.fikusystems.com\");
                 key.SetValue("InstallLocation", choosenPath);
-                key.SetValue("DisplayVersion", "0.0.0.5");
+                key.SetValue("DisplayVersion", "0.1.0.0");
                 key.SetValue("URLInfoAbout", @"https:\\www.fikusystems.com\");
+                key.SetValue("OldVersionNumber", "0.1.0.0");
                 key.Close();
             }
         }

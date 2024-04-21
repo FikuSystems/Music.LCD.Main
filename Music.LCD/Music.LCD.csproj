@@ -347,6 +347,7 @@
     <None Include="Resources\postponeglobe.png" />
     <None Include="Resources\MsMpRes_134.ico" />
     <None Include="Resources\goodbad globe.png" />
+    <EmbeddedResource Include="Resources\Music.LCD.Updater.exe" />
     <Content Include="titlebastr.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,6 +13,7 @@ using System.Drawing.Drawing2D;
 using AngleSharp.Html.Parser;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Reflection;
 
 namespace Music.LCD
 {
@@ -116,8 +117,28 @@ namespace Music.LCD
         }
         private async void Form1_Load(object sender, EventArgs e)
         {//Handles setting the settings group box to intended size
-            
-            gradients();
+			RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\MusicLCD\", true);
+			currentVersion = key.GetValue("DisplayVersion").ToString();
+            string OldVersion = key.GetValue("OldVersionNumber").ToString();
+            if(currentVersion != OldVersion)
+            {
+                key.SetValue("OldVersionNumber", currentVersion);
+                File.Delete(currentPath + @"/Music.LCD.Updater.exe");
+				string resourceName = "Music.LCD.Resources.Music.LCD.Updater.exe";
+
+				using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+				{
+					byte[] buffer = new byte[resourceStream.Length];
+					resourceStream.Read(buffer, 0, buffer.Length);
+					try
+					{
+						File.WriteAllBytes(Path.Combine(currentPath, "Music.LCD.Updater.exe"), buffer);
+					}
+					catch { }
+				}
+			}
+			key.Close();
+			gradients();
             try
 			{
 				string htmlContent = await GetHtmlAsync("https://fikusystems.github.io/Music.LCD.WebService/Music.LCD.WebService.appVersion.html");
@@ -134,8 +155,6 @@ namespace Music.LCD
                 newFileSize = fileSizeNode != null ? fileSizeNode.TextContent.Trim() : null;
 
 			} catch(Exception ex) { LogWrite("err", ex.ToString(), true); }
-            RegistryKey versionkey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\MusicLCD");
-            currentVersion = versionkey.GetValue("DisplayVersion").ToString();
 			try
 			{
                 if (Convert.ToInt16(currentVersion.Replace(".", "")) < Convert.ToInt16(newestVersion.Replace(".", "")))

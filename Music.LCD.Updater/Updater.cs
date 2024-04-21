@@ -56,7 +56,6 @@ namespace Music.LCD.Updater
         private async void Updater_Load(object sender, EventArgs e)
         {
             
-            MessageBox.Show(directory);
             gradients();
             try
             {
@@ -200,7 +199,7 @@ namespace Music.LCD.Updater
             
             noupdates.titlelabel.Text = "Update has failed";
             noupdates.descriptionlabel.Text = "An error has been encountered";
-            noupdates.bodylabel.Text = $"The updater updater has performed an illegal operation and will be closed.\r\nIf the problem persists, contact the program vendor.\r\n\r\nError information 1:\r\n{message}";
+            noupdates.bodylabel.Text = $"The updater updater has performed an illegal operation and will be closed.\r\nIf the problem persists, contact the program vendor.\r\n\r\nError information:\r\n{message}";
             noupdates.Show();
             this.ShowInTaskbar = false;
             this.WindowState = FormWindowState.Minimized;

@@ -667,7 +667,7 @@ namespace Music.LCD
 			{
 
 				//BCS-2004
-				if (File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-BCS-2004.hex"))
+				if (File.Exists(directory + @"MLCD-BCS-2004.hex"))
 				{
 					if (!ArdModel.Enabled)
 					{
@@ -704,7 +704,7 @@ namespace Music.LCD
 			{
 
 				//BCSI2C-2004
-				if (File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-BCSI2C-2004.hex"))
+				if (File.Exists(directory + @"MLCD-BCSI2C-2004.hex"))
 				{
 					if (!ArdModel.Enabled)
 					{
@@ -815,7 +815,7 @@ namespace Music.LCD
 			{
 
 				//BCS-1602
-				if (File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-BCS-1602.hex"))
+				if (File.Exists(directory + @"MLCD-BCS-1602.hex"))
 				{
 					if (!ArdModel.Enabled)
 					{
@@ -852,7 +852,7 @@ namespace Music.LCD
 			{
 
 				//BCSI2C-1602
-				if (File.Exists(directory + @"Temp/MLCD-" + NewestArduinoFirmwareVersion + @"-BCSI2C-1602.hex"))
+				if (File.Exists(directory + @"MLCD-BCSI2C-1602.hex"))
 				{
 					if (!ArdModel.Enabled)
 					{
