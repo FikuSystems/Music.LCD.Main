@@ -74,8 +74,8 @@ namespace Music.LCD
 				Form1 form1 = new Form1();
 				form1.LogWrite("err", "cannot connect to the server" + ex.ToString(), true);
 			}
-			NewVersion.Text = NewestVersion;
-
+			NewVersion.Text = "New Version: " + NewestVersion;
+			currentVersion.Text = "Current Version: " + Application.ProductVersion.ToString();
 
 		}
 		private void gradients()

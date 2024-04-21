@@ -521,6 +521,7 @@
             this.button9.TabIndex = 2;
             this.button9.Text = "Get Update";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Visible = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // Form1
