@@ -233,10 +233,13 @@ namespace Music.LCD
         {//Opens COM PORT to start sending data
             if (ComSelec.Text != "")
             {
+                bool paused = false;
                 if (playpausestatus == "Playing")
                 {
                     await mediaManager.WindowsSessionManager.GetCurrentSession().TryPauseAsync();
-                }
+                    paused = true;
+
+				}
                 button1.Enabled = false;
                 button2.Enabled = true;
                 soundMute.Enabled = true;
@@ -269,9 +272,10 @@ namespace Music.LCD
 
                 pressed = true;
                 LogWrite("info", "Connection success", false);
-                if (playpausestatus == "Paused")
+                if (playpausestatus == "Paused" && paused)
                 {
-                    await mediaManager.WindowsSessionManager.GetCurrentSession().TryPlayAsync();
+					paused = false;
+					await mediaManager.WindowsSessionManager.GetCurrentSession().TryPlayAsync();
                 }
             } else
             {
