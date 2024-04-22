@@ -158,6 +158,7 @@
 			this.BCS.Text = "Arduino MusicLCD - BCS Edition (Offline)";
 			this.toolTip1.SetToolTip(this.BCS, resources.GetString("BCS.ToolTip"));
 			this.BCS.UseVisualStyleBackColor = true;
+			this.BCS.CheckedChanged += new System.EventHandler(this.BCS_CheckedChanged);
 			// 
 			// BCSI2C
 			// 
@@ -170,6 +171,7 @@
 			this.BCSI2C.Text = "Arduino MusicLCD - BCSI2C Edition (Offline)";
 			this.toolTip1.SetToolTip(this.BCSI2C, resources.GetString("BCSI2C.ToolTip"));
 			this.BCSI2C.UseVisualStyleBackColor = true;
+			this.BCSI2C.CheckedChanged += new System.EventHandler(this.BCSI2C_CheckedChanged);
 			// 
 			// LiqCry
 			// 
@@ -185,6 +187,7 @@
         "ition.\r\nFor use on displays without any modules like I2C (Direct attatch the 14 " +
         "or 16 pins).");
 			this.LiqCry.UseVisualStyleBackColor = true;
+			this.LiqCry.CheckedChanged += new System.EventHandler(this.LiqCry_CheckedChanged);
 			// 
 			// LiqCryI2C
 			// 

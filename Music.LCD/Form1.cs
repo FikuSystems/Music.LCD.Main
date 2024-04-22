@@ -242,7 +242,6 @@ namespace Music.LCD
 				}
                 button1.Enabled = false;
                 button2.Enabled = true;
-                soundMute.Enabled = true;
                 ComSelec.Enabled = false;
                 LogWrite("info", "Connect attempt", false);
                 try
@@ -448,8 +447,6 @@ namespace Music.LCD
 					finalData = L1 + ">1" + L2 + ">2" + L3 + ">3" + L4 + ">4" + L5;
 				}
 
-				// Open the serial po
-
 				try
                 {
                     //writes data into the arduino
@@ -541,7 +538,11 @@ namespace Music.LCD
             {
                 Application.Exit();
 			}
-            if(fileCreate)
+            if (connected && !soundMute.Enabled && MusicLCDType != "BCS")
+            {
+				soundMute.Enabled = true;
+			}
+			if (fileCreate)
             {
                 config[9] = "1";
                 checkBox1.Checked = true;
