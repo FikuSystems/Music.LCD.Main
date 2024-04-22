@@ -19,14 +19,7 @@ namespace Music.LCD.Uninstaller
         [STAThread]
         static void Main()
         {
-			
-
-			if (!IsRunAsAdmin())
-			{
-				ElevateProcess();
-				return;
-			}
-			
+			MessageBox.Show(AppDomain.CurrentDomain.BaseDirectory.ToString() + "\n" + Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Temp\");
 			if (AppDomain.CurrentDomain.BaseDirectory.ToString() != Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Temp\")
 			{
 				string tempFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Temp\";
@@ -36,7 +29,11 @@ namespace Music.LCD.Uninstaller
 				Application.Exit();
 				return;
 			} 
-			
+			if (!IsRunAsAdmin())
+			{
+				ElevateProcess();
+				return;
+			}
 			
 
 			Application.EnableVisualStyles();

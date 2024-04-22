@@ -111,10 +111,28 @@ namespace Music.LCD.Uninstaller
             {
                 File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu) + @"\Programs\Music.LCD.lnk");
             }
+			if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD.Installer.Logs"))
+			{
+				try
+				{
+					clearFolder(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD.Installer.Logs\");
+					Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD.Installer.Logs");
+				} catch { }
+				
+			}
+			if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD"))
+			{
+				try
+				{
+					clearFolder(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD\");
+					Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD");
+				}
+				catch { }
+			}
 			try
 			{
 				clearFolder(installLocation);
-				Directory.Delete(installLocation);
+				Directory.Delete(installLocation.Replace(@"Music.LCD\", "Music.LCD"));
 			} catch (Exception ex) { }
 			Pagenumber = Pagenumber + 1;
 			
@@ -142,7 +160,7 @@ namespace Music.LCD.Uninstaller
 
 		static void InitiateSelfDestructSequence()
 		{
-			string batchScriptPath = "Music.LCD.Installer.exe.delete.bat";
+			string batchScriptPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Temp\Music.LCD.Installer.exe.delete.bat";
 			using (StreamWriter writer = File.AppendText(batchScriptPath))
 			{
 				writer.WriteLine(":Loop");
@@ -151,11 +169,10 @@ namespace Music.LCD.Uninstaller
 				writer.WriteLine("  Timeout /T 1 /Nobreak");
 				writer.WriteLine("  Goto Loop");
 				writer.WriteLine(")");
-				writer.WriteLine("Del \"" + (new FileInfo((new Uri(Assembly.GetExecutingAssembly().CodeBase)).LocalPath)).Name + "\"");
+				writer.WriteLine("Del " + Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Temp\Music.LCD.Uninstaller.exe");
 			}
 			Process.Start(new ProcessStartInfo() { Arguments = "/C " + batchScriptPath + " & Del " + batchScriptPath, WindowStyle = ProcessWindowStyle.Hidden, CreateNoWindow = true, FileName = "cmd.exe" });
 			Application.Exit();
-			return;
 		}
 
         private void button3_Click(object sender, EventArgs e)
