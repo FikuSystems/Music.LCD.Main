@@ -19,7 +19,6 @@ namespace Music.LCD.Uninstaller
         [STAThread]
         static void Main()
         {
-			MessageBox.Show(AppDomain.CurrentDomain.BaseDirectory.ToString() + "\n" + Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Temp\");
 			if (AppDomain.CurrentDomain.BaseDirectory.ToString() != Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Temp\")
 			{
 				string tempFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Temp\";

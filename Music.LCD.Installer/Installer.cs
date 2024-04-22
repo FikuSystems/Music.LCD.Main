@@ -293,15 +293,13 @@ namespace Music.LCD.Installer
 				System.Diagnostics.Process.Start(choosenPath + @"\createDesktopShort.vbs");
 
 			}
-            if (cstartmenufolder.Checked)
-            {
-				string data = "Option Explicit\n" + "Dim objShell, objShortcut\n" + @"Set objShell = CreateObject(""WScript.Shell"")" + "\nDim TargetPath, ShortcutName\n" + "TargetPath = \"" + choosenPath + "Music.LCD.exe\"" + "\n" + @"ShortcutName = ""Music.LCD""" + "\n" + @"Set objShortcut = objShell.CreateShortcut(objShell.SpecialFolders(""StartMenu"") & ""\"" & ""Programs"" &""\""& ShortcutName & "".lnk"")" + "\nobjShortcut.TargetPath = TargetPath\nobjShortcut.Save\nSet objShortcut = Nothing\nSet objShell = Nothing\n";
-				File.Create(choosenPath + "createStartShort.vbs").Close();
-				TextWriter vbs = new StreamWriter(choosenPath + @"\createStartShort.vbs");
-				vbs.Write(data);
-				vbs.Close();
-				System.Diagnostics.Process.Start(choosenPath + @"\createStartShort.vbs");
-			}
+			string data1 = "Option Explicit\n" + "Dim objShell, objShortcut\n" + @"Set objShell = CreateObject(""WScript.Shell"")" + "\nDim TargetPath, ShortcutName\n" + "TargetPath = \"" + choosenPath + "Music.LCD.exe\"" + "\n" + @"ShortcutName = ""Music.LCD""" + "\n" + @"Set objShortcut = objShell.CreateShortcut(objShell.SpecialFolders(""StartMenu"") & ""\"" & ""Programs"" &""\""& ShortcutName & "".lnk"")" + "\nobjShortcut.TargetPath = TargetPath\nobjShortcut.Save\nSet objShortcut = Nothing\nSet objShell = Nothing\n";
+			File.Create(choosenPath + "createStartShort.vbs").Close();
+			TextWriter vbs1 = new StreamWriter(choosenPath + @"\createStartShort.vbs");
+			vbs1.Write(data1);
+			vbs1.Close();
+			System.Diagnostics.Process.Start(choosenPath + @"\createStartShort.vbs");
+			
             
 		}
         private void panel1_Paint(object sender, PaintEventArgs e)
