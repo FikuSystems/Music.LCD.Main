@@ -381,6 +381,7 @@ namespace Music.LCD.Installer
                 key.SetValue("URLInfoAbout", @"https:\\www.fikusystems.com\");
                 key.SetValue("DisplayVersion", "0.1.0.2");
                 key.Close();
+                File.Create(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD\installTemp.MLCD");
 				if (silentStart)
                 {
 					saveFileLogs("Progress$100");
@@ -462,8 +463,10 @@ namespace Music.LCD.Installer
                 key.SetValue("DisplayVersion", "0.1.0.2");
                 key.SetValue("URLInfoAbout", @"https:\\www.fikusystems.com\");
                 key.Close();
-            }
-        }
+				File.Create(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD\installTemp.MLCD");
+
+			}
+		}
 		
 
 		private void openexplorer_Click(object sender, EventArgs e)
