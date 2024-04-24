@@ -38,7 +38,7 @@ namespace Music.LCD
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.linkLabel1.LinkVisited = true;
-            System.Diagnostics.Process.Start("https://github.com/FikuSystems/MusicLCD#readme");
+            System.Diagnostics.Process.Start("https://github.com/FikuSystems/Music.LCD.Main#readme");
         }
 
         private void button3_Click(object sender, EventArgs e)

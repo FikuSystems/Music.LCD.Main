@@ -97,7 +97,7 @@ namespace Music.LCD.Installer
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.linkLabel1.LinkVisited = true;
-            System.Diagnostics.Process.Start("https://github.com/FikuSystems/MusicLCD");
+            System.Diagnostics.Process.Start("https://github.com/FikuSystems/Music.LCD.Main");
         }
 
         private void button4_Click(object sender, EventArgs e)

@@ -42,7 +42,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(165)))), ((int)(((byte)(132)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.panel1.Controls.Add(this.titlelabel);
             this.panel1.Controls.Add(this.descriptionlabel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -85,7 +85,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.bodylabel.Location = new System.Drawing.Point(12, 74);
             this.bodylabel.Name = "bodylabel";
-            this.bodylabel.Size = new System.Drawing.Size(490, 148);
+            this.bodylabel.Size = new System.Drawing.Size(490, 190);
             this.bodylabel.TabIndex = 4;
             this.bodylabel.Text = "No updates found!\r\n\r\nPlease exit the updater to continue.";
             this.bodylabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -107,7 +107,7 @@
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 225);
+            this.panel2.Location = new System.Drawing.Point(0, 267);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(514, 35);
             this.panel2.TabIndex = 7;
@@ -129,11 +129,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 260);
+            this.ClientSize = new System.Drawing.Size(514, 302);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.bodylabel);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;

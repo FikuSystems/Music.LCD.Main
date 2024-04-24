@@ -232,6 +232,12 @@ namespace Music.LCD.Uninstaller
                 s3.Font = new Font("Segoe UI", 12, FontStyle.Bold);
             }
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.linkLabel1.LinkVisited = true;
+            System.Diagnostics.Process.Start("https://github.com/FikuSystems/Music.LCD.Main");
+        }
     } 
     
 }
