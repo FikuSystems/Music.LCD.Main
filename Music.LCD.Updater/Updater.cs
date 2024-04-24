@@ -61,7 +61,7 @@ namespace Music.LCD.Updater
             gradients();
             try
             {
-                string htmlContent = await GetHtmlAsync("nhttps://fikusystems.github.io/Music.LCD.WebService/Music.LCD.WebService.appVersion.html");
+                string htmlContent = await GetHtmlAsync("https://fikusystems.github.io/Music.LCD.WebService/Music.LCD.WebService.appVersion.html");
                 var parser = new HtmlParser();
                 var document = await parser.ParseDocumentAsync(htmlContent);
                 // Extract the link and version
