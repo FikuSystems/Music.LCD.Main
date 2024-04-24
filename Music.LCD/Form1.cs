@@ -728,11 +728,10 @@ namespace Music.LCD
                 Directory.CreateDirectory(path);
             }
             string read = null;
-            /* not working shit
-			if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"Music.LCD\installTemp.mlcd"))
+			if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD\installTemp.MLCD"))
 			{
-
-				File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"Music.LCD\installTemp.mlcd");
+                
+				File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD\installTemp.MLCD");
 				string resourceName = "Music.LCD.Resources.Music.LCD.Updater.exe";
 
 				using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
@@ -741,12 +740,13 @@ namespace Music.LCD
 					resourceStream.Read(buffer, 0, buffer.Length);
 					try
 					{
+                        MessageBox.Show(currentPath);
 						File.WriteAllBytes(Path.Combine(currentPath, "Music.LCD.Updater.exe"), buffer);
 					}
 					catch { }
 				}
 			}
-            */
+            
 			if (File.Exists(path + @"\config.MLCD"))
             {
                 read = File.ReadAllText(path + @"\config.MLCD");
