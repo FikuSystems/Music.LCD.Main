@@ -31,7 +31,7 @@ namespace Music.LCD.Updater
         private int overallProgressInt = 0;
         NoUpdates noupdates = new NoUpdates();
 
-        private string[] randomErrorTitles = { "I am sad :(", "I have committed self death (error btw)", "Something went wrong", "Hi my name is error!", "Jajko sie rozbilo","Perkele!","AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "Something happened...", "100% reliable software no cap", "S**t.", "(*$(*&£%*££$%(£", ":(", ">:(", "F to pay respects", "X to cope", "Idk man im tired", "Grubego wina nie moja", "I have lost my marbles", "K***A MAC J****E GOWNO P*******E!" };
+        private string[] randomErrorTitles = { "I am sad :(", "I have committed self death (error btw)", "Something went wrong", "Hi my name is error!", "Jajko sie rozbilo","Perkele!","AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "Something happened...", "100% reliable software no cap", "S**t.", "(*$(*&£%*££$%(£", ":(", ">:(", "F to pay respects", "X to cope", "Idk man im tired", "Grubego wina nie moja", "I have lost my marbles", "K***A MAĆ J****E GOWNO P*******E W DUPE R****E!" };
 
         public Updater()
         {
