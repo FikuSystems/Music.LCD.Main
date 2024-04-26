@@ -49,5 +49,10 @@ namespace Music.LCD.Updater
         {
             System.Diagnostics.Process.Start("https://github.com/FikuSystems/Music.LCD.Main/issues");
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
     }
 }
