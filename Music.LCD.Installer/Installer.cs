@@ -18,7 +18,8 @@ namespace Music.LCD.Installer
 		public int PageNumber;
         public string choosenPath;
         public bool silentStart;
-        private static string Currentdate = System.DateTime.Now.ToString().Replace(".", "-").Replace(":", ".");
+        private static string Currentdate = System.DateTime.Now.ToString().Replace(".", "-").Replace(":", ".").Replace(@"/", ".");
+       
         private string totalInstallPercentage = "000";
 		public Installer()
         {
@@ -38,7 +39,7 @@ namespace Music.LCD.Installer
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            saveFileLogs("Music LCD Install Logs\r\n(c) FikuSystems 2024\r\n==================================================================");
+			saveFileLogs("Music LCD Install Logs\r\n(c) FikuSystems 2024\r\n==================================================================");
 			if (Program.CommandLineArgs != null)
             {
                 string[] args = Program.CommandLineArgs;
@@ -483,9 +484,7 @@ namespace Music.LCD.Installer
         {//true - silent mode    false - normal mode
             string path;
 			//Progress$005 - example
-			
-            
-			path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD.Installer.Logs\";
+			path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD.Installer.Logs\";            
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
