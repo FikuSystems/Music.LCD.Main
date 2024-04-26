@@ -436,6 +436,7 @@ namespace Music.LCD
                 }
 				if (!string.IsNullOrEmpty(eepromData))
 				{
+                    soundMute.Enabled = true;
 					L5 = eepromData;
 					eepromData = string.Empty;
 				}
@@ -728,11 +729,10 @@ namespace Music.LCD
                 Directory.CreateDirectory(path);
             }
             string read = null;
-            /* not working shit
-			if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"Music.LCD\installTemp.mlcd"))
+			if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD\installTemp.MLCD"))
 			{
-
-				File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"Music.LCD\installTemp.mlcd");
+                
+				File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Music.LCD\installTemp.MLCD");
 				string resourceName = "Music.LCD.Resources.Music.LCD.Updater.exe";
 
 				using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
@@ -741,12 +741,13 @@ namespace Music.LCD
 					resourceStream.Read(buffer, 0, buffer.Length);
 					try
 					{
+                        MessageBox.Show(currentPath);
 						File.WriteAllBytes(Path.Combine(currentPath, "Music.LCD.Updater.exe"), buffer);
 					}
 					catch { }
 				}
 			}
-            */
+            
 			if (File.Exists(path + @"\config.MLCD"))
             {
                 read = File.ReadAllText(path + @"\config.MLCD");
@@ -1033,11 +1034,13 @@ namespace Music.LCD
 		{
             if (soundMute.Checked)
             {
+                soundMute.Enabled = false;
                 eepromData = "1x11";
 				config[7] = "1";
             }
             else {
-                eepromData = "0x11";
+                soundMute.Enabled = false;
+				eepromData = "0x11";
 				config[7] = "0";
             }
 			writeConfigToFIle();

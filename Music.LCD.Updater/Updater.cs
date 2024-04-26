@@ -25,12 +25,14 @@ namespace Music.LCD.Updater
 
     public partial class Updater : Form
     {
+
+        private string[] randomErrorTitles = { "I am sad :(", "I have committed self death (error btw)", "Something went wrong", "Hi my name is error!", "Jajko sie rozbilo","Perkele!","AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "Something happened...", "100% reliable software no cap", "S**t.", "%Error_Text% <-- please replace", ":(", ">:(", "F to pay respects", "X to cope", "Idk man im tired", "Grubego wina nie moja", "I have lost my marbles", "K***A MAĆ J****E GOWNO P*******E W DUPE R****E!", "Cos sie wy*****o", "Spadlem z rowerka", "wait for the next release idk", "mum look! I broke my code!", "*F__k.*" };
+
         private string newestVersion;
 		private String directory = AppDomain.CurrentDomain.BaseDirectory.Replace(@"\Music.LCD.Updater", "");
         private string currentDate = System.DateTime.Now.ToString();
         private int overallProgressInt = 0;
         NoUpdates noupdates = new NoUpdates();
-
         public Updater()
         {
             InitializeComponent();
@@ -59,7 +61,7 @@ namespace Music.LCD.Updater
             gradients();
             try
             {
-                string htmlContent = await GetHtmlAsync("nhttps://fikusystems.github.io/Music.LCD.WebService/Music.LCD.WebService.appVersion.html");
+                string htmlContent = await GetHtmlAsync("https://fikusystems.github.io/Music.LCD.WebService/Music.LCD.WebService.appVersion.html");
                 var parser = new HtmlParser();
                 var document = await parser.ParseDocumentAsync(htmlContent);
                 // Extract the link and version
@@ -120,7 +122,7 @@ namespace Music.LCD.Updater
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.linkLabel1.LinkVisited = true;
-            System.Diagnostics.Process.Start("https://github.com/FikuSystems/MusicLCD");
+            System.Diagnostics.Process.Start("https://github.com/FikuSystems/Music.LCD.Main");
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -196,8 +198,10 @@ namespace Music.LCD.Updater
 
         void displayError(string message)
         {
-            
-            noupdates.titlelabel.Text = "Update has failed";
+            Random random = new Random();
+            int index = random.Next(randomErrorTitles.Length);
+            string selectedString = randomErrorTitles[index];
+            noupdates.titlelabel.Text = selectedString;
             noupdates.descriptionlabel.Text = "An error has been encountered";
             noupdates.bodylabel.Text = $"The updater updater has performed an illegal operation and will be closed.\r\nIf the problem persists, contact the program vendor.\r\n\r\nError information:\r\n{message}";
             noupdates.Show();

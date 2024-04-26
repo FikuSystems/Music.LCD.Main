@@ -421,11 +421,13 @@ namespace Music.LCD
 
 		private void Download_Click(object sender, EventArgs e)
 		{
+			
 			WebClient webClient = new WebClient();
 			webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
 			webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
-
-			if (LiqCry.Checked && LCD2004.Checked)
+            
+		//	form1.LogWrite("info", "Load success", true);
+            if (LiqCry.Checked && LCD2004.Checked)
 			{
 				//LIQCRY 2004
 				Uri url = new Uri(link1);

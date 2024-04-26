@@ -36,8 +36,8 @@
     <Reference Include="AngleSharp, Version=1.1.2.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
       <HintPath>..\Music.LCD\packages\AngleSharp.1.1.2\lib\net472\AngleSharp.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack, Version=1.11.59.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\Music.LCD\packages\HtmlAgilityPack.1.11.59\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.11.60.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\Music.LCD\packages\HtmlAgilityPack.1.11.60\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
