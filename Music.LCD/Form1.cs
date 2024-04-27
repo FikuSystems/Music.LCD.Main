@@ -436,6 +436,7 @@ namespace Music.LCD
                 }
 				if (!string.IsNullOrEmpty(eepromData))
 				{
+                    soundMute.Enabled = true;
 					L5 = eepromData;
 					eepromData = string.Empty;
 				}
@@ -1033,11 +1034,13 @@ namespace Music.LCD
 		{
             if (soundMute.Checked)
             {
+                soundMute.Enabled = false;
                 eepromData = "1x11";
 				config[7] = "1";
             }
             else {
-                eepromData = "0x11";
+                soundMute.Enabled = false;
+				eepromData = "0x11";
 				config[7] = "0";
             }
 			writeConfigToFIle();
