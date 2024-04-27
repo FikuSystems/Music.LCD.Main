@@ -143,7 +143,7 @@ namespace Music.LCD
                     confirmbox.notificationtext.Text = "Newer version is available to download";
                 }
             } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
-           
+			
 
 			ReadConfigFile();
             if (config[4] == "1")
@@ -156,7 +156,6 @@ namespace Music.LCD
 				welcome welcome = new welcome();
 				welcome.Show();
 			}
-			LogWrite("deb", config[0], false);
             if (config[2] == "1")
             {
                 findComPorts();
@@ -680,7 +679,8 @@ namespace Music.LCD
         {
             try
             {
-                string tmp = serialPort.ReadLine();
+                string tmp;
+				 tmp = serialPort.ReadLine();
                 if (!connected && tmp.Length > 4)
                 {
                     ArduinoHrdWareData = tmp;
@@ -701,7 +701,7 @@ namespace Music.LCD
                 {
                     COMData = tmp;
                 }
-            } catch(Exception ex) { LogWrite("err", "Cannot read from COM port: " + ex, true); }
+            } catch { }
 
 		}
 
@@ -944,9 +944,9 @@ namespace Music.LCD
 			} else if (type == "err")
             {
                 Logbox.Text += Environment.NewLine + "X: " + text;
-                ErrorBox notisend = new ErrorBox();
-                notisend.Show();
-                notisend.kext.Text = "An error has occured: " + text;
+				ErrorBox errorBox = new ErrorBox();
+				errorBox.Show();
+				errorBox.kext.Text = "nigga";
 			} else if (type == "deb")
             {
                 Logbox.Text += Environment.NewLine + "D**" + text;
