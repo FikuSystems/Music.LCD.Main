@@ -3,9 +3,9 @@
 #include <EEPROM.h>
 
 #define Buzzer 11
-#define BACK_PIN 4
+#define BACK_PIN 2
 #define PLAY_PAUSE_PIN 3
-#define FORWARD_PIN 2
+#define FORWARD_PIN 4
 
 //define custom progressBar
 const byte customChar6[] = {

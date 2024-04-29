@@ -2,9 +2,9 @@
 #include <EEPROM.h>
 
 #define Buzzer 11
-#define BACK_PIN 4
+#define BACK_PIN 2
 #define PLAY_PAUSE_PIN 3
-#define FORWARD_PIN 2
+#define FORWARD_PIN 4
 
 //define custom progressBar
 const byte customChar0[] = {
@@ -139,7 +139,7 @@ void setup() {
   PCICR |= (1 << PCIE2); // Enable PCINT23:16 pin change interrupt
   PCMSK2 |= (1 << PCINT20); // Enable pin change interrupt for PCINT20
 
-  attachInterrupt(digitalPinToInterrupt(FORWARD_PIN), checkButtons, CHANGE);
+  attachInterrupt(digitalPinToInterrupt(BACK_PIN), checkButtons, CHANGE);
   attachInterrupt(digitalPinToInterrupt(PLAY_PAUSE_PIN), checkButtons, CHANGE);
   displayMainScreen();
   if (EEPROM.read(0) == 0) {
