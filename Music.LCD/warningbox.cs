@@ -23,7 +23,7 @@ namespace Music.LCD
             gradients();
             System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Windows\Media\Windows background.wav");
             player.Play();
-            int margin = 47;
+            int margin = 0;
             Screen screen = Screen.FromControl(this);
             int newX = screen.WorkingArea.Right - this.Width;
             int newY = screen.WorkingArea.Bottom - this.Height - margin;

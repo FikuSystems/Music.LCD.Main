@@ -25,7 +25,7 @@ namespace Music.LCD
             System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Windows\Media\windows foreground.wav");
             player.Play();
             jajo();
-            int margin = 47;
+            int margin = 0;
             Screen screen = Screen.FromControl(this);
             int newX = screen.WorkingArea.Right - this.Width;
             int newY = screen.WorkingArea.Bottom - this.Height - margin;
