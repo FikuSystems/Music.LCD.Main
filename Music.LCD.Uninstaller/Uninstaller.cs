@@ -100,8 +100,7 @@ namespace Music.LCD.Uninstaller
 				process.StartInfo.Verb = "runas";
 				process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 				process.Start();
-			} catch(Exception ex) { //can't delete registry
-			}
+			} catch {}
 
 			if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"Music.LCD.lnk"))
             {
@@ -133,7 +132,7 @@ namespace Music.LCD.Uninstaller
 			{
 				clearFolder(installLocation);
 				Directory.Delete(installLocation.Replace(@"Music.LCD\", "Music.LCD"));
-			} catch (Exception ex) { }
+			} catch { }
 			Pagenumber = Pagenumber + 1;
 			
 		}

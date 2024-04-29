@@ -228,17 +228,11 @@ namespace Music.LCD
             button6.Show();
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {//Opens COM PORT to start sending data
             if (ComSelec.Text != "")
             {
-                bool paused = false;
-                if (playpausestatus == "Playing")
-                {
-                    await mediaManager.WindowsSessionManager.GetCurrentSession().TryPauseAsync();
-                    paused = true;
-
-				}
+                
                 button1.Enabled = false;
                 button2.Enabled = true;
                 ComSelec.Enabled = false;
@@ -270,11 +264,6 @@ namespace Music.LCD
 
                 pressed = true;
                 LogWrite("info", "Connection success", false);
-                if (playpausestatus == "Paused" && paused)
-                {
-					paused = false;
-					await mediaManager.WindowsSessionManager.GetCurrentSession().TryPlayAsync();
-                }
             } else
             {
 
