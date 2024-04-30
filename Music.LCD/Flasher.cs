@@ -95,7 +95,7 @@ namespace Music.LCD
 			catch (Exception ex)
 			{
 				Form1 form1 = new Form1();
-				form1.LogWrite("err", "cannot connect to the server" + ex.ToString(), true);
+				form1.LogWrite("err", "Cannot connect to the server", "Server Error" + ex.ToString(), true);
 			}
 		}
 
@@ -482,7 +482,7 @@ namespace Music.LCD
 			catch (Exception ex)
 			{
 				Form1 form1 = new Form1();
-				form1.LogWrite("err", "cannot connect to the server" + ex.ToString(), true);
+				form1.LogWrite("err", "Cannot connect to the server.", "Server Error" + ex.ToString(), true);
 			}
 			if (LiqCry.Checked && LCD2004.Checked)
 			{

@@ -133,7 +133,7 @@ namespace Music.LCD
                 var fileSizeNode = document.QuerySelector("#fileSize");
                 newFileSize = fileSizeNode != null ? fileSizeNode.TextContent.Trim() : null;
 
-			} catch(Exception ex) { LogWrite("err", ex.ToString(), true); }
+			} catch(Exception ex) { LogWrite("err", ex.ToString(), "Server error", true); }
 			try
 			{
                 if (currentVersion != null && Convert.ToInt16(currentVersion.Replace(".", "")) < Convert.ToInt16(newestVersion.Replace(".", "")))
@@ -150,7 +150,7 @@ namespace Music.LCD
             {
 				this.WindowState = FormWindowState.Minimized;
 				this.ShowInTaskbar = false;
-				LogWrite("info", "Hidden to tray", false);
+				LogWrite("info", "Hidden to tray", "", false);
 			} else if (config[9] == "0")
             {
 				welcome welcome = new welcome();
@@ -176,7 +176,7 @@ namespace Music.LCD
                             break;
                         }
                     }
-                } catch (Exception ex) { LogWrite("err", "Cannot get COM ports: " + ex, true); }
+                } catch (Exception ex) { LogWrite("err", "Cannot get COM ports: " + ex,"COM Port Error", true); }
 			} else if (config[3] == "1")
             {
 				findComPorts();
@@ -196,18 +196,18 @@ namespace Music.LCD
                             break;
                         }
                     }
-                } catch (Exception ex) { LogWrite("err", "Cannot get COM ports: " + ex, true); }
+                } catch (Exception ex) { LogWrite("err", "Cannot get COM ports: " + ex,"COM Port Error", true); }
 			}
             
-			LogWrite("info", "Logging started", true);
+			LogWrite("info", "Logging started", "Logging info", true);
             groupBox2.Size = new Size(427, 243);
             
-            LogWrite("info", "Welcome opened", false);
+            LogWrite("info", "Welcome opened", "Logging info", false);
 			CurrentMusic = "00:00:00.0000000";
             MaxMusic = "00:00:00.0000001";
 			
 
-			LogWrite("info", "Load success", true);
+			LogWrite("info", "Load success", "Logging info", true);
 
 
 		}
@@ -236,7 +236,7 @@ namespace Music.LCD
                 button1.Enabled = false;
                 button2.Enabled = true;
                 ComSelec.Enabled = false;
-                LogWrite("info", "Connect attempt", false);
+                LogWrite("info", "Connect attempt","Connection info", false);
                 try
                 {
                     if (!serialPort.IsOpen && ComSelec.SelectedItem.ToString() != "")
@@ -252,26 +252,23 @@ namespace Music.LCD
                             {
                                 this.WindowState = FormWindowState.Minimized;
                                 this.ShowInTaskbar = false;
-                                LogWrite("info", "Hidden to tray", false);
+                                LogWrite("info", "Hidden to tray","Logging info", false);
                             }
                         }
                         catch
                         {
-                            LogWrite("err", "Connection fail", false);
+                            LogWrite("err", "Cannot start serial port", "COM Port Error", false);
+                            button2.PerformClick();
                         }
                     }
-                } catch (Exception ex) { LogWrite("err", "Cannot use serialPort: " + ex, true); }
+                } catch (Exception ex) { LogWrite("err", "Cannot use serialPort: " + ex, "COM Port Error", true); }
 
                 pressed = true;
-                LogWrite("info", "Connection success", false);
+                LogWrite("info", "Sending data over serial", "COM Info", false);
             } else
             {
 
-                WarningBox warningbox = new WarningBox();
-                warningbox.Show();
-                warningbox.warningtitle.Text = "COM port not selected.";
-                warningbox.warningtext.Text = "Please select a COM port from the dropdown before connecting.";
-                LogWrite("warn", "Please select COM port", false);
+                LogWrite("warn", "Please select a COM port from the combobox before connecting.", "COM Port Error (Select COM)", false);
             }
 
            
@@ -440,7 +437,7 @@ namespace Music.LCD
                 {
                     //writes data into the arduino
                     serialPort.Write(finalData);
-                } catch { LogWrite("warn", "Writing data failed", false); }
+                } catch { LogWrite("warn", "Writing data failed", "Failed to mute/ un-mute", false); }
                          
 
             }
@@ -450,7 +447,7 @@ namespace Music.LCD
         {
             About about = new About();
             about.Show();
-            LogWrite("info", "About opened", false);
+            LogWrite("info", "About opened", "Logging info", false);
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -461,14 +458,14 @@ namespace Music.LCD
 			button2.Enabled = false;
             soundMute.Enabled = false;
             DisconnectDelay.Start();
-            LogWrite("info", "Discconect attm.", false);
+            LogWrite("info", "Stopping serial connection", "COM Port Info", false);
             
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             //Exit application
-            LogWrite("warn", "Application closing", true);
+            LogWrite("warn", "Stopping services...", "Application Closing", true);
             if (connected)
             {
                 closeAppSafetly();
@@ -476,13 +473,13 @@ namespace Music.LCD
             {
 				Application.Exit();
 			}
-
+            LogWrite("warn", "Exiting", "Application Closing", true);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             //restart appliction (broken, to be fixed)
-            LogWrite("warn", "Application restarting", true);
+            LogWrite("warn", "Application restarting", "Application closing", true);
 			if (connected)
 			{
 				writeConfigToFIle();
@@ -492,7 +489,7 @@ namespace Music.LCD
 					{
 						button2.PerformClick();
 					}
-					catch (Exception ex) { LogWrite("err", ex.ToString(), true); }
+					catch (Exception ex) { LogWrite("err", ex.ToString(), "Failed to restart", true); }
 					Application.Restart();
 				}
 			}
@@ -507,7 +504,7 @@ namespace Music.LCD
             //Minimizes the window into the notificationicon
             this.WindowState = FormWindowState.Minimized;
             this.ShowInTaskbar = false;
-            LogWrite("info", "Hidden to tray", false);
+            LogWrite("info", "Hidden to tray", "Logging info", false);
             ConfirmBox confirmbox = new ConfirmBox();
             confirmbox.Show();
             confirmbox.notificationtext.Text = "MusicLCD is hidden to your system tray. If a problem is encountered, the application will show a notification. Double click the icon to open the main control panel.";
@@ -518,7 +515,7 @@ namespace Music.LCD
             //Shows the window after dubble click of notifictation icon
             this.WindowState = FormWindowState.Normal;
             this.ShowInTaskbar = true;
-            LogWrite("info", "Unhidden to tray", false);
+            LogWrite("info", "Unhidden to tray", "Logging info", false);
         }
 
 		private async void MusicTimeSyncroniser_Tick(object sender, EventArgs e)
@@ -643,7 +640,7 @@ namespace Music.LCD
 			}
 			Flasher flasher = new Flasher();   
             flasher.Show();
-            LogWrite("info", "Flasher opened", false);
+            LogWrite("info", "Flasher opened", "Logging info", false);
         }
 		string ReplaceIgnoreSpacesInTitle(string input, string pattern)
 		{
@@ -751,7 +748,7 @@ namespace Music.LCD
                     
                 } else
                 {
-                    LogWrite("warn", "config property: com_port failed", false);
+                    LogWrite("warn", "config property: com_port failed", "Configuration loading problem", false);
                 }
 
                 if (read.Contains("start_logon = "))
@@ -767,7 +764,7 @@ namespace Music.LCD
                     }
                 }
                 else {
-                    LogWrite("warn", "config property: start_logon failed", false);
+                    LogWrite("warn", "config property: start_logon failed", "Configuration loading problem", false);
                 }
 
 
@@ -783,7 +780,7 @@ namespace Music.LCD
                     }
                 } else
                 {
-					LogWrite("warn", "config property: auto_con failed", false);
+					LogWrite("warn", "config property: auto_con failed", "Configuration loading problem", false);
 				}
 
 				if (read.Contains("save_com = "))
@@ -798,7 +795,7 @@ namespace Music.LCD
                     }
                 } else
                 {
-					LogWrite("warn", "config property: save_com failed", false);
+					LogWrite("warn", "config property: save_com failed", "Configuration loading problem", false);
 				}
 
                 if (read.Contains("launch_tray = "))
@@ -813,7 +810,7 @@ namespace Music.LCD
                         launchtray.Checked = false;
                     }
                 } else {
-					LogWrite("warn", "config property: launch_tray failed", false);
+					LogWrite("warn", "config property: launch_tray failed", "Configuration loading problem", false);
 				}
 
                 if (read.Contains("enable_tray = "))
@@ -829,7 +826,7 @@ namespace Music.LCD
                     }
                 }
                 else {
-					LogWrite("warn", "config property: enable_tray failed", false);
+					LogWrite("warn", "config property: enable_tray failed", "Configuration loading problem", false);
 				}
 
 
@@ -845,7 +842,7 @@ namespace Music.LCD
                     }
                 } else
                 {
-					LogWrite("warn", "config property: hide_to_trayoncon failed", false);
+					LogWrite("warn", "config property: hide_to_trayoncon failed", "Configuration loading problem", false);
 				}
 
 				if (read.Contains("sound_mute = "))
@@ -861,7 +858,7 @@ namespace Music.LCD
                     }
                 } else
                 {
-					LogWrite("warn", "config property: sound_mute failed", false);
+					LogWrite("warn", "config property: sound_mute failed", "Configuration loading problem", false);
 				}
 
 				if (read.Contains("note_hiding = "))
@@ -877,7 +874,7 @@ namespace Music.LCD
                     }
                 } else
                 {
-					LogWrite("warn", "config property: note_hiding failed", false);
+					LogWrite("warn", "config property: note_hiding failed", "Configuration loading problem", false);
 				}
                    
                 if(read.Contains("dont_show_welcome = "))
@@ -894,16 +891,16 @@ namespace Music.LCD
 
 			} else
             {
-				LogWrite("warn", "Config File Not Found", true);
-				LogWrite("info", "Creating new config file", true);
+				LogWrite("warn", "Config File Not Found", "Configuration loading problem", true);
+				LogWrite("info", "Creating new config file", "Creating file", true);
 				try
 				{
-					LogWrite("info", "File created succesfully", false);
+					LogWrite("info", "File created succesfully", "Configuration creation", false);
                     fileCreate = true;
 				}
 				catch (Exception e)
 				{
-					LogWrite("err", "File creation failed: " + e, false);
+					LogWrite("err", "File creation failed: " + e, "Configuration creation problem", false);
 				}
 			}
 
@@ -918,7 +915,7 @@ namespace Music.LCD
 		}
        
       
-        public void LogWrite(string type, string text, bool printSeperation)
+        public void LogWrite(string type, string text, string title, bool printSeperation)
         {
             if(printSeperation)
             {
@@ -930,15 +927,24 @@ namespace Music.LCD
 			} else if (type == "warn")
             {
                 Logbox.Text += Environment.NewLine + "!: " + text;
-			} else if (type == "err")
+                WarningBox warningBox = new WarningBox();
+                warningBox.Show();
+                warningBox.warningtext.Text = text;
+                warningBox.warningtitle.Text = title;
+            } else if (type == "err")
             {
                 Logbox.Text += Environment.NewLine + "X: " + text;
 				ErrorBox errorBox = new ErrorBox();
 				errorBox.Show();
-				errorBox.kext.Text = "nigga";
+				errorBox.kext.Text = text;
+                errorBox.warningtitle.Text = title;
 			} else if (type == "deb")
             {
                 Logbox.Text += Environment.NewLine + "D**" + text;
+                ConfirmBox ConfirmBox = new ConfirmBox();
+                ConfirmBox.Show();
+                ConfirmBox.notificationtext.Text = text;
+                ConfirmBox.notificationtitle.Text = title;
             }
             else 
             {
@@ -1077,7 +1083,7 @@ namespace Music.LCD
                 try
                 {
 					button2.PerformClick();
-				} catch (Exception ex) { LogWrite("err", ex.ToString(), true);  }
+				} catch (Exception ex) { LogWrite("err", ex.ToString(), "Failed to close", true);  }
 				closeApp = true;
 			}
 			else
@@ -1131,13 +1137,14 @@ namespace Music.LCD
                     connected = false;
                 }
                 catch { 
-                    LogWrite("err", "Disconnect failed", false);
-					shit shit = new shit();
+                    LogWrite("err", "The application attempted an illegal operation and has to be stopped. Something is very wrong with your copy as this should never show.", "Failed to disconnect", false);
+                    LogWrite("info", "Showing 's***'", "big poo poo", false);
+                    shit shit = new shit();
 					shit.Show();
 					System.Threading.Thread.Sleep(5000);
 					shit.Dispose();
 				}
-                LogWrite("info", "Disconnected", false);
+                LogWrite("info", "Disconnected","COM Port Information", false);
             }
 			button1.Enabled = true;
 			ComSelec.Enabled = true;

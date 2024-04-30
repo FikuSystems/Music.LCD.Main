@@ -72,7 +72,7 @@ namespace Music.LCD
 			catch (Exception ex)
 			{
 				Form1 form1 = new Form1();
-				form1.LogWrite("err", "cannot connect to the server" + ex.ToString(), true);
+				form1.LogWrite("err", "Cannot connect to the server.", "Server Error" + ex.ToString(), true);
 			}
 			NewVersion.Text = "New Version: " + NewestVersion;
 			currentVersion.Text = "Current Version: " + Application.ProductVersion.ToString();
@@ -117,7 +117,7 @@ namespace Music.LCD
 			catch (Exception ex)
 			{
 				Form1 form1 = new Form1();
-				form1.LogWrite("err", "cannot connect to the server" + ex.ToString(), true);
+				form1.LogWrite("err", "Cannot connect to the server.", "Server Error" + ex.ToString(), true);
 			}
 			if (link5Checksum != CalculateMD5(directory + @"Temp\Music.LCD.Installer.exe").ToString())
 			{
