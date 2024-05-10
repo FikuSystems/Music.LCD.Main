@@ -117,6 +117,7 @@ namespace Music.LCD
         }
         private async void Form1_Load(object sender, EventArgs e)
         {//Handles setting the settings group box to intended size
+            //TEST
 			gradients();
             try
 			{
