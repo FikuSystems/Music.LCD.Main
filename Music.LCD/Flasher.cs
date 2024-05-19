@@ -47,7 +47,7 @@ namespace Music.LCD
 		}
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 		private static HttpClient _client = new HttpClient();
 
@@ -70,6 +70,16 @@ namespace Music.LCD
                     e.Graphics.FillRectangle(brush, panel1.ClientRectangle); ;
                 }
             };
+        }
+        private const int CP_NOCLOSE_BUTTON = 0x200;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
         }
         private async void Flasher_Load(object sender, EventArgs e)
 		{
@@ -534,7 +544,7 @@ namespace Music.LCD
 		{
 			senddata.Hide();
 			FlashProgress.Style = ProgressBarStyle.Blocks;
-			FlashProgress.Value = 100; this.Close();
+			FlashProgress.Value = 100; this.Hide();
 			flashdonehappyyaynodie flashdone = new flashdonehappyyaynodie(); flashdone.Show();
 		}
 
