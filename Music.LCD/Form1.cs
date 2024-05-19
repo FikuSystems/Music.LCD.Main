@@ -57,6 +57,16 @@ namespace Music.LCD
         private string MusicLCDType;
         public static string NewestArduinCodeVersion;
         private string link, newestVersion, newFileSize;
+
+
+        // widonw isndintiaialiser
+
+        Flasher flasher = new Flasher();
+        DownloadUtility downloadutility = new DownloadUtility();
+        About about = new About();
+        ErrorBox errorBox = new ErrorBox();
+        WarningBox warningBox = new WarningBox();
+        ConfirmBox ConfirmBox = new ConfirmBox();
         public Form1()
         {
             InitializeComponent();
@@ -117,7 +127,17 @@ namespace Music.LCD
         }
         private async void Form1_Load(object sender, EventArgs e)
         {//Handles setting the settings group box to intended size
-			gradients();
+			gradients();            
+			LogWrite("info", "Logging started", "Logging info", true);
+            groupBox2.Size = new Size(427, 243);
+            
+            LogWrite("info", "Welcome opened", "Logging info", false);
+			CurrentMusic = "00:00:00.0000000";
+            MaxMusic = "00:00:00.0000001";
+			
+
+			LogWrite("info", "Load success", "Logging info", true);
+
             try
 			{
 				string htmlContent = await GetHtmlAsync("https://fikusystems.github.io/Music.LCD.WebService/Music.LCD.WebService.appVersion.html");
@@ -198,16 +218,6 @@ namespace Music.LCD
                     }
                 } catch (Exception ex) { LogWrite("err", "Cannot get COM ports: " + ex,"COM Port Error", true); }
 			}
-            
-			LogWrite("info", "Logging started", "Logging info", true);
-            groupBox2.Size = new Size(427, 243);
-            
-            LogWrite("info", "Welcome opened", "Logging info", false);
-			CurrentMusic = "00:00:00.0000000";
-            MaxMusic = "00:00:00.0000001";
-			
-
-			LogWrite("info", "Load success", "Logging info", true);
 
 
 		}
@@ -445,7 +455,7 @@ namespace Music.LCD
         }
         private void HelpButtonClickeda(object sender, CancelEventArgs e)
         {
-            About about = new About();
+
             about.Show();
             LogWrite("info", "About opened", "Logging info", false);
         }
@@ -638,7 +648,7 @@ namespace Music.LCD
             {
 				button2.PerformClick();
 			}
-			Flasher flasher = new Flasher();   
+ 
             flasher.Show();
             LogWrite("info", "Flasher opened", "Logging info", false);
         }
@@ -927,21 +937,21 @@ namespace Music.LCD
 			} else if (type == "warn")
             {
                 Logbox.Text += Environment.NewLine + "!: " + text;
-                WarningBox warningBox = new WarningBox();
+
                 warningBox.Show();
                 warningBox.warningtext.Text = text;
                 warningBox.warningtitle.Text = title;
             } else if (type == "err")
             {
                 Logbox.Text += Environment.NewLine + "X: " + text;
-				ErrorBox errorBox = new ErrorBox();
-				errorBox.Show();
+
+                errorBox.Show();
 				errorBox.kext.Text = text;
                 errorBox.warningtitle.Text = title;
 			} else if (type == "deb")
             {
                 Logbox.Text += Environment.NewLine + "D**" + text;
-                ConfirmBox ConfirmBox = new ConfirmBox();
+
                 ConfirmBox.Show();
                 ConfirmBox.notificationtext.Text = text;
                 ConfirmBox.notificationtitle.Text = title;
@@ -1094,7 +1104,7 @@ namespace Music.LCD
 
 		private void button9_Click(object sender, EventArgs e)
 		{
-            DownloadUtility downloadutility = new DownloadUtility();
+
             downloadutility.Show();
             downloadutility.currentVersion.Text = currentVersion;
             downloadutility.NewVersion.Text = newestVersion;

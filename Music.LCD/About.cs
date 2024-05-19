@@ -32,7 +32,7 @@ namespace Music.LCD
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -53,6 +53,16 @@ namespace Music.LCD
             CurVer.Text = Application.ProductVersion.ToString();
 
 
+        }
+        private const int CP_NOCLOSE_BUTTON = 0x200;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
         }
         private void gradients()
         {

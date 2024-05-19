@@ -48,7 +48,7 @@ namespace Music.LCD
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         private void kext_Click(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace Music.LCD
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
     }
 }

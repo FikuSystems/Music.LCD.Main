@@ -114,6 +114,7 @@ namespace Music.LCD
             this.notificationtext.Size = new System.Drawing.Size(430, 90);
             this.notificationtext.TabIndex = 12;
             this.notificationtext.Text = "warningtext";
+            this.notificationtext.Click += new System.EventHandler(this.notificationtext_Click);
             // 
             // timer1
             // 

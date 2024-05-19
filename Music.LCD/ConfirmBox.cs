@@ -46,12 +46,17 @@ namespace Music.LCD
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
+        }
+
+        private void notificationtext_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
