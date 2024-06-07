@@ -28,25 +28,44 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.SuspendLayout();
-			// 
-			// shit
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackgroundImage = global::Music.LCD.Properties.Resources.shoot;
-			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Name = "shit";
-			this.ShowIcon = false;
-			this.ShowInTaskbar = false;
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "shit";
-			this.TopMost = true;
-			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-			this.ResumeLayout(false);
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Purple;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Goudy Stout", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Lime;
+            this.label1.Location = new System.Drawing.Point(136, 317);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(563, 28);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "An error occured !!! :OOO";
+            // 
+            // shit
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Music.LCD.Properties.Resources.shoot;
+            this.ClientSize = new System.Drawing.Size(1009, 573);
+            this.Controls.Add(this.label1);
+            this.Name = "shit";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "shit";
+            this.TopMost = true;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.shit_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 
-		#endregion
-	}
+        #endregion
+
+        private System.Windows.Forms.Label label1;
+    }
 }

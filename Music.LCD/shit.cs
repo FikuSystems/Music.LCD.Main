@@ -16,5 +16,10 @@ namespace Music.LCD
 		{
 			InitializeComponent();
 		}
-	}
+
+        private void shit_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
