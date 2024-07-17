@@ -14,7 +14,6 @@ using System.Net.Http;
 using System.IO;
 using System.IO.Ports;
 using System.Net;
-using HtmlAgilityPack;
 using AngleSharp.Html.Parser;
 using System.Net.NetworkInformation;
 using AngleSharp.Html.Dom;
