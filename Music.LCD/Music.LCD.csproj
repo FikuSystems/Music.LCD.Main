@@ -250,21 +250,21 @@
     <PackageReference Include="AngleSharp" Version="1.1.2" />
     <PackageReference Include="ArduinoUploader" Version="3.2.0" />
     <PackageReference Include="Dubya.WindowsMediaController">
-      <Version>2.5.3</Version>
+      <Version>2.5.5</Version>
     </PackageReference>
     <PackageReference Include="Dubya.WindowsMediaController" Version="2.5.3" />
     <PackageReference Include="Dubya.WindowsMediaController" Version="2.5.4" />
     <PackageReference Include="HtmlAgilityPack">
-      <Version>1.11.60</Version>
+      <Version>1.11.61</Version>
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.59" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.59" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.59" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions">
-      <Version>8.0.0</Version>
+      <Version>8.0.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts">
-      <Version>10.0.22621.3233</Version>
+      <Version>10.0.26100.1</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.3</Version>
