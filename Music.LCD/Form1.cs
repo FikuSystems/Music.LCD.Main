@@ -855,8 +855,8 @@ namespace Music.LCD
 					LogWrite("warn", "config property: hide_to_trayoncon failed", "Configuration loading problem", false);
 				}
 
-				if (read.Contains("sound_mute = "))
-				{
+                if (read.Contains("sound_mute = "))
+                {
                     config[7] = read.Substring(read.IndexOf("sound_mute = ") + 13, 1);
                     if (Convert.ToInt16(config[7]) == 1)
                     {
@@ -866,12 +866,13 @@ namespace Music.LCD
                     {
                         soundMute.Checked = false;
                     }
-                } else
+                }
+                else
                 {
-					LogWrite("warn", "config property: sound_mute failed", "Configuration loading problem", false);
-				}
+                    LogWrite("warn", "config property: sound_mute failed", "Configuration loading problem", false);
+                }
 
-				if (read.Contains("note_hiding = "))
+                if (read.Contains("note_hiding = "))
 				{ 
                     config[8] = read.Substring(read.IndexOf("note_hiding = ") + 14, 1);
                     if (Convert.ToInt16(config[8]) == 1)
